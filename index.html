@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Más Agua a la Sopa - </title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Syne, Playfair Display, Caveat, Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        handwriting: ['Caveat', 'cursive'],
+                        retro: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        brandDark: '#13281a',      /* Deep Forest Green */
+                        brandGreen: '#1b3b22',
+                        brandSage: '#cdd7d0',
+                        brandYellow: '#fef08a',
+                        brandCream: '#f5f2eb',     /* Warm Cream Background */
+                        brandCardBg: '#ece6da',
+                        brandRust: '#9a3412',
+                        brandAccent: '#e05a38'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f5f2eb; color: #1f2937; }
+        .font-editorial { font-family: 'Playfair Display', serif; }
+        .font-handwriting { font-family: 'Caveat', cursive; }
+        .font-retro { font-family: 'Syne', sans-serif; }
+        .grid-pattern {
+            background-image: linear-gradient(to right, rgba(19, 40, 26, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(19, 40, 26, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-brandCream min-h-screen antialiased selection:bg-brandSage selection:text-brandDark">
+
+
+
+<div class="sticky top-4 z-50 px-4 max-w-5xl mx-auto">
+    <header class="bg-brandDark/95 backdrop-blur-md rounded-full px-6 py-3 border border-white/10 text-white shadow-xl flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-full bg-white shadow-sm overflow-hidden flex items-center justify-center p-0.5">
+                <img src="https://i.postimg.cc/SQ9BqfYr/Captura-de-pantalla-2026-08-16-a-la(s)-4-42-47-p-m.png" onerror="this.src='[https://placehold.co/100x100/13281a/ffffff?text=MAS](https://placehold.co/100x100/13281a/ffffff?text=MAS)'" alt="Logo" class="w-full h-full object-contain">
+            </div>
+            <span class="font-handwriting text-xl text-brandYellow font-bold tracking-tight">Más Agua a la Sopa</span>
+        </div>
+
+        <nav class="hidden md:flex items-center space-x-6 text-[11px] font-semibold tracking-widest uppercase text-stone-300">
+            <a href="#sorteo" class="hover:text-brandYellow transition">Parrilla</a>
+            <!-- Redirige con JavaScript onclick para forzar apertura en pestaña nueva -->
+            <a href="javascript:void(0)" onclick="window.open('[https://www.instagram.com/reel/Db8wq5ogVIy/?igsh=dXl5OGF5bG5mc2Ft&igsi=dXl5OGF5bG5mc2Ft](https://www.instagram.com/reel/Db8wq5ogVIy/?igsh=dXl5OGF5bG5mc2Ft&igsi=dXl5OGF5bG5mc2Ft)', '_blank')" class="hover:text-brandYellow transition inline-flex items-center space-x-1 cursor-pointer">
+                <span>Campaña</span>
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            </a>
+            <a href="#pasos" class="hover:text-brandYellow transition">Cómo Participar</a>
+        </nav>
+
+        <div class="flex items-center space-x-2">
+    
+                <a href="#sorteo" class="bg-brandYellow text-stone-900 hover:bg-yellow-300 px-4 py-2 rounded-full text-xs font-bold uppercase transition tracking-wider shadow-sm">
+                    Donar Boleta
+                </a>
+                <button onclick="toggleAdminModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition border border-white/10" title="Panel Administrador">
+                    <svg class="w-4 h-4 text-brandYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-16">
+        
+        <!-- Hero Editorial Banner (Image first) -->
+        <section class="relative bg-brandDark text-white rounded-3xl overflow-hidden shadow-2xl p-6 md:p-12 border border-stone-800">
+            <div class="absolute -right-24 -top-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                
+                <!-- IMAGE FIRST (Line 105 configuration) -->
+                <div class="lg:col-span-6 space-y-4 order-1">
+                    <div class="rounded-2xl overflow-hidden border-2 border-white/20 shadow-xl bg-stone-900 aspect-[4/3] relative">
+                        <img src="https://i.postimg.cc/KzChf9kS/Captura-de-pantalla-2026-08-16-a-la(s)-4-40-39-p-m.png" onerror="this.src='https://placehold.co/600x450/1b3b22/ffffff?text=Fundacion+Mas+Agua'" alt="Sopa solidaria" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
+                            <p class="font-handwriting text-2xl text-brandYellow">Esta semana apoyamos a La Patatería.</p>
+                        </div>
+                    </div>
+
+                    <!-- Progress Status Card below image -->
+                    <div class="bg-white/10 border border-white/20 p-5 rounded-2xl backdrop-blur-md space-y-3">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="uppercase tracking-widest text-brandYellow font-bold">Meta Recaudo ($3.000.000)</span>
+                            <span id="stat-percent-text" class="font-bold text-white">0%</span>
+                        </div>
+                        <div class="w-full bg-black/40 rounded-full h-2.5 p-0.5 border border-white/10">
+                            <div id="progress-bar" class="bg-gradient-to-r from-brandYellow to-emerald-400 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between text-[11px] text-stone-300">
+                            <span id="stat-sold-text">0 vendidos / 0 en validación</span>
+                            <span class="text-brandYellow font-bold">100 Boletas (00 al 99)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEXT CONTENT SECOND -->
+                <div class="lg:col-span-6 space-y-6 order-2">
+                    <div class="inline-flex items-center space-x-2 bg-white/10 text-brandYellow text-xs font-semibold px-4 py-1.5 rounded-full border border-white/10 uppercase tracking-widest">
+                        <span class="w-2 h-2 rounded-full bg-brandYellow animate-ping"></span>
+                        <span>Sorteo Solidario • 26 de Agosto</span>
+                    </div>
+
+                    <h1 class="text-3xl md:text-5xl font-editorial font-bold tracking-tight leading-tight">
+                        Apoyemos juntos al <span class="font-handwriting text-brandYellow text-4xl md:text-6xl font-normal">sector gastronómico</span> de Manizales.
+                    </h1>
+
+                    <p class="text-stone-300 text-sm md:text-base font-light leading-relaxed">
+                        Cada semana destinamos esta campaña a un restaurante, zona o actor afectado del sector de alimentos  
+
+Esta semana queremos apoyar a La Patatería, que se vio muy afectada por la situación reciente.
+
+En el aplicativo podrán encontrar el link a su Instagram para que conozcan su historia, vean su trabajo y sepan un poquito más sobre ellos. 
+
+Y para agradecerles por sumarse, el premio de esta semana será un bono para una comida para dos personas en Salvopatria. 🍽️✨
+
+¡Gracias por ayudar, compartir y hacer parte de esta iniciativa! . Adquiere tu boleta por <strong class="text-white font-semibold underline decoration-brandYellow">$30.000 COP</strong> y participa por cenas especiales.
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <div class="bg-white/5 border border-white/10 px-4 py-2.5 rounded-2xl backdrop-blur-sm text-xs">
+                            <span class="block text-[9px] uppercase text-stone-400 font-bold">Metodología</span>
+                            <span class="font-medium">2 últimas cifras Lotería de Manizales</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 px-4 py-2.5 rounded-2xl backdrop-blur-sm text-xs">
+                            <span class="block text-[9px] uppercase text-stone-400 font-bold">Cuentas Oficiales</span>
+                            <span class="font-medium">Llave Nu @SAL610</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="bg-brandYellow text-stone-900 py-3.5 px-6 rounded-2xl font-editorial italic text-center text-sm md:text-base font-bold shadow-sm tracking-wide overflow-hidden flex items-center justify-center space-x-6">
+            <span>✨ Sorteo 26 de Agosto</span>
+            <span>•</span>
+            <span>🍲 Cenas Especiales Semanales</span>
+            <span>•</span>
+            <span>🤝 Manizales Solidaria</span>
+            <span>•</span>
+            <span>🎟️ $30.000 COP por boleta</span>
+        </div>
+
+        <section id="sorteo" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center pb-6 border-b border-stone-100 gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brandGreen">Elige tu número de la suerte</span>
+                    <h2 class="text-3xl font-editorial font-bold text-stone-900 mt-1">Parrilla de Boletas (00 al 99)</h2>
+                    <p class="text-xs text-stone-500 mt-0.5">Haz clic en un número verde disponible para apartarlo y subir tu comprobante de pago.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3.5 h-3.5 rounded-lg bg-emerald-100 border-2 border-emerald-500 inline-block"></span>
+                        <span class="text-stone-700">Disponible</span>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3.5 h-3.5 rounded-lg bg-amber-100 border-2 border-amber-500 inline-block"></span>
+                        <span class="text-stone-700">En Validación</span>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3.5 h-3.5 rounded-lg bg-rose-100 border-2 border-rose-500 inline-block"></span>
+                        <span class="text-stone-700">Vendido</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tickets-grid" class="grid grid-cols-5 sm:grid-cols-10 gap-2.5">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <section id="pasos" class="bg-brandCardBg border border-stone-200 rounded-3xl p-6 md:p-12 grid-pattern space-y-10">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="bg-stone-900 text-brandYellow text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Paso a Paso</span>
+                <h3 class="text-3xl md:text-4xl font-editorial font-bold text-stone-900">¿Cómo participar en la campaña?</h3>
+                <p class="text-stone-600 text-sm">Sigue estos sencillos pasos para adquirir tu boleta y apoyar el talento local.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">1</div>
+                    <h4 class="font-editorial text-lg font-bold text-stone-900">Selecciona tu Número</h4>
+                    <p class="text-stone-600 text-xs leading-relaxed">Elige tu número de la suerte (00 al 99) en la parrilla interactiva superior.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">2</div>
+                    <h4 class="font-editorial text-lg font-bold text-stone-900">Transfiere $30.000</h4>
+                    <p class="text-stone-600 text-xs leading-relaxed">Haz tu pago a nuestra Llave Nu @SAL610 <strong></strong>.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">3</div>
+                    <h4 class="font-editorial text-lg font-bold text-stone-900">Sube tu Comprobante</h4>
+                    <p class="text-stone-600 text-xs leading-relaxed">Adjunta el pantallazo de tu transacción y nuestro equipo validará tu boleta.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brandDark text-white pt-16 pb-12 mt-20 border-t border-stone-800">
+        <div class="max-w-6xl mx-auto px-6 space-y-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-12 border-b border-white/10">
+                <div class="space-y-2">
+                    <div class="text-xs uppercase tracking-widest text-brandYellow font-bold"></div>
+                    <div class="text-sm text-stone-300">Manizales, Caldas — Colombia</div>
+                    <div class="text-xs text-stone-400">Contacto: info@masagualasopa.org | Tel: 310 000 0000</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl backdrop-blur-sm text-right">
+                    <div class="text-[10px] uppercase text-stone-400 font-bold"></div>
+                    <div class="font-handwriting text-3xl font-bold text-brandYellow">Llave Nu @SAL610</div>
+                </div>
+            </div>
+
+            <div class="text-center overflow-hidden py-4">
+                <h2 class="font-retro text-[3vw] md:text-[3vw] font-extrabold tracking-tight text-white/90 uppercase leading-none select-none">
+                    #juntosnoslevantamos #necesitovender
+                </h2>
+            </div>
+        </div>
+    </footer>
+
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden transform transition-all border border-stone-200">
+            <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-brandYellow font-bold">Apartar Número</span>
+                    <h3 class="font-editorial text-2xl font-bold">Boleta N° <span id="modal-ticket-num" class="bg-white/20 px-2 py-0.5 rounded text-white font-mono"></span></h3>
+                </div>
+                <button onclick="closeBookingModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <form id="booking-form" onsubmit="submitBooking(event)" class="p-6 space-y-4">
+                <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-100 text-xs text-stone-700 space-y-1">
+                    <p class="font-bold text-brandDark text-sm">Instrucciones de Pago ($30.000 COP)</p>
+                    <p>Realiza tu transferencia a Llave Nu @SAL610 </strong> y sube el comprobante.</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Nombre Completo</label>
+                    <input type="text" id="buyer-name" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. Sofía Restrepo">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Teléfono / WhatsApp</label>
+                    <input type="tel" id="buyer-phone" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. 300 123 4567">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Comprobante de Pago (Pantallazo)</label>
+                    <input type="file" id="buyer-receipt" accept="image/*" required class="w-full text-xs text-stone-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brandSage file:text-brandDark hover:file:bg-emerald-200 cursor-pointer border border-stone-200 rounded-xl">
+                </div>
+
+                <div class="flex space-x-3 pt-2">
+                    <button type="button" onclick="closeBookingModal()" class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium py-3 px-4 rounded-xl text-sm transition">Cancelar</button>
+                    <button type="submit" class="flex-1 bg-brandDark hover:bg-emerald-900 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow-md transition">Confirmar y Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Management Modal -->
+    <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-stone-200">
+            <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
+                <h3 class="font-editorial text-2xl font-bold flex items-center space-x-2">
+                    <span>Panel de Control - Fundación</span>
+                </h3>
+                <button onclick="toggleAdminModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto space-y-6 flex-1 bg-stone-50/50">
+                <div class="flex justify-between items-center bg-white p-6 rounded-2xl border border-stone-200 shadow-xs">
+                    <div>
+                        <h4 class="font-bold text-stone-800 text-sm">Recaudo Total Actual</h4>
+                        <p class="text-xs text-stone-500">Suma de boletas confirmadas ($30.000 c/u)</p>
+                    </div>
+                    <div class="text-right">
+                        <div id="admin-total-money" class="font-editorial text-3xl font-bold text-brandDark">$0 COP</div>
+                        <div id="admin-total-count" class="text-xs font-semibold text-emerald-600">0 boletas confirmadas</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-stone-800 mb-3 text-xs uppercase tracking-wider">Listado de Boletas (00 - 99)</h4>
+                    <div class="overflow-x-auto border border-stone-200 rounded-2xl bg-white shadow-xs">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-stone-50 text-stone-700 uppercase tracking-wider font-semibold border-b border-stone-200">
+                                    <th class="p-3.5">N°</th>
+                                    <th class="p-3.5">Participante</th>
+                                    <th class="p-3.5">Teléfono</th>
+                                    <th class="p-3.5">Estado</th>
+                                    <th class="p-3.5">Comprobante</th>
+                                    <th class="p-3.5 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-table-body" class="divide-y divide-stone-100">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white px-6 py-4 border-t border-stone-200 flex justify-end">
+                <button onclick="toggleAdminModal()" class="bg-brandDark hover:bg-emerald-900 text-white font-medium px-5 py-2.5 rounded-xl text-xs transition shadow-sm">Cerrar Panel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Viewer Modal -->
+    <div id="receipt-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeReceiptModal()">
+        <div class="bg-white rounded-3xl p-5 max-w-md w-full text-center space-y-3 shadow-2xl" onclick="event.stopPropagation()">
+            <h4 class="font-editorial font-bold text-2xl text-brandDark">Comprobante de Pago</h4>
+            <div id="receipt-img-container" class="bg-stone-100 rounded-2xl p-2 min-h-[250px] flex items-center justify-center overflow-hidden border border-stone-200">
+                <!-- Image goes here -->
+            </div>
+            <button onclick="closeReceiptModal()" class="w-full bg-brandDark text-white py-3 rounded-xl text-xs font-bold shadow-md transition">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-brandDark text-white px-5 py-3.5 rounded-2xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 flex items-center space-x-3 text-sm border border-emerald-800">
+        <span id="toast-icon">✨</span>
+        <span id="toast-message">Notificación</span>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'mas_agua_sopa_redesign_tickets_v4';
+        
+        function getTicketsData() {
+            let data = localStorage.getItem(STORAGE_KEY);
+            if (!data) {
+                const initial = {};
+                for (let i = 0; i < 100; i++) {
+                    const key = i < 10 ? `0${i}` : `${i}`;
+                    initial[key] = {
+                        number: key,
+                        status: 'available', // available, pending, sold
+                        name: '',
+                        phone: '',
+                        receipt: ''
+                    };
+                }
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+                return initial;
+            }
+            return JSON.parse(data);
+        }
+
+        let tickets = getTicketsData();
+        let selectedTicketForBooking = null;
+
+        // Render Parrilla Grid
+        function renderGrid() {
+            const gridEl = document.getElementById('tickets-grid');
+            gridEl.innerHTML = '';
+            
+            let soldCount = 0;
+            let pendingCount = 0;
+
+            for (let i = 0; i < 100; i++) {
+                const key = i < 10 ? `0${i}` : `${i}`;
+                const ticket = tickets[key];
+                
+                if (ticket.status === 'sold') soldCount++;
+                if (ticket.status === 'pending') pendingCount++;
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 shadow-2xs border-2 transform hover:scale-105 `;
+                
+                if (ticket.status === 'available') {
+                    btn.className += 'bg-emerald-50/70 border-emerald-300 text-brandDark hover:bg-emerald-100 hover:border-brandGreen';
+                    btn.onclick = () => openBookingModal(key);
+                } else if (ticket.status === 'pending') {
+                    btn.className += 'bg-amber-50 border-amber-300 text-amber-800 cursor-not-allowed';
+                    btn.title = `Pendiente: ${ticket.name}`;
+                    btn.onclick = () => showToast('Este número está en proceso de verificación de pago.', '⏳');
+                } else if (ticket.status === 'sold') {
+                    btn.className += 'bg-rose-50 border-rose-300 text-rose-800 cursor-not-allowed';
+                    btn.title = `Vendido a: ${ticket.name}`;
+                    btn.onclick = () => showToast(`El número ${key} ya fue comprado por ${ticket.name}.`, '🔒');
+                }
+
+                btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
+                gridEl.appendChild(btn);
+            }
+
+            const percentage = Math.min(100, Math.round((soldCount / 100) * 100));
+            document.getElementById('stat-sold-text').innerText = `${soldCount} vendidos / ${pendingCount} en proceso`;
+            document.getElementById('stat-percent-text').innerText = `${percentage}%`;
+            document.getElementById('progress-bar').style.width = `${percentage}%`;
+        }
+
+        // Booking Modal
+        function openBookingModal(ticketNum) {
+            selectedTicketForBooking = ticketNum;
+            document.getElementById('modal-ticket-num').innerText = ticketNum;
+            document.getElementById('buyer-name').value = '';
+            document.getElementById('buyer-phone').value = '';
+            document.getElementById('buyer-receipt').value = '';
+            document.getElementById('booking-modal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+            selectedTicketForBooking = null;
+        }
+
+        function submitBooking(event) {
+            event.preventDefault();
+            const name = document.getElementById('buyer-name').value.trim();
+            const phone = document.getElementById('buyer-phone').value.trim();
+            const fileInput = document.getElementById('buyer-receipt');
+
+            if (!selectedTicketForBooking || !name || !phone || fileInput.files.length === 0) {
+                showToast('Por favor completa todos los campos y sube el comprobante.', '⚠️');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Image = e.target.result;
+                
+                tickets[selectedTicketForBooking] = {
+                    number: selectedTicketForBooking,
+                    status: 'pending',
+                    name: name,
+                    phone: phone,
+                    receipt: base64Image
+                };
+
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+                closeBookingModal();
+                renderGrid();
+                showToast(`¡Número ${selectedTicketForBooking} apartado con éxito! En breve será verificado.`, '🎉');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Admin Modal
+        function toggleAdminModal() {
+            const modal = document.getElementById('admin-modal');
+            if (modal.classList.contains('hidden')) {
+                populateAdminTable();
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function populateAdminTable() {
+            const tbody = document.getElementById('admin-table-body');
+            tbody.innerHTML = '';
+            
+            let totalMoney = 0;
+            let confirmedCount = 0;
+
+            for (let i = 0; i < 100; i++) {
+                const key = i < 10 ? `0${i}` : `${i}`;
+                const t = tickets[key];
+
+                if (t.status === 'sold') {
+                    totalMoney += 30000;
+                    confirmedCount++;
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = 'hover:bg-stone-50 transition';
+                
+                let badgeClass = 'bg-emerald-100 text-emerald-800';
+                let statusText = 'Disponible';
+                if (t.status === 'pending') {
+                    badgeClass = 'bg-amber-100 text-amber-800';
+                    statusText = 'En Validación';
+                } else if (t.status === 'sold') {
+                    badgeClass = 'bg-rose-100 text-rose-800';
+                    statusText = 'Pagado / Confirmado';
+                }
+
+                tr.innerHTML = `
+                    <td class="p-3.5 font-bold font-handwriting text-xl text-brandDark">${key}</td>
+                    <td class="p-3.5 font-medium">${t.name || '<span class="text-stone-400">---</span>'}</td>
+                    <td class="p-3.5 text-stone-600">${t.phone || '<span class="text-stone-400">---</span>'}</td>
+                    <td class="p-3.5"><span class="px-2.5 py-1 rounded-full font-semibold ${badgeClass}">${statusText}</span></td>
+                    <td class="p-3.5">
+                        ${t.receipt ? `<button onclick="viewReceipt('${key}')" class="text-brandGreen underline font-bold hover:text-brandDark">Ver pantallazo</button>` : '<span class="text-stone-400">Sin archivo</span>'}
+                    </td>
+                    <td class="p-3.5 text-right space-x-2">
+                        ${t.status === 'pending' ? `<button onclick="approveTicket('${key}')" class="bg-brandDark hover:bg-emerald-900 text-white px-2.5 py-1.5 rounded-lg text-xs font-semibold shadow-2xs">Aprobar</button>` : ''}
+                        ${t.status !== 'available' ? `<button onclick="resetTicket('${key}')" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-2.5 py-1.5 rounded-lg text-xs font-semibold">Liberar</button>` : ''}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            }
+
+            document.getElementById('admin-total-money').innerText = `$${totalMoney.toLocaleString('es-CO')} COP`;
+            document.getElementById('admin-total-count').innerText = `${confirmedCount} boletas confirmadas`;
+        }
+
+        function approveTicket(key) {
+            tickets[key].status = 'sold';
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+            populateAdminTable();
+            renderGrid();
+            showToast(`Boleta ${key} aprobada correctamente.`, '✅');
+        }
+
+        function resetTicket(key) {
+            if (confirm(`¿Estás seguro de liberar el número ${key}? Se borrarán los datos del comprador.`)) {
+                tickets[key] = {
+                    number: key,
+                    status: 'available',
+                    name: '',
+                    phone: '',
+                    receipt: ''
+                };
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+                populateAdminTable();
+                renderGrid();
+                showToast(`Número ${key} liberado.`, '🔄');
+            }
+        }
+
+        function viewReceipt(key) {
+            const t = tickets[key];
+            if (!t || !t.receipt) return;
+            const container = document.getElementById('receipt-img-container');
+            container.innerHTML = `<img src="${t.receipt}" alt="Comprobante ${key}" class="max-h-[350px] mx-auto rounded-2xl shadow-md object-contain">`;
+            document.getElementById('receipt-modal').classList.remove('hidden');
+        }
+
+        function closeReceiptModal() {
+            document.getElementById('receipt-modal').classList.add('hidden');
+        }
+
+        function showToast(message, icon = '✨') {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = message;
+            document.getElementById('toast-icon').innerText = icon;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3500);
+        }
+
+        window.onload = function() {
+            renderGrid();
+        };
+    </script>
+</body>
+</html>
