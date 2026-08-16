@@ -373,7 +373,16 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
 
         let tickets = getTicketsData();
         let selectedTicketForBooking = null;
-const ADMIN_PASSWORD = 'tu_contraseña_secreta';
+        // Línea 374:
+let selectedTicketForBooking = null;
+
+// Pégalo aquí abajito (Línea 375):
+const ADMIN_PASSWORD = 'masagua2026';
+
+function promptAdminPassword() {
+    document.getElementById('admin-pass-input').value = '';
+    document.getElementById('admin-password-modal').classList.remove('hidden');
+}
         // Render Parrilla Grid
         function renderGrid() {
             const gridEl = document.getElementById('tickets-grid');
