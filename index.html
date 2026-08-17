@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Más Agua a la Sopa </title>
+    <title>Más Agua a la Sopa</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Syne, Playfair Display, Caveat, Poppins -->
@@ -46,33 +46,37 @@
 </head>
 <body class="bg-brandCream min-h-screen antialiased selection:bg-brandSage selection:text-brandDark">
 
-    <!-- Header / Navbar -->
-    <div class="sticky top-4 z-50 px-4 max-w-5xl mx-auto">
-        <header class="bg-brandDark/95 backdrop-blur-md rounded-full px-6 py-3 border border-white/10 text-white shadow-xl flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-9 h-9 rounded-full bg-white shadow-sm overflow-hidden flex items-center justify-center p-0.5">
-                    <img src="https://i.postimg.cc/tCh6WJ75/Captura-de-pantalla-2026-08-16-a-la(s)-6-38-43-p-m.png" onerror="this.src='https://placehold.co/100x100/13281a/ffffff?text=MAS'" alt="Logo" class="w-full h-full object-contain">
-                </div>
-                <span class="font-handwriting text-xl text-brandYellow font-bold tracking-tight">Más Agua a la Sopa</span>
+    <!-- Header / Navbar Integrado -->
+    <div class="sticky top-4 z-50 px-4 max-w-7xl mx-auto">
+        <header class="w-full bg-[#1b3b22]/95 backdrop-blur-md text-white py-3 px-4 md:px-8 rounded-3xl shadow-xl border border-white/10 flex items-center justify-between">
+          <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+            
+            <!-- Lado izquierdo: Logo y Nombre -->
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-white shadow-sm overflow-hidden flex items-center justify-center p-0.5">
+                  <img src="https://i.postimg.cc/tCh6WJ75/Captura-de-pantalla-2026-08-16-a-la(s)-6-38-43-p-m.png" onerror="this.src='https://placehold.co/100x100/13281a/ffffff?text=MAS'" alt="Logo" class="w-full h-full object-cover rounded-full">
+              </div>
+              <span class="font-bold text-sm md:text-base tracking-wide font-handwriting text-brandYellow text-xl">Más Agua a la Sopa</span>
             </div>
 
-            <nav class="hidden md:flex items-center space-x-6 text-[11px] font-semibold tracking-widest uppercase text-stone-300">
-                <a href="#sorteo" class="hover:text-brandYellow transition">Parrilla</a>
-                <button type="button" onclick="window.open('https://www.instagram.com/reel/Db8wq5ogVIy/?igsh=dXl5OGF5bG5mc2Ft&igsi=dXl5OGF5bG5mc2Ftt', '_blank')" class="hover:text-brandYellow transition inline-flex items-center space-x-1 cursor-pointer bg-transparent border-0 uppercase text-[11px] font-semibold tracking-widest text-stone-300">
-                    <span>Campaña</span>
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
-                </button>
-                <a href="#pasos" class="hover:text-brandYellow transition">Cómo Participar</a>
+            <!-- Centro: Enlaces (Solo visibles en Desktop/Pantallas grandes con hidden md:flex) -->
+            <nav class="hidden md:flex items-center gap-6 text-xs md:text-sm font-medium tracking-wider">
+              <a href="#sorteo" class="hover:text-brandYellow transition">PARRILLA</a>
+              <button type="button" onclick="window.open('https://www.instagram.com/reel/Db8wq5ogVIy/?igsh=dXl5OGF5bG5mc2Ft&igsi=dXl5OGF5bG5mc2Ftt', '_blank')" class="hover:text-brandYellow transition bg-transparent border-0 uppercase cursor-pointer text-xs md:text-sm font-medium tracking-wider text-white">CAMPAÑA</button>
+              <a href="#pasos" class="hover:text-brandYellow transition">CÓMO PARTICIPAR</a>
             </nav>
 
-            <div class="flex items-center space-x-2">
-                <a href="#sorteo" class="bg-brandYellow text-stone-900 hover:bg-yellow-300 px-4 py-2 rounded-full text-xs font-bold uppercase transition tracking-wider shadow-sm">
-                    Donar Boleta
-                </a>
-                <button onclick="promptAdminPassword()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition border border-white/10" title="Panel Administrador">
-                    <svg class="w-4 h-4 text-brandYellow" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                </button>
+            <!-- Lado derecho: Botón y Configuración -->
+            <div class="flex items-center gap-2 md:gap-3">
+              <a href="#sorteo" class="bg-brandYellow text-stone-900 font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-sm hover:opacity-90 transition">
+                DONAR BOLETA
+              </a>
+              <button onclick="promptAdminPassword()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-white border border-white/10 flex items-center justify-center" title="Panel Administrador">
+                ⚙️
+              </button>
             </div>
+
+          </div>
         </header>
     </div>
 
@@ -165,20 +169,20 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
 
             </div>
         </section>
+
         <!-- Marquee Ribbon -->
-        <!-- Marquee Ribbon con margen reducido -->
-<div class="bg-brandYellow text-stone-600 py-3 px-4 rounded-2xl font-editorial italic text-xs sm:text-sm flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
-  <span>✨ Sorteo 26 de Agosto</span>
-  <span class="hidden sm:inline">•</span>
-  <span>🍲 Cenas Especiales Semanales</span>
-  <span class="hidden sm:inline">•</span>
-  <span>🤝 Manizales Solidaria</span>
-  <span class="hidden sm:inline">•</span>
-  <span>🇨🇴 $30.000 COP por boleta</span>
-</div>
+        <div class="bg-brandYellow text-stone-600 py-3 px-4 rounded-2xl font-editorial italic text-xs sm:text-sm flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
+          <span>✨ Sorteo 26 de Agosto</span>
+          <span class="hidden sm:inline">•</span>
+          <span>🍲 Cenas Especiales Semanales</span>
+          <span class="hidden sm:inline">•</span>
+          <span>🤝 Manizales Solidaria</span>
+          <span class="hidden sm:inline">•</span>
+          <span>🇨🇴 $30.000 COP por boleta</span>
+        </div>
 
         <!-- Instagram Reel Section -->
-        <section class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200 space-y-6">
+        <section id="campana" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200 space-y-6">
             <div class="text-center max-w-xl mx-auto space-y-2">
                 <span class="bg-emerald-100 text-brandDark text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Instagram Reel</span>
                 <h3 class="text-3xl font-editorial font-bold text-stone-900">Conoce Nuestra Campaña</h3>
@@ -271,7 +275,7 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
                     <div class="text-xs uppercase tracking-widest text-brandYellow font-bold">Más agua a la sopa</div>
                     <div class="text-sm text-stone-300">Manizales, Caldas — Colombia</div>
                     <div class="text-xs text-stone-400">Contacto: 
-                        Andrea Salazar +57 313 7977977 Ig deasalazar
+                        Andrea Salazar +57 313 7977977 Ig deasalazar
                         Valentina Hoyos +57 304 5902626 Ig valentinahoyos
                         Paula Arias +57 3204185738 Ig pawarias</div>
                 </div>
