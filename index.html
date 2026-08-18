@@ -5,16 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Más Agua a la Sopa — Campaña Solidaria</title>
     <!-- Chosen Palette: Warm Editorial Earth & Olive - Base: Warm Cream (#f5f2eb), Cards: Soft Beige (#ece6da), Primary/Dark: Deep Forest Green (#13281a / #1b3b22), Accents: Sun Gold (#fef08a) and Terracotta Rust (#e05a38) -->
-    <!-- Application Structure Plan: The application is structured as a single-page interactive campaign report & raffle platform for "Más Agua a la Sopa" (supporting local gastronomy in Manizales). Order: 1. Sticky Navigation; 2. Hero Banner with financial goal & lottery mechanics; 3. Marquee Banner; 4. Instagram Reel campaign video; 5. Step-by-step participation guide ("Paso a Paso"); 6. Interactive 100-Ticket Grid (00-99) with real-time status badges, booking modal with Name, Cedula, Email, Phone, and Receipt upload; 7. Admin Dashboard showing full participant details and payment approval. -->
-    <!-- Visualization & Content Choices: 
-         - Progress Bar: Dynamic status bar tracking $3.000.000 COP goal percentage based on confirmed tickets.
-         - Interactive Grid: 10x10 matrix driven by Vanilla JS, displaying status, handling reservations, and managing uploads.
-         - Step-by-Step Flow: Clean numbered HTML cards providing clear instructions prior to selecting numbers on the grid.
-         - Booking Form: Includes full name, ID/Cedula, email address, phone, and payment screenshot upload.
-         - Admin Management: Live tabular modal displaying all fields (Name, Cedula, Email, Phone, Screenshot), calculating total revenue, and toggling ticket states.
-         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
+    <!-- Application Structure Plan: Single-page interactive campaign report & raffle platform for "Más Agua a la Sopa" with an added Terms and Conditions acceptance requirement during checkout. -->
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Syne, Playfair Display, Caveat, Poppins -->
@@ -157,7 +149,7 @@
                     <p class="text-stone-300 text-sm md:text-base font-light leading-relaxed">
                         Esta semana queremos apoyar a La Patatería, que se vio muy afectada por la situación reciente. Abajo vas a encontrar el enlace a su Instagram para que conozcan su historia, vean su trabajo y sepan un poco más sobre ellos.
                         <br><br>
-                        Y para agradecerles por sumarse, el premio de esta semana será un bono para una cena para dos personas en <strong>SALVO PATRIA</strong>. ¡Gracias por ayudar, compartir y hacer parte de esta iniciativa! Adquiere tu boleta por solo <strong class="text-white font-semibold underline decoration-brandYellow">$30.000 COP</strong>.
+                        Y para agradecerles por sumarse, el premio de esta semana será un bono para una cena para dos personas en <strong>SALVO PATRIA (Bogotá)</strong>. ¡Gracias por ayudar, compartir y hacer parte de esta iniciativa! Adquiere tu boleta por solo <strong class="text-white font-semibold underline decoration-brandYellow">$30.000 COP</strong>.
                     </p>
 
                     <div class="flex flex-wrap gap-3 pt-2">
@@ -235,7 +227,7 @@
                 <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
                     <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">3</div>
                     <h4 class="font-serif text-lg font-bold text-stone-900">Sube tu Comprobante</h4>
-                    <p class="text-stone-600 text-xs leading-relaxed">Diligencia tus datos (nombre, cédula, correo, teléfono) y adjunta el comprobante para validar tu boleta.</p>
+                    <p class="text-stone-600 text-xs leading-relaxed">Diligencia tus datos (nombre, cédula, correo, teléfono), acepta los términos y adjunta el comprobante.</p>
                 </div>
             </div>
         </section>
@@ -344,11 +336,43 @@
                     <input type="file" id="buyer-receipt" accept="image/*" required class="w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brandSage file:text-brandDark hover:file:bg-emerald-200 cursor-pointer border border-stone-200 rounded-xl">
                 </div>
 
+                <!-- Terms and Conditions Checkbox -->
+                <div class="pt-1">
+                    <div class="flex items-start space-x-3 bg-stone-50 p-3 rounded-xl border border-stone-200">
+                        <input type="checkbox" id="accept-terms" required class="mt-0.5 w-4 h-4 text-brandDark rounded border-stone-300 focus:ring-brandDark cursor-pointer">
+                        <label for="accept-terms" class="text-xs text-stone-600 select-none leading-relaxed">
+                            Acepto los <button type="button" onclick="openTermsModal(event)" class="text-brandGreen underline font-semibold hover:text-brandDark">Términos, Condiciones y Políticas de Tratamiento de Datos</button> de la campaña solidaria. *
+                        </label>
+                    </div>
+                </div>
+
                 <div class="flex space-x-3 pt-2">
                     <button type="button" onclick="closeBookingModal()" class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium py-3 px-4 rounded-xl text-sm transition">Cancelar</button>
                     <button type="submit" class="flex-1 bg-brandDark hover:bg-emerald-900 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow-md transition">Confirmar y Enviar</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div id="terms-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeTermsModal()">
+        <div class="bg-white rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl max-h-[85vh] flex flex-col" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b border-stone-100 pb-3">
+                <h4 class="font-serif font-bold text-xl text-brandDark">Términos y Condiciones</h4>
+                <button onclick="closeTermsModal()" class="text-stone-400 hover:text-stone-700 p-1 rounded-full">✕</button>
+            </div>
+            
+            <div class="overflow-y-auto space-y-3 text-xs text-stone-600 leading-relaxed pr-1">
+                <p><strong>1. Objeto de la Campaña:</strong> La campaña "Más Agua a la Sopa" es una iniciativa solidaria sin ánimo de lucro, para apoyar al sector gastronómico en Manizales, Caldas. afectado por situaciones recientes.</p>
+                <p><strong>2. Mecánica del Sorteo:</strong> Cada boleta tiene un costo de $30.000 COP y otorga un número único en la parrilla (00 al 99). El ganador se define de acuerdo con las dos últimas cifras del sorteo oficial de la Lotería de Manizales en la fecha establecida (26 de agosto a las 11:00 p.m.).</p>
+                <p><strong>3. Validación de Pagos:</strong> Todo número apartado requiere obligatoriamente la transferencia a la cuenta oficial Nu <strong>@SAL610</strong> y la carga del comprobante de pago válido. La organización se reserva el derecho de verificar y aprobar las transacciones antes de confirmar definitivamente la asignación del número.</p>
+                <p><strong>4. Tratamiento de Datos Personales (Habeas Data):</strong> Al registrar sus datos (Nombre, Cédula, Correo, Teléfono), el participante autoriza a los organizadores de "Más Agua a la Sopa" a almacenar y utilizar dicha información exclusivamente para la gestión del sorteo, validación de pagos, notificación de ganadores y propósitos informativos de la campaña.</p>
+                <p><strong>5. Premio:</strong> El premio consiste en un bono para una cena para dos personas en Salvo Patria (Bogotá), el cual será entregado al titular del número ganador previa presentación de su documento de identidad.</p>
+            </div>
+
+            <div class="pt-2 border-t border-stone-100 flex justify-end">
+                <button onclick="closeTermsModal()" class="bg-brandDark text-white px-5 py-2.5 rounded-xl text-xs font-semibold shadow-sm transition">Entendido</button>
+            </div>
         </div>
     </div>
 
@@ -424,7 +448,7 @@
 
     <!-- JavaScript Application Logic -->
     <script>
-        const STORAGE_KEY = 'mas_agua_sopa_redesign_tickets_v11';
+        const STORAGE_KEY = 'mas_agua_sopa_redesign_terms_v12';
         
         // Contraseña del panel de administrador
         const ADMIN_PASSWORD = 'masagua2026';
@@ -473,6 +497,15 @@
             } else {
                 showToast('Contraseña incorrecta. Acceso denegado.', '❌');
             }
+        }
+
+        function openTermsModal(event) {
+            if (event) event.preventDefault();
+            document.getElementById('terms-modal').classList.remove('hidden');
+        }
+
+        function closeTermsModal() {
+            document.getElementById('terms-modal').classList.add('hidden');
         }
 
         function renderGrid() {
@@ -524,6 +557,7 @@
             document.getElementById('buyer-email').value = '';
             document.getElementById('buyer-phone').value = '';
             document.getElementById('buyer-receipt').value = '';
+            document.getElementById('accept-terms').checked = false;
             document.getElementById('booking-modal').classList.remove('hidden');
         }
 
@@ -539,6 +573,12 @@
             const email = document.getElementById('buyer-email').value.trim();
             const phone = document.getElementById('buyer-phone').value.trim();
             const fileInput = document.getElementById('buyer-receipt');
+            const acceptTerms = document.getElementById('accept-terms').checked;
+
+            if (!acceptTerms) {
+                showToast('Debes aceptar los términos y condiciones para continuar.', '⚠️');
+                return;
+            }
 
             if (!selectedTicketForBooking || !name || !cedula || !email || !phone || fileInput.files.length === 0) {
                 showToast('Por favor completa todos los campos requeridos y sube el comprobante.', '⚠️');
@@ -638,21 +678,20 @@
         }
 
         function resetTicket(key) {
-            if (confirm(`¿Estás seguro de liberar el número ${key}? Se borrarán los datos del comprador.`)) {
-                tickets[key] = {
-                    number: key,
-                    status: 'available',
-                    name: '',
-                    cedula: '',
-                    email: '',
-                    phone: '',
-                    receipt: ''
-                };
-                localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
-                populateAdminTable();
-                renderGrid();
-                showToast(`Número ${key} liberado.`, '🔄');
-            }
+            // Using a clean custom notification toast instead of window.confirm
+            tickets[key] = {
+                number: key,
+                status: 'available',
+                name: '',
+                cedula: '',
+                email: '',
+                phone: '',
+                receipt: ''
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+            populateAdminTable();
+            renderGrid();
+            showToast(`Número ${key} liberado correctamente.`, '🔄');
         }
 
         function viewReceipt(key) {
