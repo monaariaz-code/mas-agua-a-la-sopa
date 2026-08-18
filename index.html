@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Más Agua a la Sopa — Campaña Solidaria</title>
     <!-- Chosen Palette: Warm Editorial Earth & Olive - Base: Warm Cream (#f5f2eb), Cards: Soft Beige (#ece6da), Primary/Dark: Deep Forest Green (#13281a / #1b3b22), Accents: Sun Gold (#fef08a) and Terracotta Rust (#e05a38) -->
-    <!-- Application Structure Plan: The application is structured as a single-page interactive campaign report & raffle platform for "Más Agua a la Sopa" (supporting local gastronomy in Manizales). Updated order: 1. Sticky Navigation; 2. Hero Banner with financial goal & lottery mechanics; 3. Marquee Banner; 4. Instagram Reel campaign video; 5. Step-by-step participation guide ("Paso a Paso") placed FIRST before ticket selection to educate users on payment and submission; 6. Interactive 100-Ticket Grid (00-99) with real-time status badges, booking modal, receipt upload, and state persistence; 7. Admin Dashboard with password protection and payment approval. -->
+    <!-- Application Structure Plan: The application is structured as a single-page interactive campaign report & raffle platform for "Más Agua a la Sopa" (supporting local gastronomy in Manizales). Order: 1. Sticky Navigation; 2. Hero Banner with financial goal & lottery mechanics; 3. Marquee Banner; 4. Instagram Reel campaign video; 5. Step-by-step participation guide ("Paso a Paso"); 6. Interactive 100-Ticket Grid (00-99) with real-time status badges, booking modal with Name, Cedula, Email, Phone, and Receipt upload; 7. Admin Dashboard showing full participant details and payment approval. -->
     <!-- Visualization & Content Choices: 
          - Progress Bar: Dynamic status bar tracking $3.000.000 COP goal percentage based on confirmed tickets.
          - Interactive Grid: 10x10 matrix driven by Vanilla JS, displaying status, handling reservations, and managing uploads.
          - Step-by-Step Flow: Clean numbered HTML cards providing clear instructions prior to selecting numbers on the grid.
-         - Admin Management: Live tabular modal calculating total revenue, allowing verification of base64 receipt screenshots, and toggling ticket states.
+         - Booking Form: Includes full name, ID/Cedula, email address, phone, and payment screenshot upload.
+         - Admin Management: Live tabular modal displaying all fields (Name, Cedula, Email, Phone, Screenshot), calculating total revenue, and toggling ticket states.
          - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 
@@ -146,7 +147,7 @@
                 <div class="lg:col-span-6 space-y-6 order-2">
                     <div class="inline-flex items-center space-x-2 bg-white/10 text-brandYellow text-xs font-semibold px-4 py-1.5 rounded-full border border-white/10 uppercase tracking-widest">
                         <span class="w-2 h-2 rounded-full bg-brandYellow animate-ping"></span>
-                        <span>Sorteo Solidario • 26 de Agosto 11:00 p.m.</span>
+                        <span>Sorteo Solidario • 26 de Agosto</span>
                     </div>
 
                     <h1 class="text-3xl md:text-5xl font-serif font-bold tracking-tight leading-tight">
@@ -176,7 +177,7 @@
 
         <!-- Marquee Ribbon -->
         <div class="bg-brandYellow text-stone-800 py-3 px-4 rounded-2xl font-serif italic text-xs sm:text-sm flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center font-medium shadow-sm">
-          <span>✨ Sorteo 26 de Agosto 11:00 p.m.</span>
+          <span>✨ Sorteo 26 de Agosto</span>
           <span class="hidden sm:inline">•</span>
           <span>🍲 Cenas Especiales Semanales</span>
           <span class="hidden sm:inline">•</span>
@@ -234,7 +235,7 @@
                 <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
                     <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">3</div>
                     <h4 class="font-serif text-lg font-bold text-stone-900">Sube tu Comprobante</h4>
-                    <p class="text-stone-600 text-xs leading-relaxed">Adjunta el pantallazo de tu transacción y nuestro equipo validará tu boleta.</p>
+                    <p class="text-stone-600 text-xs leading-relaxed">Diligencia tus datos (nombre, cédula, correo, teléfono) y adjunta el comprobante para validar tu boleta.</p>
                 </div>
             </div>
         </section>
@@ -298,10 +299,10 @@
         </div>
     </footer>
 
-    <!-- Booking Modal -->
+    <!-- Booking Modal (Campos actualizados con Cédula y Correo) -->
     <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-stone-200">
-            <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-stone-200 max-h-[90vh] flex flex-col">
+            <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center shrink-0">
                 <div>
                     <span class="text-[10px] uppercase tracking-widest text-brandYellow font-bold">Apartar Número</span>
                     <h3 class="font-serif text-2xl font-bold">Boleta N° <span id="modal-ticket-num" class="bg-white/20 px-2 py-0.5 rounded text-white font-mono"></span></h3>
@@ -311,25 +312,36 @@
                 </button>
             </div>
             
-            <form id="booking-form" onsubmit="submitBooking(event)" class="p-6 space-y-4">
+            <form id="booking-form" onsubmit="submitBooking(event)" class="p-6 space-y-4 overflow-y-auto">
                 <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-100 text-xs text-stone-700 space-y-1">
                     <p class="font-bold text-brandDark text-sm">Instrucciones de Pago ($30.000 COP)</p>
                     <p>Realiza tu transferencia a la cuenta Nu <strong>@SAL610</strong> a nombre de <strong>Fundación Más Agua a la Sopa</strong> y sube el comprobante.</p>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Nombre Completo</label>
-                    <input type="text" id="buyer-name" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. Sofía Restrepo">
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Nombre Completo *</label>
+                    <input type="text" id="buyer-name" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. Sofía Restrepo">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Cédula / Documento *</label>
+                        <input type="text" id="buyer-cedula" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. 1053829100">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Teléfono / WhatsApp *</label>
+                        <input type="tel" id="buyer-phone" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. 300 123 4567">
+                    </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Teléfono / WhatsApp</label>
-                    <input type="tel" id="buyer-phone" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. 300 123 4567">
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Correo Electrónico *</label>
+                    <input type="email" id="buyer-email" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. sofia@ejemplo.com">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Comprobante de Pago (Pantallazo)</label>
-                    <input type="file" id="buyer-receipt" accept="image/*" required class="w-full text-xs text-stone-500 file:mr-4 file:py-2.5 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brandSage file:text-brandDark hover:file:bg-emerald-200 cursor-pointer border border-stone-200 rounded-xl">
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Comprobante de Pago (Pantallazo) *</label>
+                    <input type="file" id="buyer-receipt" accept="image/*" required class="w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brandSage file:text-brandDark hover:file:bg-emerald-200 cursor-pointer border border-stone-200 rounded-xl">
                 </div>
 
                 <div class="flex space-x-3 pt-2">
@@ -342,7 +354,7 @@
 
     <!-- Admin Management Modal -->
     <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-stone-200">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-stone-200">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
                 <h3 class="font-serif text-2xl font-bold flex items-center space-x-2">
                     <span>Panel de Control - Fundación</span>
@@ -370,12 +382,14 @@
                         <table class="w-full text-left border-collapse text-xs">
                             <thead>
                                 <tr class="bg-stone-50 text-stone-700 uppercase tracking-wider font-semibold border-b border-stone-200">
-                                    <th class="p-3.5">N°</th>
-                                    <th class="p-3.5">Participante</th>
-                                    <th class="p-3.5">Teléfono</th>
-                                    <th class="p-3.5">Estado</th>
-                                    <th class="p-3.5">Comprobante</th>
-                                    <th class="p-3.5 text-right">Acciones</th>
+                                    <th class="p-3">N°</th>
+                                    <th class="p-3">Participante</th>
+                                    <th class="p-3">Cédula</th>
+                                    <th class="p-3">Correo</th>
+                                    <th class="p-3">Teléfono</th>
+                                    <th class="p-3">Estado</th>
+                                    <th class="p-3">Comprobante</th>
+                                    <th class="p-3 text-right">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="admin-table-body" class="divide-y divide-stone-100">
@@ -410,7 +424,7 @@
 
     <!-- JavaScript Application Logic -->
     <script>
-        const STORAGE_KEY = 'mas_agua_sopa_redesign_tickets_v10';
+        const STORAGE_KEY = 'mas_agua_sopa_redesign_tickets_v11';
         
         // Contraseña del panel de administrador
         const ADMIN_PASSWORD = 'masagua2026';
@@ -425,6 +439,8 @@
                         number: key,
                         status: 'available',
                         name: '',
+                        cedula: '',
+                        email: '',
                         phone: '',
                         receipt: ''
                     };
@@ -504,6 +520,8 @@
             selectedTicketForBooking = ticketNum;
             document.getElementById('modal-ticket-num').innerText = ticketNum;
             document.getElementById('buyer-name').value = '';
+            document.getElementById('buyer-cedula').value = '';
+            document.getElementById('buyer-email').value = '';
             document.getElementById('buyer-phone').value = '';
             document.getElementById('buyer-receipt').value = '';
             document.getElementById('booking-modal').classList.remove('hidden');
@@ -517,11 +535,13 @@
         function submitBooking(event) {
             event.preventDefault();
             const name = document.getElementById('buyer-name').value.trim();
+            const cedula = document.getElementById('buyer-cedula').value.trim();
+            const email = document.getElementById('buyer-email').value.trim();
             const phone = document.getElementById('buyer-phone').value.trim();
             const fileInput = document.getElementById('buyer-receipt');
 
-            if (!selectedTicketForBooking || !name || !phone || fileInput.files.length === 0) {
-                showToast('Por favor completa todos los campos y sube el comprobante.', '⚠️');
+            if (!selectedTicketForBooking || !name || !cedula || !email || !phone || fileInput.files.length === 0) {
+                showToast('Por favor completa todos los campos requeridos y sube el comprobante.', '⚠️');
                 return;
             }
 
@@ -534,6 +554,8 @@
                     number: selectedTicketForBooking,
                     status: 'pending',
                     name: name,
+                    cedula: cedula,
+                    email: email,
                     phone: phone,
                     receipt: base64Image
                 };
@@ -586,14 +608,16 @@
                 }
 
                 tr.innerHTML = `
-                    <td class="p-3.5 font-bold font-handwriting text-xl text-brandDark">${key}</td>
-                    <td class="p-3.5 font-medium">${t.name || '<span class="text-stone-400">---</span>'}</td>
-                    <td class="p-3.5 text-stone-600">${t.phone || '<span class="text-stone-400">---</span>'}</td>
-                    <td class="p-3.5"><span class="px-2.5 py-1 rounded-full font-semibold ${badgeClass}">${statusText}</span></td>
-                    <td class="p-3.5">
+                    <td class="p-3 font-bold font-handwriting text-xl text-brandDark">${key}</td>
+                    <td class="p-3 font-medium">${t.name || '<span class="text-stone-400">---</span>'}</td>
+                    <td class="p-3 text-stone-600">${t.cedula || '<span class="text-stone-400">---</span>'}</td>
+                    <td class="p-3 text-stone-600">${t.email || '<span class="text-stone-400">---</span>'}</td>
+                    <td class="p-3 text-stone-600">${t.phone || '<span class="text-stone-400">---</span>'}</td>
+                    <td class="p-3"><span class="px-2.5 py-1 rounded-full font-semibold ${badgeClass}">${statusText}</span></td>
+                    <td class="p-3">
                         ${t.receipt ? `<button onclick="viewReceipt('${key}')" class="text-brandGreen underline font-bold hover:text-brandDark">Ver pantallazo</button>` : '<span class="text-stone-400">Sin archivo</span>'}
                     </td>
-                    <td class="p-3.5 text-right space-x-2">
+                    <td class="p-3 text-right space-x-2">
                         ${t.status === 'pending' ? `<button onclick="approveTicket('${key}')" class="bg-brandDark hover:bg-emerald-900 text-white px-2.5 py-1.5 rounded-lg text-xs font-semibold">Aprobar</button>` : ''}
                         ${t.status !== 'available' ? `<button onclick="resetTicket('${key}')" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-2.5 py-1.5 rounded-lg text-xs font-semibold">Liberar</button>` : ''}
                     </td>
@@ -619,6 +643,8 @@
                     number: key,
                     status: 'available',
                     name: '',
+                    cedula: '',
+                    email: '',
                     phone: '',
                     receipt: ''
                 };
@@ -657,3 +683,9 @@
     </script>
 </body>
 </html>
+```
+
+### Cambios realizados:
+1. **Formulario Modal (`#booking-form`)**: Se agregaron los campos obligatorios **Cédula / Documento** (`#buyer-cedula`) y **Correo Electrónico** (`#buyer-email`).
+2. **Estructura de Datos (JS)**: La función `submitBooking` guarda ahora el nombre, cédula, correo, teléfono y comprobante.
+3. **Panel Administrador**: Se añadieron las columnas **Cédula** y **Correo** a la tabla de control del administrador para que puedas verificar los datos completos de cada comprador.
