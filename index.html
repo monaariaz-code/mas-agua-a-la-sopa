@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Más Agua a la Sopa</title>
-    <!-- Tailwind CSS -->
+    <title>Más Agua a la Sopa — Campaña Solidaria</title>
+    <!-- Chosen Palette: Warm Editorial Earth & Olive - Base: Warm Cream (#f5f2eb), Cards: Soft Beige (#ece6da), Primary/Dark: Deep Forest Green (#13281a / #1b3b22), Accents: Sun Gold (#fef08a) and Terracotta Rust (#e05a38) -->
+    <!-- Application Structure Plan: The application is structured as a single-page interactive campaign report & raffle platform for "Más Agua a la Sopa" (supporting local gastronomy in Manizales). Updated order: 1. Sticky Navigation; 2. Hero Banner with financial goal & lottery mechanics; 3. Marquee Banner; 4. Instagram Reel campaign video; 5. Step-by-step participation guide ("Paso a Paso") placed FIRST before ticket selection to educate users on payment and submission; 6. Interactive 100-Ticket Grid (00-99) with real-time status badges, booking modal, receipt upload, and state persistence; 7. Admin Dashboard with password protection and payment approval. -->
+    <!-- Visualization & Content Choices: 
+         - Progress Bar: Dynamic status bar tracking $3.000.000 COP goal percentage based on confirmed tickets.
+         - Interactive Grid: 10x10 matrix driven by Vanilla JS, displaying status, handling reservations, and managing uploads.
+         - Step-by-Step Flow: Clean numbered HTML cards providing clear instructions prior to selecting numbers on the grid.
+         - Admin Management: Live tabular modal calculating total revenue, allowing verification of base64 receipt screenshots, and toggling ticket states.
+         - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Syne, Playfair Display, Caveat, Poppins -->
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -34,9 +45,6 @@
     </script>
     <style>
         body { font-family: 'Poppins', sans-serif; background-color: #f5f2eb; color: #1f2937; }
-        .font-editorial { font-family: 'Playfair Display', serif; }
-        .font-handwriting { font-family: 'Caveat', cursive; }
-        .font-retro { font-family: 'Syne', sans-serif; }
         .grid-pattern {
             background-image: linear-gradient(to right, rgba(19, 40, 26, 0.04) 1px, transparent 1px),
                               linear-gradient(to bottom, rgba(19, 40, 26, 0.04) 1px, transparent 1px);
@@ -47,23 +55,23 @@
 <body class="bg-brandCream min-h-screen antialiased selection:bg-brandSage selection:text-brandDark">
 
     <!-- Header / Navbar Integrado -->
-    <div class="sticky top-4 z-50 px-4 max-w-7xl mx-auto">
+    <div class="sticky top-4 z-40 px-4 max-w-7xl mx-auto">
         <header class="w-full bg-[#1b3b22]/95 backdrop-blur-md text-white py-3 px-4 md:px-8 rounded-3xl shadow-xl border border-white/10 flex items-center justify-between">
           <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
             
             <!-- Lado izquierdo: Logo y Nombre -->
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-full bg-white shadow-sm overflow-hidden flex items-center justify-center p-0.5">
-                  <img src="https://i.postimg.cc/tCh6WJ75/Captura-de-pantalla-2026-08-16-a-la(s)-6-38-43-p-m.png" onerror="this.src='https://placehold.co/100x100/13281a/ffffff?text=MAS'" alt="Logo" class="w-full h-full object-cover rounded-full">
+                  <img src="https://i.postimg.cc/tCh6WJ75/Captura-de-pantalla-2026-08-16-a-la(s)-6-38-43-p-m.png" onerror="this.src='https://placehold.co/100x100/13281a/ffffff?text=MAS'" alt="Logo Fundación" class="w-full h-full object-cover rounded-full">
               </div>
-              <span class="font-bold text-sm md:text-base tracking-wide font-handwriting text-brandYellow text-xl">Más Agua a la Sopa</span>
+              <span class="font-bold tracking-wide font-handwriting text-brandYellow text-xl md:text-2xl">Más Agua a la Sopa</span>
             </div>
 
-            <!-- Centro: Enlaces (Solo visibles en Desktop/Pantallas grandes con hidden md:flex) -->
+            <!-- Centro: Enlaces -->
             <nav class="hidden md:flex items-center gap-6 text-xs md:text-sm font-medium tracking-wider">
-              <a href="#sorteo" class="hover:text-brandYellow transition">PARRILLA</a>
-              <button type="button" onclick="window.open('https://www.instagram.com/reel/Db8wq5ogVIy/?igsh=dXl5OGF5bG5mc2Ft&igsi=dXl5OGF5bG5mc2Ftt', '_blank')" class="hover:text-brandYellow transition bg-transparent border-0 uppercase cursor-pointer text-xs md:text-sm font-medium tracking-wider text-white">CAMPAÑA</button>
-              <a href="#pasos" class="hover:text-brandYellow transition">CÓMO PARTICIPAR</a>
+              <a href="#campana" class="hover:text-brandYellow transition uppercase">CAMPAÑA</a>
+              <a href="#pasos" class="hover:text-brandYellow transition uppercase">CÓMO PARTICIPAR</a>
+              <a href="#sorteo" class="hover:text-brandYellow transition uppercase">PARRILLA</a>
             </nav>
 
             <!-- Lado derecho: Botón y Configuración -->
@@ -84,9 +92,9 @@
     <div id="admin-password-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden border border-stone-200">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
-                <h3 class="font-editorial text-xl font-bold">Acceso Fundación</h3>
+                <h3 class="font-serif text-xl font-bold">Acceso Fundación</h3>
                 <button onclick="closeAdminPasswordModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    ✕
                 </button>
             </div>
             <form onsubmit="verifyAdminPassword(event)" class="p-6 space-y-4">
@@ -115,14 +123,14 @@
                     <div class="rounded-2xl overflow-hidden border-2 border-white/20 shadow-xl bg-stone-900 aspect-[4/3] relative">
                         <img src="https://i.postimg.cc/zfRqMd6k/Captura-de-pantalla-2026-08-16-a-la(s)-9-18-38-p-m.png" onerror="this.src='https://placehold.co/600x450/1b3b22/ffffff?text=Fundacion+Mas+Agua'" alt="Sopa solidaria" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-6">
-                            <p class="font-handwriting text-2xl text-brandYellow">""</p>
+                            <p class="font-handwriting text-2xl text-brandYellow">#juntosnoslevantamos</p>
                         </div>
                     </div>
 
                     <!-- Progress Status Card -->
                     <div class="bg-white/10 border border-white/20 p-5 rounded-2xl backdrop-blur-md space-y-3">
                         <div class="flex justify-between items-center text-xs">
-                            <span class="uppercase tracking-widest text-brandYellow font-bold">Meta Recaudo ($3.000.000)</span>
+                            <span class="uppercase tracking-widest text-brandYellow font-bold">Meta Recaudo ($3.000.000 COP)</span>
                             <span id="stat-percent-text" class="font-bold text-white">0%</span>
                         </div>
                         <div class="w-full bg-black/40 rounded-full h-2.5 p-0.5 border border-white/10">
@@ -141,17 +149,14 @@
                         <span>Sorteo Solidario • 26 de Agosto</span>
                     </div>
 
-                    <h1 class="text-3xl md:text-5xl font-editorial font-bold tracking-tight leading-tight">
+                    <h1 class="text-3xl md:text-5xl font-serif font-bold tracking-tight leading-tight">
                         Apoyemos juntos al <span class="font-handwriting text-brandYellow text-4xl md:text-6xl font-normal">sector gastronómico</span> de Manizales.
                     </h1>
 
                     <p class="text-stone-300 text-sm md:text-base font-light leading-relaxed">
-                       Esta semana queremos apoyar a La Patatería, que se vio muy afectada por la situación reciente.
-Abajo vas a encontrar el link de su Instagram para que conozcan su historia, vean su trabajo y sepan un poquito más sobre ellos. 
-
-Y para agradecerles por sumarse, el premio de esta semana será un bono para una comida para dos personas en SALVO PATRIA.
-
-¡Gracias por ayudar, compartir y hacer parte de esta iniciativa!  Adquiere tu boleta por <strong class="text-white font-semibold underline decoration-brandYellow">$30.000 COP</strong> y participa por cenas especiales.
+                        Esta semana queremos apoyar a La Patatería, que se vio muy afectada por la situación reciente. Abajo vas a encontrar el enlace a su Instagram para que conozcan su historia, vean su trabajo y sepan un poco más sobre ellos.
+                        <br><br>
+                        Y para agradecerles por sumarse, el premio de esta semana será un bono para una cena para dos personas en <strong>SALVO PATRIA</strong>. ¡Gracias por ayudar, compartir y hacer parte de esta iniciativa! Adquiere tu boleta por solo <strong class="text-white font-semibold underline decoration-brandYellow">$30.000 COP</strong>.
                     </p>
 
                     <div class="flex flex-wrap gap-3 pt-2">
@@ -170,7 +175,7 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
         </section>
 
         <!-- Marquee Ribbon -->
-        <div class="bg-brandYellow text-stone-600 py-3 px-4 rounded-2xl font-editorial italic text-xs sm:text-sm flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
+        <div class="bg-brandYellow text-stone-800 py-3 px-4 rounded-2xl font-serif italic text-xs sm:text-sm flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center font-medium shadow-sm">
           <span>✨ Sorteo 26 de Agosto</span>
           <span class="hidden sm:inline">•</span>
           <span>🍲 Cenas Especiales Semanales</span>
@@ -184,36 +189,63 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
         <section id="campana" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200 space-y-6">
             <div class="text-center max-w-xl mx-auto space-y-2">
                 <span class="bg-emerald-100 text-brandDark text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Instagram Reel</span>
-                <h3 class="text-3xl font-editorial font-bold text-stone-900">Conoce Nuestra Campaña</h3>
+                <h3 class="text-3xl font-serif font-bold text-stone-900">Conoce Nuestra Campaña</h3>
                 <p class="text-stone-600 text-xs">Mira el video de la iniciativa y conéctate con su historia en Instagram.</p>
             </div>
             
             <div class="rounded-3xl overflow-hidden border-2 border-stone-200 shadow-xl bg-brandDark text-white max-w-lg mx-auto p-8 text-center space-y-6 relative">
                 <div class="absolute -right-12 -top-12 w-48 h-48 bg-pink-500/10 rounded-full blur-2xl pointer-events-none"></div>
                 
-                <div class="w-16 h-16 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 rounded-2xl mx-auto flex items-center justify-center shadow-lg text-white">
-                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <div class="w-16 h-16 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 rounded-2xl mx-auto flex items-center justify-center shadow-lg text-white font-bold text-2xl">
+                    📸
                 </div>
 
                 <div class="space-y-2">
-                    <h4 class="font-editorial text-xl font-bold">Ver Reel en Instagram</h4>
+                    <h4 class="font-serif text-xl font-bold">Ver Reel en Instagram</h4>
                     <p class="text-stone-300 text-xs">Haz clic abajo para abrir directamente el video oficial de la campaña en Instagram.</p>
                 </div>
 
-                <a href="https://www.instagram.com/reel/Db8wq5ogVIy/?igsh=dXl5OGF5bG5mc2Ft&igsi=dXl5OGF5bG5mc2Ft" target="_blank" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 hover:opacity-95 text-white font-semibold py-3 px-8 rounded-full text-xs uppercase tracking-wider transition shadow-lg w-full">
+                <a href="https://www.instagram.com/reel/Db8wq5ogVIy/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 hover:opacity-95 text-white font-semibold py-3 px-8 rounded-full text-xs uppercase tracking-wider transition shadow-lg w-full">
                     <span>Abrir en Instagram</span>
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    <span>↗</span>
                 </a>
             </div>
         </section>
 
-        <!-- Parrilla de Boletas -->
+        <!-- Paso a Paso (PRIMERO) -->
+        <section id="pasos" class="bg-brandCardBg border border-stone-200 rounded-3xl p-6 md:p-12 grid-pattern space-y-10">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="bg-stone-900 text-brandYellow text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Paso a Paso</span>
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-stone-900">¿Cómo participar en la campaña?</h3>
+                <p class="text-stone-600 text-sm">Sigue estos sencillos pasos para adquirir tu boleta y apoyar el talento local.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">1</div>
+                    <h4 class="font-serif text-lg font-bold text-stone-900">Selecciona tu Número</h4>
+                    <p class="text-stone-600 text-xs leading-relaxed">Elige tu número de la suerte (00 al 99) en la parrilla interactiva que encuentras a continuación.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">2</div>
+                    <h4 class="font-serif text-lg font-bold text-stone-900">Transfiere $30.000</h4>
+                    <p class="text-stone-600 text-xs leading-relaxed">Haz tu pago a nuestra cuenta oficial Nu <strong>@SAL610</strong>.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">3</div>
+                    <h4 class="font-serif text-lg font-bold text-stone-900">Sube tu Comprobante</h4>
+                    <p class="text-stone-600 text-xs leading-relaxed">Adjunta el pantallazo de tu transacción y nuestro equipo validará tu boleta.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parrilla de Boletas (DESPUÉS) -->
         <section id="sorteo" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200 space-y-8">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center pb-6 border-b border-stone-100 gap-4">
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-brandGreen">Elige tu número de la suerte</span>
-                    <h2 class="text-3xl font-editorial font-bold text-stone-900 mt-1">Parrilla de Boletas (00 al 99)</h2>
-                    <p class="text-xs text-stone-500 mt-0.5">Haz clic en un número verde disponible para apartarlo y subir tu comprobante de pago.</p>
+                    <h2 class="text-3xl font-serif font-bold text-stone-900 mt-1">Parrilla de Boletas (00 al 99)</h2>
+                    <p class="text-xs text-stone-500 mt-0.5">Haz clic en un número disponible para apartarlo y subir tu comprobante de pago.</p>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
@@ -237,33 +269,6 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
             </div>
         </section>
 
-        <!-- Paso a Paso -->
-        <section id="pasos" class="bg-brandCardBg border border-stone-200 rounded-3xl p-6 md:p-12 grid-pattern space-y-10">
-            <div class="text-center max-w-2xl mx-auto space-y-2">
-                <span class="bg-stone-900 text-brandYellow text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Paso a Paso</span>
-                <h3 class="text-3xl md:text-4xl font-editorial font-bold text-stone-900">¿Cómo participar en la campaña?</h3>
-                <p class="text-stone-600 text-sm">Sigue estos sencillos pasos para adquirir tu boleta y apoyar el talento local.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
-                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">1</div>
-                    <h4 class="font-editorial text-lg font-bold text-stone-900">Selecciona tu Número</h4>
-                    <p class="text-stone-600 text-xs leading-relaxed">Elige tu número de la suerte (00 al 99) en la parrilla interactiva superior.</p>
-                </div>
-                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
-                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">2</div>
-                    <h4 class="font-editorial text-lg font-bold text-stone-900">Transfiere $30.000</h4>
-                    <p class="text-stone-600 text-xs leading-relaxed">Haz tu pago a nuestra cuenta oficial Nu <strong>@SAL610</strong>.</p>
-                </div>
-                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
-                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">3</div>
-                    <h4 class="font-editorial text-lg font-bold text-stone-900">Sube tu Comprobante</h4>
-                    <p class="text-stone-600 text-xs leading-relaxed">Adjunta el pantallazo de tu transacción y nuestro equipo validará tu boleta.</p>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <!-- Footer -->
@@ -273,10 +278,11 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
                 <div class="space-y-2">
                     <div class="text-xs uppercase tracking-widest text-brandYellow font-bold">Más agua a la sopa</div>
                     <div class="text-sm text-stone-300">Manizales, Caldas — Colombia</div>
-                    <div class="text-xs text-stone-400">Contacto: 
-                        Andrea Salazar +57 313 7977977 Ig deasalazar
-                        Valentina Hoyos +57 304 5902626 Ig valentinahoyos
-                        Paula Arias +57 3204185738 Ig pawarias</div>
+                    <div class="text-xs text-stone-400 space-y-1 pt-2">
+                        <p><strong>Andrea Salazar:</strong> +57 313 7977977 (@deasalazar)</p>
+                        <p><strong>Valentina Hoyos:</strong> +57 304 5902626 (@valentinahoyos)</p>
+                        <p><strong>Paula Arias:</strong> +57 320 4185738 (@pawarias)</p>
+                    </div>
                 </div>
                 <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl backdrop-blur-sm text-right">
                     <div class="text-[10px] uppercase text-stone-400 font-bold">Cuenta Oficial Nu</div>
@@ -285,7 +291,7 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
             </div>
 
             <div class="text-center overflow-hidden py-4">
-                <h2 class="font-retro text-[3vw] md:text-[3vw] font-extrabold tracking-tight text-white/90 uppercase leading-none select-none">
+                <h2 class="font-retro text-[4vw] md:text-[3vw] font-extrabold tracking-tight text-white/90 uppercase leading-none select-none">
                     #juntosnoslevantamos #necesitovender
                 </h2>
             </div>
@@ -294,14 +300,14 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
 
     <!-- Booking Modal -->
     <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden transform transition-all border border-stone-200">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-stone-200">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
                 <div>
                     <span class="text-[10px] uppercase tracking-widest text-brandYellow font-bold">Apartar Número</span>
-                    <h3 class="font-editorial text-2xl font-bold">Boleta N° <span id="modal-ticket-num" class="bg-white/20 px-2 py-0.5 rounded text-white font-mono"></span></h3>
+                    <h3 class="font-serif text-2xl font-bold">Boleta N° <span id="modal-ticket-num" class="bg-white/20 px-2 py-0.5 rounded text-white font-mono"></span></h3>
                 </div>
                 <button onclick="closeBookingModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    ✕
                 </button>
             </div>
             
@@ -338,11 +344,11 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
     <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-stone-200">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
-                <h3 class="font-editorial text-2xl font-bold flex items-center space-x-2">
+                <h3 class="font-serif text-2xl font-bold flex items-center space-x-2">
                     <span>Panel de Control - Fundación</span>
                 </h3>
                 <button onclick="toggleAdminModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    ✕
                 </button>
             </div>
             
@@ -350,10 +356,10 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
                 <div class="flex justify-between items-center bg-white p-6 rounded-2xl border border-stone-200 shadow-xs">
                     <div>
                         <h4 class="font-bold text-stone-800 text-sm">Recaudo Total Actual</h4>
-                        <p class="text-xs text-stone-500">Suma de boletas confirmadas ($30.000 c/u)</p>
+                        <p class="text-xs text-stone-500">Suma de boletas confirmadas ($30.000 COP c/u)</p>
                     </div>
                     <div class="text-right">
-                        <div id="admin-total-money" class="font-editorial text-3xl font-bold text-brandDark">$0 COP</div>
+                        <div id="admin-total-money" class="font-serif text-3xl font-bold text-brandDark">$0 COP</div>
                         <div id="admin-total-count" class="text-xs font-semibold text-emerald-600">0 boletas confirmadas</div>
                     </div>
                 </div>
@@ -388,7 +394,7 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
     <!-- Receipt Viewer Modal -->
     <div id="receipt-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeReceiptModal()">
         <div class="bg-white rounded-3xl p-5 max-w-md w-full text-center space-y-3 shadow-2xl" onclick="event.stopPropagation()">
-            <h4 class="font-editorial font-bold text-2xl text-brandDark">Comprobante de Pago</h4>
+            <h4 class="font-serif font-bold text-2xl text-brandDark">Comprobante de Pago</h4>
             <div id="receipt-img-container" class="bg-stone-100 rounded-2xl p-2 min-h-[250px] flex items-center justify-center overflow-hidden border border-stone-200">
                 <!-- Image goes here -->
             </div>
@@ -404,7 +410,7 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
 
     <!-- JavaScript Application Logic -->
     <script>
-        const STORAGE_KEY = 'mas_agua_sopa_redesign_tickets_v9';
+        const STORAGE_KEY = 'mas_agua_sopa_redesign_tickets_v10';
         
         // Contraseña del panel de administrador
         const ADMIN_PASSWORD = 'masagua2026';
@@ -469,7 +475,7 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
 
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 shadow-2xs border-2 transform hover:scale-105 `;
+                btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 `;
                 
                 if (ticket.status === 'available') {
                     btn.className += 'bg-emerald-50/70 border-emerald-300 text-brandDark hover:bg-emerald-100 hover:border-brandGreen';
@@ -588,7 +594,7 @@ Y para agradecerles por sumarse, el premio de esta semana será un bono para una
                         ${t.receipt ? `<button onclick="viewReceipt('${key}')" class="text-brandGreen underline font-bold hover:text-brandDark">Ver pantallazo</button>` : '<span class="text-stone-400">Sin archivo</span>'}
                     </td>
                     <td class="p-3.5 text-right space-x-2">
-                        ${t.status === 'pending' ? `<button onclick="approveTicket('${key}')" class="bg-brandDark hover:bg-emerald-900 text-white px-2.5 py-1.5 rounded-lg text-xs font-semibold shadow-2xs">Aprobar</button>` : ''}
+                        ${t.status === 'pending' ? `<button onclick="approveTicket('${key}')" class="bg-brandDark hover:bg-emerald-900 text-white px-2.5 py-1.5 rounded-lg text-xs font-semibold">Aprobar</button>` : ''}
                         ${t.status !== 'available' ? `<button onclick="resetTicket('${key}')" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-2.5 py-1.5 rounded-lg text-xs font-semibold">Liberar</button>` : ''}
                     </td>
                 `;
