@@ -1,7 +1,3 @@
-<!-- Chosen Palette: Warm Forest & Neutral Cream (brandDark: #13281a, brandGreen: #1b3b22, brandSage: #cdd7d0, brandYellow: #fef08a, brandCream: #f5f2eb, brandCardBg: #ece6da, brandAccent: #e05a38) -->
-<!-- Application Structure Plan: Single page interactive web application designed for high user conversion and clarity in a solidarity campaign. Features a clear hero section with the mission statement, a marquee highlighting core benefits, step-by-step participation guide, interactive 100-number ticket grid (00-99) with real-time status & receipt uploading, terms modal, and an administrative panel protected by password to manage bookings and confirm payments. -->
-<!-- Visualization & Content Choices: Ticket grid uses dynamic HTML button elements styled with Tailwind for intuitive visual state management (Available, In Validation, Sold). Progress metrics update dynamically using vanilla JS state connected to LocalStorage. Visual badges and icons utilize native HTML/Unicode elements for full browser compatibility. -->
-<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 <!DOCTYPE html>
 <html lang="es" class="scroll-smooth">
 <head>
@@ -66,6 +62,7 @@
               <a href="#campana" class="hover:text-brandYellow transition uppercase">CAMPAÑA</a>
               <a href="#pasos" class="hover:text-brandYellow transition uppercase">CÓMO PARTICIPAR</a>
               <a href="#sorteo" class="hover:text-brandYellow transition uppercase">PARRILLA</a>
+              <a href="#ganadores" class="hover:text-brandYellow transition uppercase">GANADORES</a>
             </nav>
 
             <!-- Lado derecho: Botón y Configuración -->
@@ -128,10 +125,10 @@
                             “Más agua a la sopa” es una iniciativa que une a una red de contactos en Bogotá para apoyar a reactivar la economía de la ciudad a través del sector gastronómico de Manizales.
                         </p>
                         <p>
-                            Participando cada semana en una rifa entre 100 números, tendrás la posibilidad de ganarte un bono para un restaurante específico que podrás redimir en cualquier momento por las próximas semanas.
+                            Participando cada semana, <strong>escogeremos entre los 100 números un ganador cada semana</strong>, dándote la posibilidad de ganarte un bono para un restaurante específico que podrás redimir en cualquier momento por las próximas semanas.
                         </p>
                         <p>
-                            Esta primera semana (Agosto 18), se rifa un bono de 300 mil pesos para un almuerzo o cena en el restaurante <strong>Salvo Patria</strong>. Los fondos recolectados en esta primera rifa serán entregados a <strong>La Patatería</strong> en Manizales. (Abajo vas a encontrar el enlace a sus redes para que conozcas su historia, su oferta y sepas un poco más sobre ellos)
+                            Para el próximo sorteo (28 de Agosto 2026), se entregará un bono del restaurante <strong>Salvo Patria (Bogotá)</strong>. Los fondos recolectados en esta primera entrega serán entregados a <strong>La Patatería</strong> en Manizales. (Abajo vas a encontrar el enlace a sus redes para que conozcas su historia, su oferta y sepas un poco más sobre ellos).
                         </p>
                         <p>
                             ¡Los sorteos se realizan <strong>todos los viernes mediante una aplicación aleatoria en vivo</strong> que será grabada como prueba para los participantes!
@@ -179,7 +176,7 @@
 
         <!-- Marquee Ribbon -->
         <div class="bg-brandYellow text-stone-800 py-3 px-4 rounded-2xl font-serif italic text-xs sm:text-sm flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center font-medium shadow-sm">
-            <span>✨ Sorteo todos los viernes por aplicación aleatoria</span>
+            <span>✨ Escogeremos entre los 100 números un ganador cada semana</span>
             <span class="hidden sm:inline">•</span>
             <span>🍲 Cenas Especiales Semanales</span>
             <span class="hidden sm:inline">•</span>
@@ -269,6 +266,55 @@
 
             <div id="tickets-grid" class="grid grid-cols-5 sm:grid-cols-10 gap-2.5">
                 <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Recuadro: Ganador de Cada Semana -->
+        <section id="ganadores" class="bg-brandDark text-white rounded-3xl p-6 md:p-10 shadow-xl border border-stone-800 space-y-6 relative overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-brandYellow/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-white/10">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center space-x-2 bg-brandYellow/20 text-brandYellow text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider">
+                        <span>🏆</span>
+                        <span>Resultados Semanales</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-serif font-bold text-white">Ganador de Cada Semana</h3>
+                    <p class="text-stone-300 text-xs md:text-sm">Publicamos aquí el número y nombre del afortunado tras cada sorteo de los viernes.</p>
+                </div>
+                <div class="text-right">
+                    <span class="text-[11px] text-stone-400 uppercase tracking-widest block font-semibold">Frecuencia</span>
+                    <span class="text-brandYellow font-serif font-bold text-sm">Cada Viernes en Vivo</span>
+                </div>
+            </div>
+
+            <!-- Listado de Ganadores -->
+            <div id="winners-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Tarjeta Semana Activa -->
+                <div class="bg-white/10 border border-white/20 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm">
+                    <div class="space-y-1">
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-brandYellow bg-brandYellow/10 px-2 py-0.5 rounded">Semana 1 • Próximo sorteo 28 de Agosto 2026</span>
+                        <h4 class="font-serif text-lg font-bold text-white">Bono Salvo Patria ($300.000)</h4>
+                        <p class="text-xs text-stone-300">Ganador: <span class="font-semibold text-white">Por definir (Sorteo 28 de Agosto)</span></p>
+                    </div>
+                    <div class="text-center bg-black/30 border border-white/10 px-4 py-3 rounded-xl min-w-[70px]">
+                        <span class="block text-[9px] uppercase text-stone-400 font-bold">N° Ganador</span>
+                        <span class="font-handwriting text-3xl font-bold text-brandYellow">--</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta Próxima Semana -->
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm opacity-75">
+                    <div class="space-y-1">
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-stone-400 bg-white/5 px-2 py-0.5 rounded">Semana 2 • Próximamente</span>
+                        <h4 class="font-serif text-lg font-bold text-stone-200">Próximo Restaurante Aliado</h4>
+                        <p class="text-xs text-stone-400">Ganador: <span class="font-semibold text-stone-300">Pendiente de apertura</span></p>
+                    </div>
+                    <div class="text-center bg-black/20 border border-white/5 px-4 py-3 rounded-xl min-w-[70px]">
+                        <span class="block text-[9px] uppercase text-stone-500 font-bold">N° Ganador</span>
+                        <span class="font-handwriting text-3xl font-bold text-stone-500">--</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -374,7 +420,7 @@
             
             <div class="overflow-y-auto space-y-3 text-xs text-stone-600 leading-relaxed pr-1">
                 <p><strong>1. Objeto de la Campaña:</strong> La campaña "Más Agua a la Sopa" es una iniciativa solidaria sin ánimo de lucro, para apoyar al sector gastronómico en Manizales, Caldas, afectado por situaciones recientes.</p>
-                <p><strong>2. Mecánica del Sorteo:</strong> Cada boleta tiene un costo de $30.000 COP y otorga un número único en la parrilla (00 al 99). El ganador se define <strong>todos los viernes mediante un sorteo en vivo a través de una aplicación aleatoria</strong> certificada.</p>
+                <p><strong>2. Mecánica del Sorteo:</strong> Cada boleta tiene un costo de $30.000 COP y otorga un número único en la parrilla (00 al 99). Mediante este sistema <strong>escogeremos entre los 100 números un ganador cada semana</strong>, definiéndose <strong>todos los viernes mediante un sorteo en vivo a través de una aplicación aleatoria</strong> certificada.</p>
                 <p><strong>3. Validación de Pagos:</strong> Todo número apartado requiere obligatoriamente la transferencia a la cuenta oficial Nu <strong>@SAL610</strong> y la carga del comprobante de pago válido. La organización se reserva el derecho de verificar y aprobar las transacciones antes de confirmar definitivamente la asignación del número.</p>
                 <p><strong>4. Tratamiento de Datos Personales (Habeas Data):</strong> Al registrar sus datos (Nombre, Cédula, Correo, Teléfono), el participante autoriza a los organizadores de "Más Agua a la Sopa" a almacenar y utilizar dicha información exclusivamente para la gestión del sorteo, validación de pagos, notificación de ganadores y propósitos informativos de la campaña.</p>
                 <p><strong>5. Premio:</strong> El premio consiste en un bono para una cena para dos personas en Salvo Patria (Bogotá), el cual será entregado al titular del número ganador previa presentación de su documento de identidad.</p>
@@ -546,7 +592,7 @@
                 } else if (ticket.status === 'sold') {
                     btn.className += 'bg-rose-50 border-rose-300 text-rose-800 cursor-not-allowed';
                     btn.title = `Vendido a: ${ticket.name}`;
-                    btn.onclick = () => showToast(`El número ${key} ya fue comprado por ${ticket.name}.`, '🔒');
+                    btn.onclick = () => showToast(`El número ${key} ya fue adquirido por ${ticket.name}.`, '🔒');
                 }
 
                 btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
