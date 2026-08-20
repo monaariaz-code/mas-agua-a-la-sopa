@@ -125,10 +125,10 @@
                             “Más agua a la sopa” es una iniciativa que une a una red de contactos en Bogotá para apoyar a reactivar la economía de la ciudad a través del sector gastronómico de Manizales.
                         </p>
                         <p>
-                            La mecánica consiste en <strong>escoger entre los 100 números un ganador cada semana</strong>, dándote la posibilidad de ganarte un bono para un restaurante específico que podrás redimir en cualquier momento por las próximas semanas.
+                            Participando cada semana, <strong>escogeremos entre los 100 números un ganador cada semana</strong>, dándote la posibilidad de ganarte un bono para un restaurante específico que podrás redimir en cualquier momento por las próximas semanas.
                         </p>
                         <p>
-                            Para el próximo sorteo (28 de Agosto 2026), se entregará un bono del restaurante <strong>Salvo Patria (Bogotá)</strong>. Los fondos recolectados en esta primera entrega serán donados a <strong>La Patatería</strong> en Manizales. (Abajo vas a encontrar el enlace a sus redes para que conozcas su historia, su oferta y sepas un poco más sobre ellos).
+                            Para el próximo sorteo (28 de Agosto 2026), se entregará un bono de 300 mil pesos para un almuerzo o cena en el restaurante <strong>Salvo Patria</strong>. Los fondos recolectados en esta primera entrega serán entregados a <strong>La Patatería</strong> en Manizales. (Abajo vas a encontrar el enlace a sus redes para que conozcas su historia, su oferta y sepas un poco más sobre ellos).
                         </p>
                         <p>
                             ¡Los sorteos se realizan <strong>todos los viernes mediante una aplicación aleatoria en vivo</strong> que será grabada como prueba para los participantes!
@@ -189,7 +189,7 @@
         <section id="campana" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200 space-y-6">
             <div class="text-center max-w-xl mx-auto space-y-2">
                 <span class="bg-emerald-100 text-brandDark text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Instagram Reel</span>
-                <h3 class="text-3xl font-serif font-bold text-stone-900">Conoce la PATATERIA</h3>
+                <h3 class="text-3xl font-serif font-bold text-stone-900">Conoce Nuestra Campaña</h3>
                 <p class="text-stone-600 text-xs">Mira el video de la iniciativa y conéctate con su historia en Instagram.</p>
             </div>
             
@@ -234,7 +234,7 @@
                 <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
                     <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">3</div>
                     <h4 class="font-serif text-lg font-bold text-stone-900">Sube tu Comprobante</h4>
-                    <p class="text-stone-600 text-xs leading-relaxed">Diligencia tus datos (nombre, cédula, correo, teléfono), acepta los términos y confirma tu compra.</p>
+                    <p class="text-stone-600 text-xs leading-relaxed">Diligencia tus datos (nombre, cédula, correo, teléfono), acepta los términos y adjunta el comprobante.</p>
                 </div>
             </div>
         </section>
@@ -245,7 +245,7 @@
                 <div>
                     <span class="text-xs font-bold uppercase tracking-widest text-brandGreen">Elige tu número de la suerte</span>
                     <h2 class="text-3xl font-serif font-bold text-stone-900 mt-1">Parrilla de Boletas (00 al 99)</h2>
-                    <p class="text-xs text-stone-500 mt-0.5">Haz clic en un número disponible para apartarlo y registrar tus datos.</p>
+                    <p class="text-xs text-stone-500 mt-0.5">Haz clic en un número disponible para apartarlo y subir tu comprobante de pago.</p>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
@@ -363,7 +363,7 @@
             <form id="booking-form" onsubmit="submitBooking(event)" class="p-6 space-y-4 overflow-y-auto">
                 <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-100 text-xs text-stone-700 space-y-1">
                     <p class="font-bold text-brandDark text-sm">Instrucciones de Pago ($30.000 COP)</p>
-                    <p>Realiza tu transferencia a la cuenta Nu <strong>@SAL610</strong> y confirma tus datos abajo.</p>
+                    <p>Realiza tu transferencia a la cuenta Nu <strong>@SAL610</strong> y sube el comprobante.</p>
                 </div>
 
                 <div>
@@ -387,6 +387,11 @@
                     <input type="email" id="buyer-email" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. sofia@ejemplo.com">
                 </div>
 
+                <div>
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Comprobante de Pago (Pantallazo) *</label>
+                    <input type="file" id="buyer-receipt" accept="image/*" required class="w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brandSage file:text-brandDark hover:file:bg-emerald-200 cursor-pointer border border-stone-200 rounded-xl">
+                </div>
+
                 <!-- Terms and Conditions Checkbox -->
                 <div class="pt-1">
                     <div class="flex items-start space-x-3 bg-stone-50 p-3 rounded-xl border border-stone-200">
@@ -399,7 +404,7 @@
 
                 <div class="flex space-x-3 pt-2">
                     <button type="button" onclick="closeBookingModal()" class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium py-3 px-4 rounded-xl text-sm transition">Cancelar</button>
-                    <button type="submit" id="submit-btn" class="flex-1 bg-brandDark hover:bg-emerald-900 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow-md transition">Confirmar Boleta</button>
+                    <button type="submit" class="flex-1 bg-brandDark hover:bg-emerald-900 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow-md transition">Confirmar y Enviar</button>
                 </div>
             </form>
         </div>
@@ -416,8 +421,8 @@
             <div class="overflow-y-auto space-y-3 text-xs text-stone-600 leading-relaxed pr-1">
                 <p><strong>1. Objeto de la Campaña:</strong> La campaña "Más Agua a la Sopa" es una iniciativa solidaria sin ánimo de lucro, para apoyar al sector gastronómico en Manizales, Caldas, afectado por situaciones recientes.</p>
                 <p><strong>2. Mecánica del Sorteo:</strong> Cada boleta tiene un costo de $30.000 COP y otorga un número único en la parrilla (00 al 99). Mediante este sistema <strong>escogeremos entre los 100 números un ganador cada semana</strong>, definiéndose <strong>todos los viernes mediante un sorteo en vivo a través de una aplicación aleatoria</strong> certificada.</p>
-                <p><strong>3. Validación de Pagos:</strong> Todo número apartado requiere obligatoriamente la transferencia a la cuenta oficial Nu <strong>@SAL610</strong>. La organización verifica las transacciones antes del sorteo.</p>
-                <p><strong>4. Tratamiento de Datos Personales (Habeas Data):</strong> Al registrar sus datos (Nombre, Cédula, Correo, Teléfono), el participante autoriza a los organizadores de "Más Agua a la Sopa" a almacenar y utilizar dicha información exclusivamente para la gestión del sorteo, validación de pagos y notificación de ganadores.</p>
+                <p><strong>3. Validación de Pagos:</strong> Todo número apartado requiere obligatoriamente la transferencia a la cuenta oficial Nu <strong>@SAL610</strong> y la carga del comprobante de pago válido. La organización se reserva el derecho de verificar y aprobar las transacciones antes de confirmar definitivamente la asignación del número.</p>
+                <p><strong>4. Tratamiento de Datos Personales (Habeas Data):</strong> Al registrar sus datos (Nombre, Cédula, Correo, Teléfono), el participante autoriza a los organizadores de "Más Agua a la Sopa" a almacenar y utilizar dicha información exclusivamente para la gestión del sorteo, validación de pagos, notificación de ganadores y propósitos informativos de la campaña.</p>
                 <p><strong>5. Premio:</strong> El premio consiste en un bono para una cena para dos personas en Salvo Patria (Bogotá), el cual será entregado al titular del número ganador previa presentación de su documento de identidad.</p>
             </div>
 
@@ -432,7 +437,7 @@
         <div class="bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-stone-200">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
                 <h3 class="font-serif text-2xl font-bold flex items-center space-x-2">
-                    <span>Panel de Control (Google Sheets)</span>
+                    <span>Panel de Control</span>
                 </h3>
                 <button onclick="toggleAdminModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">
                     ✕
@@ -442,20 +447,17 @@
             <div class="p-6 overflow-y-auto space-y-6 flex-1 bg-stone-50/50">
                 <div class="flex justify-between items-center bg-white p-6 rounded-2xl border border-stone-200 shadow-xs">
                     <div>
-                        <h4 class="font-bold text-stone-800 text-sm">Recaudo Total Registrado</h4>
-                        <p class="text-xs text-stone-500">Suma de boletas ($30.000 COP c/u)</p>
+                        <h4 class="font-bold text-stone-800 text-sm">Recaudo Total Actual</h4>
+                        <p class="text-xs text-stone-500">Suma de boletas confirmadas ($30.000 COP c/u)</p>
                     </div>
                     <div class="text-right">
                         <div id="admin-total-money" class="font-serif text-3xl font-bold text-brandDark">$0 COP</div>
-                        <div id="admin-total-count" class="text-xs font-semibold text-emerald-600">0 boletas registradas</div>
+                        <div id="admin-total-count" class="text-xs font-semibold text-emerald-600">0 boletas confirmadas</div>
                     </div>
                 </div>
 
                 <div>
-                    <div class="flex justify-between items-center mb-3">
-                        <h4 class="font-bold text-stone-800 text-xs uppercase tracking-wider">Listado de Boletas (00 - 99)</h4>
-                        <button onclick="loadTicketsFromCloud()" class="text-xs text-brandGreen hover:underline font-semibold">🔄 Actualizar datos</button>
-                    </div>
+                    <h4 class="font-bold text-stone-800 mb-3 text-xs uppercase tracking-wider">Listado de Boletas (00 - 99)</h4>
                     <div class="overflow-x-auto border border-stone-200 rounded-2xl bg-white shadow-xs">
                         <table class="w-full text-left border-collapse text-xs">
                             <thead>
@@ -466,6 +468,8 @@
                                     <th class="p-3">Correo</th>
                                     <th class="p-3">Teléfono</th>
                                     <th class="p-3">Estado</th>
+                                    <th class="p-3">Comprobante</th>
+                                    <th class="p-3 text-right">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody id="admin-table-body" class="divide-y divide-stone-100">
@@ -481,6 +485,17 @@
         </div>
     </div>
 
+    <!-- Receipt Viewer Modal -->
+    <div id="receipt-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeReceiptModal()">
+        <div class="bg-white rounded-3xl p-5 max-w-md w-full text-center space-y-3 shadow-2xl" onclick="event.stopPropagation()">
+            <h4 class="font-serif font-bold text-2xl text-brandDark">Comprobante de Pago</h4>
+            <div id="receipt-img-container" class="bg-stone-100 rounded-2xl p-2 min-h-[250px] flex items-center justify-center overflow-hidden border border-stone-200">
+                <!-- Image goes here -->
+            </div>
+            <button onclick="closeReceiptModal()" class="w-full bg-brandDark text-white py-3 rounded-xl text-xs font-bold shadow-md transition">Cerrar</button>
+        </div>
+    </div>
+
     <!-- Notification Toast -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 bg-brandDark text-white px-5 py-3.5 rounded-2xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 flex items-center space-x-3 text-sm border border-emerald-800">
         <span id="toast-icon">✨</span>
@@ -489,55 +504,35 @@
 
     <!-- JavaScript Application Logic -->
     <script>
-        // PEGA AQUÍ LA URL DE GOOGLE APPS SCRIPT (TERMINA EN /exec)
-        const API_URL = "PEGA_AQUÍ_LA_URL_DE_TU_APPS_SCRIPT_QUE_TERMINA_EN_EXEC";
+        const STORAGE_KEY = 'mas_agua_sopa_redesign_friday_v1';
+        
+        // Contraseña del panel de administrador
         const ADMIN_PASSWORD = 'masagua2026';
 
-        let tickets = {};
+        function getTicketsData() {
+            let data = localStorage.getItem(STORAGE_KEY);
+            if (!data) {
+                const initial = {};
+                for (let i = 0; i < 100; i++) {
+                    const key = i < 10 ? `0${i}` : `${i}`;
+                    initial[key] = {
+                        number: key,
+                        status: 'available',
+                        name: '',
+                        cedula: '',
+                        email: '',
+                        phone: '',
+                        receipt: ''
+                    };
+                }
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(initial));
+                return initial;
+            }
+            return JSON.parse(data);
+        }
+
+        let tickets = getTicketsData();
         let selectedTicketForBooking = null;
-
-        function initEmptyTickets() {
-            let base = {};
-            for (let i = 0; i < 100; i++) {
-                const key = i < 10 ? `0${i}` : `${i}`;
-                base[key] = {
-                    number: key,
-                    status: 'available',
-                    name: '',
-                    cedula: '',
-                    email: '',
-                    phone: '',
-                    receipt: ''
-                };
-            }
-            return base;
-        }
-
-        async function loadTicketsFromCloud() {
-            tickets = initEmptyTickets();
-            try {
-                if (API_URL.includes("PEGA_AQUÍ")) {
-                    renderGrid();
-                    return;
-                }
-                const res = await fetch(API_URL);
-                const data = await res.json();
-                
-                data.forEach(item => {
-                    const key = item.number.toString().padStart(2, '0');
-                    if (tickets[key]) {
-                        tickets[key] = { ...tickets[key], ...item };
-                    }
-                });
-                renderGrid();
-                if (!document.getElementById('admin-modal').classList.contains('hidden')) {
-                    populateAdminTable();
-                }
-            } catch (error) {
-                console.error("Error cargando boletas:", error);
-                renderGrid();
-            }
-        }
 
         function promptAdminPassword() {
             document.getElementById('admin-pass-input').value = '';
@@ -578,7 +573,7 @@
 
             for (let i = 0; i < 100; i++) {
                 const key = i < 10 ? `0${i}` : `${i}`;
-                const ticket = tickets[key] || { status: 'available' };
+                const ticket = tickets[key];
                 
                 if (ticket.status === 'sold') soldCount++;
                 if (ticket.status === 'pending') pendingCount++;
@@ -592,21 +587,20 @@
                     btn.onclick = () => openBookingModal(key);
                 } else if (ticket.status === 'pending') {
                     btn.className += 'bg-amber-50 border-amber-300 text-amber-800 cursor-not-allowed';
-                    btn.title = `Apartado por: ${ticket.name}`;
-                    btn.onclick = () => showToast('Este número ya fue apartado y está en proceso de verificación.', '⏳');
+                    btn.title = `Pendiente: ${ticket.name}`;
+                    btn.onclick = () => showToast('Este número está en proceso de verificación de pago.', '⏳');
                 } else if (ticket.status === 'sold') {
                     btn.className += 'bg-rose-50 border-rose-300 text-rose-800 cursor-not-allowed';
                     btn.title = `Vendido a: ${ticket.name}`;
-                    btn.onclick = () => showToast(`El número ${key} ya fue adquirido.`, '🔒');
+                    btn.onclick = () => showToast(`El número ${key} ya fue adquirido por ${ticket.name}.`, '🔒');
                 }
 
                 btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
                 gridEl.appendChild(btn);
             }
 
-            const totalTaken = soldCount + pendingCount;
-            const percentage = Math.min(100, Math.round((totalTaken / 100) * 100));
-            document.getElementById('stat-sold-text').innerText = `${soldCount} confirmados / ${pendingCount} apartados`;
+            const percentage = Math.min(100, Math.round((soldCount / 100) * 100));
+            document.getElementById('stat-sold-text').innerText = `${soldCount} vendidos / ${pendingCount} en proceso`;
             document.getElementById('stat-percent-text').innerText = `${percentage}%`;
             document.getElementById('progress-bar').style.width = `${percentage}%`;
         }
@@ -618,6 +612,7 @@
             document.getElementById('buyer-cedula').value = '';
             document.getElementById('buyer-email').value = '';
             document.getElementById('buyer-phone').value = '';
+            document.getElementById('buyer-receipt').value = '';
             document.getElementById('accept-terms').checked = false;
             document.getElementById('booking-modal').classList.remove('hidden');
         }
@@ -627,63 +622,46 @@
             selectedTicketForBooking = null;
         }
 
-        async function submitBooking(event) {
+        function submitBooking(event) {
             event.preventDefault();
             const name = document.getElementById('buyer-name').value.trim();
             const cedula = document.getElementById('buyer-cedula').value.trim();
             const email = document.getElementById('buyer-email').value.trim();
             const phone = document.getElementById('buyer-phone').value.trim();
+            const fileInput = document.getElementById('buyer-receipt');
             const acceptTerms = document.getElementById('accept-terms').checked;
-            const submitBtn = document.getElementById('submit-btn');
 
             if (!acceptTerms) {
-                showToast('Debes aceptar los términos y condiciones.', '⚠️');
+                showToast('Debes aceptar los términos y condiciones para continuar.', '⚠️');
                 return;
             }
 
-            if (!selectedTicketForBooking || !name || !cedula || !email || !phone) {
-                showToast('Por favor completa todos los campos requeridos.', '⚠️');
+            if (!selectedTicketForBooking || !name || !cedula || !email || !phone || fileInput.files.length === 0) {
+                showToast('Por favor completa todos los campos requeridos y sube el comprobante.', '⚠️');
                 return;
             }
 
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Guardando...";
-            showToast('Apartando tu número...', '⏳');
-
-            const payload = {
-                number: selectedTicketForBooking,
-                name: name,
-                cedula: cedula,
-                email: email,
-                phone: phone,
-                receipt: 'Transferencia Nu @SAL610',
-                status: 'pending'
-            };
-
-            try {
-                await fetch(API_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                closeBookingModal();
-                showToast(`¡Número ${selectedTicketForBooking} apartado con éxito!`, '🎉');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Image = e.target.result;
                 
-                // Actualización instantánea en pantalla
-                tickets[selectedTicketForBooking] = { ...payload };
-                renderGrid();
+                tickets[selectedTicketForBooking] = {
+                    number: selectedTicketForBooking,
+                    status: 'pending',
+                    name: name,
+                    cedula: cedula,
+                    email: email,
+                    phone: phone,
+                    receipt: base64Image
+                };
 
-                // Recargar desde la hoja
-                setTimeout(loadTicketsFromCloud, 2500);
-            } catch (err) {
-                console.error(err);
-                showToast('Error al conectar con la base de datos.', '❌');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Confirmar Boleta";
-            }
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+                closeBookingModal();
+                renderGrid();
+                showToast(`¡Número ${selectedTicketForBooking} apartado con éxito! En breve será verificado.`, '🎉');
+            };
+            reader.readAsDataURL(file);
         }
 
         function toggleAdminModal() {
@@ -701,15 +679,15 @@
             tbody.innerHTML = '';
             
             let totalMoney = 0;
-            let registeredCount = 0;
+            let confirmedCount = 0;
 
             for (let i = 0; i < 100; i++) {
                 const key = i < 10 ? `0${i}` : `${i}`;
-                const t = tickets[key] || {};
+                const t = tickets[key];
 
-                if (t.status === 'sold' || t.status === 'pending') {
+                if (t.status === 'sold') {
                     totalMoney += 30000;
-                    registeredCount++;
+                    confirmedCount++;
                 }
 
                 const tr = document.createElement('tr');
@@ -722,7 +700,7 @@
                     statusText = 'En Validación';
                 } else if (t.status === 'sold') {
                     badgeClass = 'bg-rose-100 text-rose-800';
-                    statusText = 'Confirmado';
+                    statusText = 'Pagado / Confirmado';
                 }
 
                 tr.innerHTML = `
@@ -732,12 +710,55 @@
                     <td class="p-3 text-stone-600">${t.email || '<span class="text-stone-400">---</span>'}</td>
                     <td class="p-3 text-stone-600">${t.phone || '<span class="text-stone-400">---</span>'}</td>
                     <td class="p-3"><span class="px-2.5 py-1 rounded-full font-semibold ${badgeClass}">${statusText}</span></td>
+                    <td class="p-3">
+                        ${t.receipt ? `<button onclick="viewReceipt('${key}')" class="text-brandGreen underline font-bold hover:text-brandDark">Ver pantallazo</button>` : '<span class="text-stone-400">Sin archivo</span>'}
+                    </td>
+                    <td class="p-3 text-right space-x-2">
+                        ${t.status === 'pending' ? `<button onclick="approveTicket('${key}')" class="bg-brandDark hover:bg-emerald-900 text-white px-2.5 py-1.5 rounded-lg text-xs font-semibold">Aprobar</button>` : ''}
+                        ${t.status !== 'available' ? `<button onclick="resetTicket('${key}')" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-2.5 py-1.5 rounded-lg text-xs font-semibold">Liberar</button>` : ''}
+                    </td>
                 `;
                 tbody.appendChild(tr);
             }
 
             document.getElementById('admin-total-money').innerText = `$${totalMoney.toLocaleString('es-CO')} COP`;
-            document.getElementById('admin-total-count').innerText = `${registeredCount} boletas registradas`;
+            document.getElementById('admin-total-count').innerText = `${confirmedCount} boletas confirmadas`;
+        }
+
+        function approveTicket(key) {
+            tickets[key].status = 'sold';
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+            populateAdminTable();
+            renderGrid();
+            showToast(`Boleta ${key} aprobada correctamente.`, '✅');
+        }
+
+        function resetTicket(key) {
+            tickets[key] = {
+                number: key,
+                status: 'available',
+                name: '',
+                cedula: '',
+                email: '',
+                phone: '',
+                receipt: ''
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tickets));
+            populateAdminTable();
+            renderGrid();
+            showToast(`Número ${key} liberado correctamente.`, '🔄');
+        }
+
+        function viewReceipt(key) {
+            const t = tickets[key];
+            if (!t || !t.receipt) return;
+            const container = document.getElementById('receipt-img-container');
+            container.innerHTML = `<img src="${t.receipt}" alt="Comprobante ${key}" class="max-h-[350px] mx-auto rounded-2xl shadow-md object-contain">`;
+            document.getElementById('receipt-modal').classList.remove('hidden');
+        }
+
+        function closeReceiptModal() {
+            document.getElementById('receipt-modal').classList.add('hidden');
         }
 
         function showToast(message, icon = '✨') {
@@ -751,7 +772,7 @@
         }
 
         window.onload = function() {
-            loadTicketsFromCloud();
+            renderGrid();
         };
     </script>
 </body>
