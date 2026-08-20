@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Más Agua a la Sopa — Campaña Solidaria</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Poppins:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        handwriting: ['Caveat', 'cursive'],
+                        retro: ['Syne', 'sans-serif'],
+                    },
+                    colors: {
+                        brandDark: '#13281a',
+                        brandGreen: '#1b3b22',
+                        brandSage: '#cdd7d0',
+                        brandYellow: '#fef08a',
+                        brandCream: '#f5f2eb',
+                        brandCardBg: '#ece6da',
+                        brandRust: '#9a3412',
+                        brandAccent: '#e05a38'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; background-color: #f5f2eb; color: #1f2937; }
+        .grid-pattern {
+            background-image: linear-gradient(to right, rgba(19, 40, 26, 0.04) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(19, 40, 26, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-brandCream min-h-screen antialiased selection:bg-brandSage selection:text-brandDark">
+
+    <div class="sticky top-4 z-40 px-4 max-w-7xl mx-auto">
+        <header class="w-full bg-[#1b3b22]/95 backdrop-blur-md text-white py-3 px-4 md:px-8 rounded-3xl shadow-xl border border-white/10 flex items-center justify-between">
+          <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+            
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-white shadow-sm overflow-hidden flex items-center justify-center p-0.5">
+                  <img src="https://i.postimg.cc/tCh6WJ75/Captura-de-pantalla-2026-08-16-a-la(s)-6-38-43-p-m.png" onerror="this.src='https://placehold.co/100x100/13281a/ffffff?text=MAS'" alt="Logo Más Agua a la Sopa" class="w-full h-full object-cover rounded-full">
+              </div>
+              <span class="font-bold tracking-wide font-handwriting text-brandYellow text-xl md:text-2xl">Más Agua a la Sopa</span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 text-xs md:text-sm font-medium tracking-wider">
+              <a href="#campana" class="hover:text-brandYellow transition uppercase">CAMPAÑA</a>
+              <a href="#pasos" class="hover:text-brandYellow transition uppercase">CÓMO PARTICIPAR</a>
+              <a href="#sorteo" class="hover:text-brandYellow transition uppercase">PARRILLA</a>
+              <a href="#ganadores" class="hover:text-brandYellow transition uppercase">GANADORES</a>
+            </nav>
+
+            <div class="flex items-center gap-2 md:gap-3">
+              <a href="#sorteo" class="bg-brandYellow text-stone-900 font-semibold text-xs md:text-sm px-4 py-2 rounded-full shadow-sm hover:opacity-90 transition">
+                DONAR BOLETA
+              </a>
+              <button onclick="promptAdminPassword()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-white border border-white/10 flex items-center justify-center" title="Panel Administrador">
+                ⚙️
+              </button>
+            </div>
+
+          </div>
+        </header>
+    </div>
+
+    <!-- Admin Password Modal -->
+    <div id="admin-password-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden border border-stone-200">
+            <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
+                <h3 class="font-serif text-xl font-bold">Acceso Administrador</h3>
+                <button onclick="closeAdminPasswordModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">✕</button>
+            </div>
+            <form onsubmit="verifyAdminPassword(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Contraseña</label>
+                    <input type="password" id="admin-pass-input" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Introduce la contraseña">
+                </div>
+                <div class="flex space-x-2 pt-2">
+                    <button type="button" onclick="closeAdminPasswordModal()" class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium py-2.5 px-4 rounded-xl text-xs transition">Cancelar</button>
+                    <button type="submit" class="flex-1 bg-brandDark hover:bg-emerald-900 text-white font-semibold py-2.5 px-4 rounded-xl text-xs shadow-md transition">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-16">
+        
+        <!-- Hero Editorial Banner -->
+        <section class="relative bg-brandDark text-white rounded-3xl overflow-hidden shadow-2xl p-6 md:p-12 border border-stone-800">
+            <div class="absolute -right-24 -top-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                <div class="lg:col-span-12 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-white/10 text-brandYellow text-xs font-semibold px-4 py-1.5 rounded-full border border-white/10 uppercase tracking-widest">
+                        <span class="w-2 h-2 rounded-full bg-brandYellow animate-ping"></span>
+                        <span>Sorteo Solidario • Todos los Viernes (App Aleatoria)</span>
+                    </div>
+
+                    <h1 class="text-3xl md:text-5xl font-serif font-bold tracking-tight leading-tight">
+                        ¡Ayudemos todos a <span class="font-handwriting text-brandYellow text-4xl md:text-6xl font-normal">reactivar la economía</span> de Manizales!
+                    </h1>
+
+                    <div class="space-y-4 text-stone-300 text-sm md:text-base font-light leading-relaxed">
+                        <p>“Más agua a la sopa” es una iniciativa que une a una red de contactos en Bogotá para apoyar a reactivar la economía de la ciudad a través del sector gastronómico de Manizales.</p>
+                        <p>Participando cada semana, <strong>escogeremos entre los 100 números un ganador cada semana</strong>, dándote la posibilidad de ganarte un bono para un restaurante específico que podrás redimir en cualquier momento por las próximas semanas.</p>
+                        <p>Para el próximo sorteo (28 de Agosto 2026), se entregará un bono de 300 mil pesos para un almuerzo o cena en el restaurante <strong>Salvo Patria</strong>. Los fondos recolectados en esta primera entrega serán entregados a <strong>La Patatería</strong> en Manizales.</p>
+                        <p>¡Los sorteos se realizan <strong>todos los viernes mediante una aplicación aleatoria en vivo</strong> que será grabada como prueba para los participantes!</p>
+                        <p class="font-semibold text-white pt-2">Adquiere tu boleta de donación por solo <span class="text-brandYellow underline">$30.000 COP</span>.</p>
+                        <p class="font-handwriting text-2xl text-brandYellow pt-2">¡Gracias por participar y ayudar a nuestra querida Manizales!</p>
+                        <p class="text-xs uppercase tracking-widest text-stone-400 font-bold pt-1">Dea Salazar, Pau Arias, Valen Hoyos.</p>
+                    </div>
+
+                    <!-- Progress Status Card -->
+                    <div class="bg-white/10 border border-white/20 p-5 rounded-2xl backdrop-blur-md space-y-3 max-w-xl">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="uppercase tracking-widest text-brandYellow font-bold">Meta Recaudo ($3.000.000 COP)</span>
+                            <span id="stat-percent-text" class="font-bold text-white">0%</span>
+                        </div>
+                        <div class="w-full bg-black/40 rounded-full h-2.5 p-0.5 border border-white/10">
+                            <div id="progress-bar" class="bg-gradient-to-r from-brandYellow to-emerald-400 h-1.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+                        <div class="flex justify-between text-[11px] text-stone-300">
+                            <span id="stat-sold-text">0 vendidos / 0 en validación</span>
+                            <span class="text-brandYellow font-bold">100 Boletas (00 al 99)</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <div class="bg-white/5 border border-white/10 px-4 py-2.5 rounded-2xl backdrop-blur-sm text-xs">
+                            <span class="block text-[9px] uppercase text-stone-400 font-bold">Metodología</span>
+                            <span class="font-medium">Sorteo aleatorio cada viernes</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 px-4 py-2.5 rounded-2xl backdrop-blur-sm text-xs">
+                            <span class="block text-[9px] uppercase text-stone-400 font-bold">Cuenta Oficial Nu</span>
+                            <span class="font-medium">Llave Nu: @SAL610</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ribbon -->
+        <div class="bg-brandYellow text-stone-800 py-3 px-4 rounded-2xl font-serif italic text-xs sm:text-sm flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center font-medium shadow-sm">
+            <span>✨ Escogeremos entre los 100 números un ganador cada semana</span>
+            <span class="hidden sm:inline">•</span>
+            <span>🍲 Cenas Especiales Semanales</span>
+            <span class="hidden sm:inline">•</span>
+            <span>🤝 Manizales Solidaria</span>
+            <span class="hidden sm:inline">•</span>
+            <span>🇨🇴 $30.000 COP por boleta</span>
+        </div>
+
+        <section id="campana" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200 space-y-6">
+            <div class="text-center max-w-xl mx-auto space-y-2">
+                <span class="bg-emerald-100 text-brandDark text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Instagram Reel</span>
+                <h3 class="text-3xl font-serif font-bold text-stone-900">Conoce LA PATATERIA</h3>
+                <p class="text-stone-600 text-xs">Mira el video de la iniciativa y conéctate con su historia en Instagram.</p>
+            </div>
+            
+            <div class="rounded-3xl overflow-hidden border-2 border-stone-200 shadow-xl bg-brandDark text-white max-w-lg mx-auto p-8 text-center space-y-6 relative">
+                <div class="absolute -right-12 -top-12 w-48 h-48 bg-pink-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <div class="w-16 h-16 bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 rounded-2xl mx-auto flex items-center justify-center shadow-lg text-white font-bold text-2xl">
+                    📸
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="font-serif text-xl font-bold">Ver Reel en Instagram</h4>
+                    <p class="text-stone-300 text-xs">Haz clic abajo para abrir directamente el video oficial de la campaña en Instagram.</p>
+                </div>
+
+                <a href="https://www.instagram.com/reel/Db8wq5ogVIy/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 hover:opacity-95 text-white font-semibold py-3 px-8 rounded-full text-xs uppercase tracking-wider transition shadow-lg w-full">
+                    <span>Abrir en Instagram</span>
+                    <span>↗</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Paso a paso -->
+        <section id="pasos" class="bg-brandCardBg border border-stone-200 rounded-3xl p-6 md:p-12 grid-pattern space-y-10">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="bg-stone-900 text-brandYellow text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Paso a Paso</span>
+                <h3 class="text-3xl md:text-4xl font-serif font-bold text-stone-900">¿Cómo participar en la campaña?</h3>
+                <p class="text-stone-600 text-sm">Sigue estos sencillos pasos para adquirir tu boleta y apoyar el talento local.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">1</div>
+                    <h4 class="font-serif text-lg font-bold text-stone-900">Selecciona tu Número</h4>
+                    <p class="text-stone-600 text-xs leading-relaxed">Elige tu número de la suerte (00 al 99) en la parrilla interactiva que encuentras a continuación.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">2</div>
+                    <h4 class="font-serif text-lg font-bold text-stone-900">Transfiere $30.000</h4>
+                    <p class="text-stone-600 text-xs leading-relaxed">Haz tu pago a nuestra cuenta oficial Nu <strong>@SAL610</strong>.</p>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center">
+                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">3</div>
+                    <h4 class="font-serif text-lg font-bold text-stone-900">Sube tu Comprobante</h4>
+                    <p class="text-stone-600 text-xs leading-relaxed">Diligencia tus datos (nombre, cédula, correo, teléfono), acepta los términos y adjunta el comprobante.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sorteo" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center pb-6 border-b border-stone-100 gap-4">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-brandGreen">Elige tu número de la suerte</span>
+                    <h2 class="text-3xl font-serif font-bold text-stone-900 mt-1">Parrilla de Boletas (00 al 99)</h2>
+                    <p class="text-xs text-stone-500 mt-0.5">Haz clic en un número verde disponible para apartarlo.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3.5 h-3.5 rounded-lg bg-emerald-100 border-2 border-emerald-500 inline-block"></span>
+                        <span class="text-stone-700">Disponible</span>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3.5 h-3.5 rounded-lg bg-amber-100 border-2 border-amber-500 inline-block"></span>
+                        <span class="text-stone-700">En Validación</span>
+                    </div>
+                    <div class="flex items-center space-x-1.5">
+                        <span class="w-3.5 h-3.5 rounded-lg bg-rose-100 border-2 border-rose-500 inline-block"></span>
+                        <span class="text-stone-700">Vendido</span>
+                    </div>
+                    <button onclick="fetchTicketsFromCloud()" class="ml-2 px-3 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg text-stone-600 text-xs flex items-center gap-1 transition">
+                        🔄 Actualizar
+                    </button>
+                </div>
+            </div>
+
+            <div id="tickets-grid" class="grid grid-cols-5 sm:grid-cols-10 gap-2.5 min-h-[300px] items-center justify-center">
+                <!-- Injected via JavaScript -->
+            </div>
+        </section>
+
+        <section id="ganadores" class="bg-brandDark text-white rounded-3xl p-6 md:p-10 shadow-xl border border-stone-800 space-y-6 relative overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-brandYellow/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-white/10">
+                <div class="space-y-1">
+                    <div class="inline-flex items-center space-x-2 bg-brandYellow/20 text-brandYellow text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider">
+                        <span>🏆</span>
+                        <span>Resultados Semanales</span>
+                    </div>
+                    <h3 class="text-2xl md:text-3xl font-serif font-bold text-white">Ganador de Cada Semana</h3>
+                    <p class="text-stone-300 text-xs md:text-sm">Publicamos aquí el número y nombre del afortunado tras cada sorteo de los viernes.</p>
+                </div>
+                <div class="text-right">
+                    <span class="text-[11px] text-stone-400 uppercase tracking-widest block font-semibold">Frecuencia</span>
+                    <span class="text-brandYellow font-serif font-bold text-sm">Cada Viernes en Vivo</span>
+                </div>
+            </div>
+
+            <div id="winners-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white/10 border border-white/20 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm">
+                    <div class="space-y-1">
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-brandYellow bg-brandYellow/10 px-2 py-0.5 rounded">Semana 1 • Próximo sorteo 28 de Agosto 2026</span>
+                        <h4 class="font-serif text-lg font-bold text-white">Bono Salvo Patria ($300.000)</h4>
+                        <p class="text-xs text-stone-300">Ganador: <span class="font-semibold text-white">Por definir (Sorteo 28 de Agosto)</span></p>
+                    </div>
+                    <div class="text-center bg-black/30 border border-white/10 px-4 py-3 rounded-xl min-w-[70px]">
+                        <span class="block text-[9px] uppercase text-stone-400 font-bold">N° Ganador</span>
+                        <span class="font-handwriting text-3xl font-bold text-brandYellow">--</span>
+                    </div>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm opacity-75">
+                    <div class="space-y-1">
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-stone-400 bg-white/5 px-2 py-0.5 rounded">Semana 2 • Próximamente</span>
+                        <h4 class="font-serif text-lg font-bold text-stone-200">Próximo Restaurante Aliado</h4>
+                        <p class="text-xs text-stone-400">Ganador: <span class="font-semibold text-stone-300">Pendiente de apertura</span></p>
+                    </div>
+                    <div class="text-center bg-black/20 border border-white/5 px-4 py-3 rounded-xl min-w-[70px]">
+                        <span class="block text-[9px] uppercase text-stone-500 font-bold">N° Ganador</span>
+                        <span class="font-handwriting text-3xl font-bold text-stone-500">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-brandDark text-white pt-16 pb-12 mt-20 border-t border-stone-800">
+        <div class="max-w-6xl mx-auto px-6 space-y-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-12 border-b border-white/10">
+                <div class="space-y-2">
+                    <div class="text-xs uppercase tracking-widest text-brandYellow font-bold">Más agua a la sopa</div>
+                    <div class="text-sm text-stone-300">Manizales, Caldas — Colombia</div>
+                    <div class="text-xs text-stone-400 space-y-1 pt-2">
+                        <p><strong>Andrea Salazar:</strong> +57 313 7977977 (@deasalazar)</p>
+                        <p><strong>Valentina Hoyos:</strong> +57 304 5902626 (@valentinahoyos)</p>
+                        <p><strong>Paula Arias:</strong> +57 320 4185738 (@pawarias)</p>
+                    </div>
+                </div>
+                <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl backdrop-blur-sm text-right">
+                    <div class="text-[10px] uppercase text-stone-400 font-bold">Cuenta Oficial Nu</div>
+                    <div class="font-handwriting text-3xl font-bold text-brandYellow">@SAL610</div>
+                </div>
+            </div>
+
+            <div class="text-center overflow-hidden py-4">
+                <h2 class="font-retro text-[4vw] md:text-[3vw] font-extrabold tracking-tight text-white/90 uppercase leading-none select-none">
+                    #juntosnoslevantamos #necesitovender
+                </h2>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Booking Modal -->
+    <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-stone-200 max-h-[90vh] flex flex-col">
+            <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center shrink-0">
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-brandYellow font-bold">Apartar Número</span>
+                    <h3 class="font-serif text-2xl font-bold">Boleta N° <span id="modal-ticket-num" class="bg-white/20 px-2 py-0.5 rounded text-white font-mono"></span></h3>
+                </div>
+                <button onclick="closeBookingModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">✕</button>
+            </div>
+            
+            <form id="booking-form" onsubmit="submitBooking(event)" class="p-6 space-y-4 overflow-y-auto">
+                <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-100 text-xs text-stone-700 space-y-1">
+                    <p class="font-bold text-brandDark text-sm">Instrucciones de Pago ($30.000 COP)</p>
+                    <p>Realiza tu transferencia a la cuenta Nu <strong>@SAL610</strong> y sube el comprobante.</p>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Nombre Completo *</label>
+                    <input type="text" id="buyer-name" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm bg-stone-50/50" placeholder="Ej. Sofía Restrepo">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Cédula *</label>
+                        <input type="text" id="buyer-cedula" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm bg-stone-50/50" placeholder="Ej. 1053829100">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">WhatsApp *</label>
+                        <input type="tel" id="buyer-phone" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm bg-stone-50/50" placeholder="Ej. 300 123 4567">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Correo Electrónico *</label>
+                    <input type="email" id="buyer-email" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm bg-stone-50/50" placeholder="Ej. sofia@ejemplo.com">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Comprobante de Pago *</label>
+                    <input type="file" id="buyer-receipt" accept="image/*" required class="w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brandSage file:text-brandDark cursor-pointer border border-stone-200 rounded-xl">
+                </div>
+
+                <!-- Terms and Conditions Checkbox -->
+                <div class="pt-1">
+                    <div class="flex items-start space-x-3 bg-stone-50 p-3 rounded-xl border border-stone-200">
+                        <input type="checkbox" id="accept-terms" required class="mt-0.5 w-4 h-4 text-brandDark rounded border-stone-300 focus:ring-brandDark cursor-pointer">
+                        <label for="accept-terms" class="text-xs text-stone-600 select-none leading-relaxed">
+                            Acepto los <button type="button" onclick="openTermsModal(event)" class="text-brandGreen underline font-semibold hover:text-brandDark">Términos, Condiciones y Políticas de Tratamiento de Datos</button> de la campaña solidaria. *
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex space-x-3 pt-2">
+                    <button type="button" onclick="closeBookingModal()" class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium py-3 px-4 rounded-xl text-sm transition">Cancelar</button>
+                    <button type="submit" id="submit-btn" class="flex-1 bg-brandDark hover:bg-emerald-900 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow-md transition">Confirmar y Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Terms and Conditions Modal -->
+    <div id="terms-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeTermsModal()">
+        <div class="bg-white rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl max-h-[85vh] flex flex-col" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center border-b border-stone-100 pb-3">
+                <h4 class="font-serif font-bold text-xl text-brandDark">Términos y Condiciones</h4>
+                <button onclick="closeTermsModal()" class="text-stone-400 hover:text-stone-700 p-1 rounded-full">✕</button>
+            </div>
+            
+            <div class="overflow-y-auto space-y-3 text-xs text-stone-600 leading-relaxed pr-1">
+                <p><strong>1. Objeto de la Campaña:</strong> La campaña "Más Agua a la Sopa" es una iniciativa solidaria sin ánimo de lucro, para apoyar al sector gastronómico en Manizales, Caldas, afectado por situaciones recientes.</p>
+                <p><strong>2. Mecánica del Sorteo:</strong> Cada boleta tiene un costo de $30.000 COP y otorga un número único en la parrilla (00 al 99). Mediante este sistema <strong>escogeremos entre los 100 números un ganador cada semana</strong>, definiéndose <strong>todos los viernes mediante un sorteo en vivo a través de una aplicación aleatoria</strong> certificada.</p>
+                <p><strong>3. Validación de Pagos:</strong> Todo número apartado requiere obligatoriamente la transferencia a la cuenta oficial Nu <strong>@SAL610</strong> y la carga del comprobante de pago válido. La organización se reserva el derecho de verificar y aprobar las transacciones antes de confirmar definitivamente la asignación del número.</p>
+                <p><strong>4. Tratamiento de Datos Personales (Habeas Data):</strong> Al registrar sus datos (Nombre, Cédula, Correo, Teléfono), el participante autoriza a los organizadores de "Más Agua a la Sopa" a almacenar y utilizar dicha información exclusivamente para la gestión del sorteo, validación de pagos, notificación de ganadores y propósitos informativos de la campaña.</p>
+                <p><strong>5. Premio:</strong> El premio consiste en un bono para una cena para dos personas en Salvo Patria (Bogotá), el cual será entregado al titular del número ganador previa presentación de su documento de identidad.</p>
+            </div>
+
+            <div class="pt-2 border-t border-stone-100 flex justify-end">
+                <button onclick="closeTermsModal()" class="bg-brandDark text-white px-5 py-2.5 rounded-xl text-xs font-semibold shadow-sm transition">Entendido</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Management Modal -->
+    <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-stone-200">
+            <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
+                <h3 class="font-serif text-2xl font-bold">Panel de Control (Google Sheets en Vivo)</h3>
+                <button onclick="toggleAdminModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">✕</button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto space-y-6 flex-1 bg-stone-50/50">
+                <div class="flex justify-between items-center bg-white p-6 rounded-2xl border border-stone-200">
+                    <div>
+                        <h4 class="font-bold text-stone-800 text-sm">Recaudo Total Actual</h4>
+                        <p class="text-xs text-stone-500">Suma de boletas confirmadas ($30.000 COP c/u)</p>
+                    </div>
+                    <div class="text-right">
+                        <div id="admin-total-money" class="font-serif text-3xl font-bold text-brandDark">$0 COP</div>
+                        <div id="admin-total-count" class="text-xs font-semibold text-emerald-600">0 boletas confirmadas</div>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto border border-stone-200 rounded-2xl bg-white">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-stone-50 text-stone-700 uppercase tracking-wider font-semibold border-b border-stone-200">
+                                <th class="p-3">N°</th>
+                                <th class="p-3">Participante</th>
+                                <th class="p-3">Cédula</th>
+                                <th class="p-3">Teléfono</th>
+                                <th class="p-3">Estado</th>
+                                <th class="p-3">Comprobante</th>
+                                <th class="p-3 text-right">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-table-body" class="divide-y divide-stone-100"></tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="bg-white px-6 py-4 border-t border-stone-200 flex justify-end">
+                <button onclick="toggleAdminModal()" class="bg-brandDark hover:bg-emerald-900 text-white font-medium px-5 py-2.5 rounded-xl text-xs transition">Cerrar Panel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Viewer Modal -->
+    <div id="receipt-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeReceiptModal()">
+        <div class="bg-white rounded-3xl p-5 max-w-md w-full text-center space-y-3 shadow-2xl" onclick="event.stopPropagation()">
+            <h4 class="font-serif font-bold text-2xl text-brandDark">Comprobante de Pago</h4>
+            <div id="receipt-img-container" class="bg-stone-100 rounded-2xl p-2 min-h-[250px] flex items-center justify-center overflow-hidden border border-stone-200">
+                <!-- Image goes here -->
+            </div>
+            <button onclick="closeReceiptModal()" class="w-full bg-brandDark text-white py-3 rounded-xl text-xs font-bold shadow-md transition">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-brandDark text-white px-5 py-3.5 rounded-2xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 flex items-center space-x-3 text-sm border border-emerald-800">
+        <span id="toast-icon">✨</span>
+        <span id="toast-message">Notificación</span>
+    </div>
+
+    <script>
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxncOoujJC0ou-sm7oidZfqOwCkw5r-_HBTVjJ4tZmB8H2tYQ0SA0dITqlE7uKrttIujA/exec';
+        const ADMIN_PASSWORD = 'masagua2026';
+        
+        let tickets = {};
+        let selectedTicketForBooking = null;
+
+        function initEmptyTickets() {
+            const initial = {};
+            for (let i = 0; i < 100; i++) {
+                const key = i < 10 ? `0${i}` : `${i}`;
+                initial[key] = {
+                    number: key,
+                    status: 'available',
+                    name: '',
+                    cedula: '',
+                    email: '',
+                    phone: '',
+                    receipt: ''
+                };
+            }
+            return initial;
+        }
+
+        async function fetchTicketsFromCloud() {
+            if (!tickets || Object.keys(tickets).length === 0) {
+                tickets = initEmptyTickets();
+                renderGrid();
+            }
+
+            try {
+                const res = await fetch(APPS_SCRIPT_URL);
+                if (!res.ok) throw new Error("HTTP error " + res.status);
+                const json = await res.json();
+                if (json.status === 'success' && json.data) {
+                    tickets = json.data;
+                    renderGrid();
+                }
+            } catch (err) {
+                console.warn("No se pudo obtener datos remotos, usando estado local/predeterminado:", err);
+            }
+        }
+
+        function renderGrid() {
+            const gridEl = document.getElementById('tickets-grid');
+            if (!gridEl) return;
+            gridEl.innerHTML = '';
+            
+            let soldCount = 0;
+            let pendingCount = 0;
+
+            for (let i = 0; i < 100; i++) {
+                const key = i < 10 ? `0${i}` : `${i}`;
+                const ticket = tickets[key] || { number: key, status: 'available' };
+                
+                if (ticket.status === 'sold') soldCount++;
+                if (ticket.status === 'pending') pendingCount++;
+
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 `;
+                
+                if (ticket.status === 'available') {
+                    btn.className += 'bg-emerald-50/70 border-emerald-300 text-brandDark hover:bg-emerald-100 hover:border-brandGreen';
+                    btn.onclick = () => openBookingModal(key);
+                } else if (ticket.status === 'pending') {
+                    btn.className += 'bg-amber-50 border-amber-300 text-amber-800 cursor-not-allowed';
+                    btn.onclick = () => showToast('Número en validación de comprobante.', '⏳');
+                } else if (ticket.status === 'sold') {
+                    btn.className += 'bg-rose-50 border-rose-300 text-rose-800 cursor-not-allowed';
+                    btn.onclick = () => showToast(`Boleta ${key} ya vendida.`, '🔒');
+                }
+
+                btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
+                gridEl.appendChild(btn);
+            }
+
+            const percentage = Math.min(100, Math.round((soldCount / 100) * 100));
+            const soldText = document.getElementById('stat-sold-text');
+            const percentText = document.getElementById('stat-percent-text');
+            const progressBar = document.getElementById('progress-bar');
+
+            if (soldText) soldText.innerText = `${soldCount} vendidos / ${pendingCount} en proceso`;
+            if (percentText) percentText.innerText = `${percentage}%`;
+            if (progressBar) progressBar.style.width = `${percentage}%`;
+        }
+
+        function openBookingModal(ticketNum) {
+            selectedTicketForBooking = ticketNum;
+            const modalNum = document.getElementById('modal-ticket-num');
+            if (modalNum) modalNum.innerText = ticketNum;
+            
+            const form = document.getElementById('booking-form');
+            if (form) form.reset();
+            
+            const modal = document.getElementById('booking-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            const modal = document.getElementById('booking-modal');
+            if (modal) modal.classList.add('hidden');
+            selectedTicketForBooking = null;
+        }
+
+        function compressImage(file, maxWidth = 800, maxHeight = 800, quality = 0.7) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (event) => {
+                    const img = new Image();
+                    img.src = event.target.result;
+                    img.onload = () => {
+                        let width = img.width;
+                        let height = img.height;
+                        if (width > maxWidth || height > maxHeight) {
+                            if (width > height) {
+                                height = Math.round((height * maxWidth) / width);
+                                width = maxWidth;
+                            } else {
+                                width = Math.round((width * maxHeight) / height);
+                                height = maxHeight;
+                            }
+                        }
+                        const canvas = document.createElement('canvas');
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+                        resolve(canvas.toDataURL('image/jpeg', quality));
+                    };
+                    img.onerror = (err) => reject(err);
+                };
+                reader.onerror = (err) => reject(err);
+            });
+        }
+
+        async function submitBooking(event) {
+            event.preventDefault();
+            const acceptTerms = document.getElementById('accept-terms');
+            if (acceptTerms && !acceptTerms.checked) {
+                showToast('Debes aceptar los términos y condiciones para continuar.', '⚠️');
+                return;
+            }
+
+            const name = document.getElementById('buyer-name').value.trim();
+            const cedula = document.getElementById('buyer-cedula').value.trim();
+            const email = document.getElementById('buyer-email').value.trim();
+            const phone = document.getElementById('buyer-phone').value.trim();
+            const receiptInput = document.getElementById('buyer-receipt');
+            const file = receiptInput && receiptInput.files ? receiptInput.files[0] : null;
+
+            if (!selectedTicketForBooking || !name || !cedula || !email || !phone || !file) {
+                showToast('Por favor completa todos los campos requeridos.', '⚠️');
+                return;
+            }
+
+            const submitBtn = document.getElementById('submit-btn');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerText = "Optimizando imagen...";
+            }
+
+            try {
+                // Compresión liviana de la imagen del comprobante
+                const compressedBase64 = await compressImage(file, 800, 800, 0.7);
+
+                if (submitBtn) {
+                    submitBtn.innerText = "Guardando en Google Sheets...";
+                }
+
+                // Actualización optimista de estado local
+                tickets[selectedTicketForBooking] = {
+                    number: selectedTicketForBooking,
+                    status: 'pending',
+                    name: name,
+                    cedula: cedula,
+                    email: email,
+                    phone: phone,
+                    receipt: compressedBase64
+                };
+                renderGrid();
+
+                const payload = {
+                    action: 'book',
+                    number: selectedTicketForBooking,
+                    name: name,
+                    cedula: cedula,
+                    email: email,
+                    phone: phone,
+                    receiptBase64: compressedBase64
+                };
+
+                const res = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                
+                const responseText = await res.text();
+                let result = {};
+                try {
+                    result = JSON.parse(responseText);
+                } catch(e) {
+                    result = { status: 'success' };
+                }
+
+                if (result.status === 'error') {
+                    showToast(result.message || 'Error al guardar.', '⚠️');
+                } else {
+                    showToast(`¡Boleta ${selectedTicketForBooking} reservada con éxito!`, '🎉');
+                    closeBookingModal();
+                    fetchTicketsFromCloud();
+                }
+
+            } catch (err) {
+                console.error("Error al enviar reserva:", err);
+                showToast('Boleta guardada localmente. Verificando estado.', '✅');
+                closeBookingModal();
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Confirmar y Enviar";
+                }
+            }
+        }
+
+        function openTermsModal(event) {
+            if (event) event.preventDefault();
+            const modal = document.getElementById('terms-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeTermsModal() {
+            const modal = document.getElementById('terms-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function promptAdminPassword() {
+            const passInput = document.getElementById('admin-pass-input');
+            if (passInput) passInput.value = '';
+            const modal = document.getElementById('admin-password-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeAdminPasswordModal() {
+            const modal = document.getElementById('admin-password-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function verifyAdminPassword(event) {
+            event.preventDefault();
+            const passInput = document.getElementById('admin-pass-input');
+            if (passInput && passInput.value === ADMIN_PASSWORD) {
+                closeAdminPasswordModal();
+                toggleAdminModal();
+                showToast('Acceso autorizado', '🔓');
+            } else {
+                showToast('Contraseña incorrecta', '❌');
+            }
+        }
+
+        function toggleAdminModal() {
+            const modal = document.getElementById('admin-modal');
+            if (!modal) return;
+            if (modal.classList.contains('hidden')) {
+                populateAdminTable();
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function populateAdminTable() {
+            const tbody = document.getElementById('admin-table-body');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+            
+            let totalMoney = 0;
+            let confirmedCount = 0;
+
+            for (let i = 0; i < 100; i++) {
+                const key = i < 10 ? `0${i}` : `${i}`;
+                const t = tickets[key] || { number: key, status: 'available' };
+
+                if (t.status === 'sold') {
+                    totalMoney += 30000;
+                    confirmedCount++;
+                }
+
+                const tr = document.createElement('tr');
+                let badgeClass = t.status === 'sold' ? 'bg-rose-100 text-rose-800' : (t.status === 'pending' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800');
+                let statusText = t.status === 'sold' ? 'Confirmado' : (t.status === 'pending' ? 'En Validación' : 'Disponible');
+
+                tr.innerHTML = `
+                    <td class="p-3 font-bold font-handwriting text-xl">${key}</td>
+                    <td class="p-3">${t.name || '---'}</td>
+                    <td class="p-3">${t.cedula || '---'}</td>
+                    <td class="p-3">${t.phone || '---'}</td>
+                    <td class="p-3"><span class="px-2.5 py-1 rounded-full font-semibold ${badgeClass}">${statusText}</span></td>
+                    <td class="p-3">${t.receipt ? `<button onclick="viewReceipt('${key}')" class="text-brandGreen underline font-bold hover:text-brandDark">Ver Archivo</button>` : '---'}</td>
+                    <td class="p-3 text-right space-x-2">
+                        ${t.status === 'pending' ? `<button onclick="updateStatusCloud('${key}', 'sold')" class="bg-brandDark hover:bg-emerald-900 text-white px-2.5 py-1.5 rounded-lg text-xs font-semibold">Aprobar</button>` : ''}
+                        ${t.status !== 'available' ? `<button onclick="updateStatusCloud('${key}', 'available')" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-2.5 py-1.5 rounded-lg text-xs font-semibold">Liberar</button>` : ''}
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            }
+
+            const moneyEl = document.getElementById('admin-total-money');
+            const countEl = document.getElementById('admin-total-count');
+            if (moneyEl) moneyEl.innerText = `$${totalMoney.toLocaleString('es-CO')} COP`;
+            if (countEl) countEl.innerText = `${confirmedCount} confirmadas`;
+        }
+
+        async function updateStatusCloud(key, status) {
+            try {
+                // Optimistic local update
+                if (status === 'available') {
+                    tickets[key] = { number: key, status: 'available', name: '', cedula: '', email: '', phone: '', receipt: '' };
+                } else {
+                    if (tickets[key]) tickets[key].status = status;
+                }
+                renderGrid();
+                populateAdminTable();
+
+                const res = await fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
+                    body: JSON.stringify({ action: 'updateStatus', number: key, status: status })
+                });
+                
+                showToast(`Boleta ${key} actualizada.`, '✅');
+                fetchTicketsFromCloud();
+            } catch (err) {
+                console.error("Error al actualizar estado en la nube:", err);
+                showToast('Estado actualizado.', '✅');
+            }
+        }
+
+        function viewReceipt(key) {
+            const t = tickets[key];
+            if (!t || !t.receipt) return;
+            const container = document.getElementById('receipt-img-container');
+            if (container) {
+                if (t.receipt.startsWith('http')) {
+                    container.innerHTML = `<a href="${t.receipt}" target="_blank" rel="noopener noreferrer" class="text-brandGreen underline font-bold break-all p-4 inline-block">${t.receipt}</a>`;
+                } else {
+                    container.innerHTML = `<img src="${t.receipt}" alt="Comprobante ${key}" class="max-h-[350px] mx-auto rounded-2xl shadow-md object-contain">`;
+                }
+            }
+            const modal = document.getElementById('receipt-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeReceiptModal() {
+            const modal = document.getElementById('receipt-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function showToast(message, icon = '✨') {
+            const toast = document.getElementById('toast');
+            if (!toast) return;
+            const msgEl = document.getElementById('toast-message');
+            const iconEl = document.getElementById('toast-icon');
+            if (msgEl) msgEl.innerText = message;
+            if (iconEl) iconEl.innerText = icon;
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3500);
+        }
+
+        window.onload = function() {
+            tickets = initEmptyTickets();
+            renderGrid();
+            fetchTicketsFromCloud();
+        };
+    </script>
+</body>
+</html>
