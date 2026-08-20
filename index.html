@@ -40,7 +40,6 @@
                               linear-gradient(to bottom, rgba(19, 40, 26, 0.04) 1px, transparent 1px);
             background-size: 32px 32px;
         }
-        /* Custom scrollbar for webkit */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #ece6da; }
         ::-webkit-scrollbar-thumb { background: #1b3b22; border-radius: 9999px; }
@@ -77,7 +76,6 @@
                     <button onclick="promptAdminPassword()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-white border border-white/10 flex items-center justify-center" title="Panel Administrador">
                         ⚙️
                     </button>
-                    <!-- Mobile Menu Button -->
                     <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-full bg-white/10 hover:bg-white/20 transition text-white border border-white/10 flex items-center justify-center">
                         ☰
                     </button>
@@ -122,7 +120,7 @@
                             La mecánica consiste en <strong>escoger entre los 100 números un ganador cada semana</strong>, dándote la posibilidad de ganarte un bono para un restaurante específico que podrás redimir en cualquier momento por las próximas semanas.
                         </p>
                         <p>
-                            Para el próximo sorteo (28 de Agosto 2026), se entregará un bono del restaurante <strong>Salvo Patria (Bogotá)</strong>. Los fondos recolectados en esta primera entrega serán donados a <strong>La Patatería</strong> en Manizales. (Abajo vas a encontrar el enlace a sus redes para que conozcas su historia, su oferta y sepas un poco más sobre ellos).
+                            Para el próximo sorteo (28 de Agosto 2026), se entregará un bono del restaurante <strong>Salvo Patria (Bogotá)</strong>. Los fondos recolectados en esta primera entrega serán donados a <strong>La Patatería</strong> en Manizales.
                         </p>
                         <p>
                             ¡Los sorteos se realizan <strong>todos los viernes mediante una aplicación aleatoria en vivo</strong> que será grabada como prueba para los participantes!
@@ -173,17 +171,6 @@
             </div>
         </section>
 
-        <!-- Marquee Ribbon -->
-        <div class="bg-brandYellow text-stone-800 py-3.5 px-4 rounded-2xl font-serif italic text-xs sm:text-sm flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center font-medium shadow-sm border border-yellow-300">
-            <span>✨ Escogeremos entre los 100 números un ganador cada semana</span>
-            <span class="hidden sm:inline">•</span>
-            <span>🍲 Cenas Especiales Semanales</span>
-            <span class="hidden sm:inline">•</span>
-            <span>🤝 Manizales Solidaria</span>
-            <span class="hidden sm:inline">•</span>
-            <span>🇨🇴 $30.000 COP por boleta</span>
-        </div>
-
         <!-- Instagram Reel Section -->
         <section id="campana" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-stone-200 space-y-6">
             <div class="text-center max-w-xl mx-auto space-y-2">
@@ -201,40 +188,13 @@
 
                 <div class="space-y-2">
                     <h4 class="font-serif text-xl font-bold">Ver Reel Oficial en Instagram</h4>
-                    <p class="text-stone-300 text-xs leading-relaxed">Haz clic abajo para abrir directamente el video oficial de la campaña en la app o web de Instagram.</p>
+                    <p class="text-stone-300 text-xs leading-relaxed">Haz clic abajo para abrir directamente el video oficial de la campaña en Instagram.</p>
                 </div>
 
                 <a href="https://www.instagram.com/reel/Db8wq5ogVIy/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-2 bg-gradient-to-r from-amber-500 via-rose-500 to-purple-600 hover:opacity-95 text-white font-semibold py-3 px-8 rounded-full text-xs uppercase tracking-wider transition shadow-lg w-full">
                     <span>Abrir en Instagram</span>
                     <span>↗</span>
                 </a>
-            </div>
-        </section>
-
-        <!-- Paso a Paso -->
-        <section id="pasos" class="bg-brandCardBg border border-stone-200 rounded-3xl p-6 md:p-12 grid-pattern space-y-10">
-            <div class="text-center max-w-2xl mx-auto space-y-2">
-                <span class="bg-stone-900 text-brandYellow text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Paso a Paso</span>
-                <h3 class="text-3xl md:text-4xl font-serif font-bold text-stone-900">¿Cómo participar en la campaña?</h3>
-                <p class="text-stone-600 text-sm">Sigue estos sencillos pasos para adquirir tu boleta y apoyar el talento local.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">1</div>
-                    <h4 class="font-serif text-lg font-bold text-stone-900">1. Selecciona tu Número</h4>
-                    <p class="text-stone-600 text-xs leading-relaxed">Elige tu número de la suerte (00 al 99) en la parrilla interactiva que encuentras a continuación.</p>
-                </div>
-                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">2</div>
-                    <h4 class="font-serif text-lg font-bold text-stone-900">2. Transfiere $30.000</h4>
-                    <p class="text-stone-600 text-xs leading-relaxed">Haz tu pago a nuestra cuenta oficial Nu <strong>@SAL610</strong> por transferencia bancaria.</p>
-                </div>
-                <div class="bg-white p-6 rounded-3xl border border-stone-200 shadow-sm space-y-3 text-center hover:shadow-md transition">
-                    <div class="w-12 h-12 bg-emerald-50 text-brandGreen rounded-2xl flex items-center justify-center mx-auto text-xl font-bold font-retro">3</div>
-                    <h4 class="font-serif text-lg font-bold text-stone-900">3. Registra y Confirma</h4>
-                    <p class="text-stone-600 text-xs leading-relaxed">Diligencia tus datos (nombre, cédula, correo, teléfono), acepta los términos y envía tu comprobante.</p>
-                </div>
             </div>
         </section>
 
@@ -263,7 +223,7 @@
                 </div>
             </div>
 
-            <!-- Grid Controls: Filter and Quick Search -->
+            <!-- Grid Controls -->
             <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-stone-50 p-3 rounded-2xl border border-stone-200">
                 <div class="flex items-center space-x-2">
                     <input type="text" id="ticket-search" oninput="filterGrid()" placeholder="Buscar número (ej. 07)..." class="px-3.5 py-2 rounded-xl border border-stone-300 text-xs focus:ring-2 focus:ring-brandDark focus:outline-none bg-white w-full sm:w-48">
@@ -279,15 +239,14 @@
                 </div>
             </div>
 
+            <!-- Div del Grid interactivo de tickets -->
             <div id="tickets-grid" class="grid grid-cols-5 sm:grid-cols-10 gap-2.5 pt-2">
-                <!-- Injected via JavaScript -->
+                <!-- Se inyecta dinámicamente mediante JavaScript -->
             </div>
         </section>
 
-        <!-- Recuadro: Ganador de Cada Semana -->
+        <!-- Recuadro: Ganadores -->
         <section id="ganadores" class="bg-brandDark text-white rounded-3xl p-6 md:p-10 shadow-xl border border-stone-800 space-y-6 relative overflow-hidden">
-            <div class="absolute -right-16 -top-16 w-64 h-64 bg-brandYellow/10 rounded-full blur-3xl pointer-events-none"></div>
-
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pb-6 border-b border-white/10">
                 <div class="space-y-1">
                     <div class="inline-flex items-center space-x-2 bg-brandYellow/20 text-brandYellow text-xs font-bold px-3.5 py-1 rounded-full uppercase tracking-wider">
@@ -295,39 +254,19 @@
                         <span>Resultados Semanales</span>
                     </div>
                     <h3 class="text-2xl md:text-3xl font-serif font-bold text-white">Ganador de Cada Semana</h3>
-                    <p class="text-stone-300 text-xs md:text-sm">Publicamos aquí el número y nombre del afortunado tras cada sorteo de los viernes.</p>
-                </div>
-                <div class="text-right">
-                    <span class="text-[11px] text-stone-400 uppercase tracking-widest block font-semibold">Frecuencia</span>
-                    <span class="text-brandYellow font-serif font-bold text-sm">Cada Viernes en Vivo</span>
                 </div>
             </div>
 
-            <!-- Listado de Ganadores -->
             <div id="winners-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Tarjeta Semana Activa -->
-                <div class="bg-white/10 border border-white/20 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm hover:border-brandYellow/50 transition">
+                <div class="bg-white/10 border border-white/20 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm">
                     <div class="space-y-1">
-                        <span class="text-[10px] uppercase tracking-wider font-bold text-brandYellow bg-brandYellow/10 px-2 py-0.5 rounded">Semana 1 • Sorteo 28 de Agosto 2026</span>
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-brandYellow bg-brandYellow/10 px-2 py-0.5 rounded">Semana 1 • 28 de Agosto 2026</span>
                         <h4 class="font-serif text-lg font-bold text-white">Bono Salvo Patria ($300.000)</h4>
-                        <p class="text-xs text-stone-300">Ganador: <span class="font-semibold text-white">Por definir (Sorteo en Vivo)</span></p>
+                        <p class="text-xs text-stone-300">Ganador: <span class="font-semibold text-white">Por definir</span></p>
                     </div>
-                    <div class="text-center bg-black/30 border border-white/10 px-4 py-3 rounded-xl min-w-[70px]">
+                    <div class="text-center bg-black/30 border border-white/10 px-4 py-3 rounded-xl">
                         <span class="block text-[9px] uppercase text-stone-400 font-bold">N° Ganador</span>
                         <span class="font-handwriting text-3xl font-bold text-brandYellow">--</span>
-                    </div>
-                </div>
-
-                <!-- Tarjeta Próxima Semana -->
-                <div class="bg-white/5 border border-white/10 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm opacity-75">
-                    <div class="space-y-1">
-                        <span class="text-[10px] uppercase tracking-wider font-bold text-stone-400 bg-white/5 px-2 py-0.5 rounded">Semana 2 • Próximamente</span>
-                        <h4 class="font-serif text-lg font-bold text-stone-200">Próximo Restaurante Aliado</h4>
-                        <p class="text-xs text-stone-400">Ganador: <span class="font-semibold text-stone-300">Pendiente de apertura</span></p>
-                    </div>
-                    <div class="text-center bg-black/20 border border-white/5 px-4 py-3 rounded-xl min-w-[70px]">
-                        <span class="block text-[9px] uppercase text-stone-500 font-bold">N° Ganador</span>
-                        <span class="font-handwriting text-3xl font-bold text-stone-500">--</span>
                     </div>
                 </div>
             </div>
@@ -335,219 +274,45 @@
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-brandDark text-white pt-12 pb-10 border-t border-stone-800 w-full mt-12">
-        <div class="max-w-6xl mx-auto px-6 space-y-10">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-10 border-b border-white/10">
-                <div class="space-y-2">
-                    <div class="text-xs uppercase tracking-widest text-brandYellow font-bold">Más agua a la sopa</div>
-                    <div class="text-sm text-stone-300">Manizales, Caldas — Colombia</div>
-                    <div class="text-xs text-stone-400 space-y-1 pt-2">
-                        <p><strong>Andrea Salazar:</strong> +57 313 7977977 (@deasalazar)</p>
-                        <p><strong>Valentina Hoyos:</strong> +57 304 5902626 (@valentinahoyos)</p>
-                        <p><strong>Paula Arias:</strong> +57 320 4185738 (@pawarias)</p>
-                    </div>
-                </div>
-                <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl backdrop-blur-sm text-right">
-                    <div class="text-[10px] uppercase text-stone-400 font-bold">Cuenta Oficial Nu</div>
-                    <div class="font-handwriting text-3xl font-bold text-brandYellow">@SAL610</div>
-                    <button onclick="copyNuKey()" class="mt-1 text-[11px] text-stone-300 hover:text-white underline">Copiar Llave Nu</button>
-                </div>
-            </div>
-
-            <div class="text-center overflow-hidden py-2">
-                <h2 class="font-retro text-[5vw] md:text-[3vw] font-extrabold tracking-tight text-white/80 uppercase leading-none select-none">
-                    #juntosnoslevantamos #necesitovender
-                </h2>
-            </div>
-        </div>
-    </footer>
-
     <!-- Booking Modal -->
     <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-stone-200 max-h-[90vh] flex flex-col">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center shrink-0">
                 <div>
                     <span class="text-[10px] uppercase tracking-widest text-brandYellow font-bold">Apartar Número</span>
-                    <h3 class="font-serif text-2xl font-bold">Boleta N° <span id="modal-ticket-num" class="bg-white/20 px-2 py-0.5 rounded text-white font-mono"></span></h3>
+                    <h3 class="font-serif text-2xl font-bold">Boleta N° <span id="modal-ticket-num" class="bg-white/20 px-2 py-0.5 rounded font-mono"></span></h3>
                 </div>
-                <button onclick="closeBookingModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">
-                    ✕
-                </button>
+                <button onclick="closeBookingModal()" class="text-stone-300 hover:text-white p-1 rounded-full">✕</button>
             </div>
             
             <form id="booking-form" onsubmit="submitBooking(event)" class="p-6 space-y-4 overflow-y-auto">
-                <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-100 text-xs text-stone-700 space-y-2">
-                    <p class="font-bold text-brandDark text-sm">Instrucciones de Pago ($30.000 COP)</p>
-                    <p>Realiza tu transferencia a la cuenta Nu <strong>@SAL610</strong> y luego completa este formulario.</p>
-                    <div class="pt-1 flex items-center gap-2">
-                        <button type="button" onclick="copyNuKey()" class="bg-brandDark text-brandYellow px-3 py-1.5 rounded-lg font-semibold text-[11px] hover:bg-emerald-900 transition flex items-center gap-1">
-                            📋 Copiar Llave Nu
-                        </button>
-                    </div>
-                </div>
-
                 <div>
                     <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Nombre Completo *</label>
-                    <input type="text" id="buyer-name" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. Sofía Restrepo">
+                    <input type="text" id="buyer-name" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm bg-stone-50/50" placeholder="Ej. Sofía Restrepo">
                 </div>
-
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Cédula / Documento *</label>
-                        <input type="text" id="buyer-cedula" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. 1053829100">
+                        <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Cédula *</label>
+                        <input type="text" id="buyer-cedula" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm bg-stone-50/50" placeholder="Ej. 1053829100">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Teléfono / WhatsApp *</label>
-                        <input type="tel" id="buyer-phone" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. 300 123 4567">
+                        <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Teléfono *</label>
+                        <input type="tel" id="buyer-phone" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm bg-stone-50/50" placeholder="Ej. 300 123 4567">
                     </div>
                 </div>
-
                 <div>
                     <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Correo Electrónico *</label>
-                    <input type="email" id="buyer-email" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Ej. sofia@ejemplo.com">
+                    <input type="email" id="buyer-email" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm bg-stone-50/50" placeholder="Ej. sofia@ejemplo.com">
                 </div>
-
-                <!-- Terms and Conditions Checkbox -->
-                <div class="pt-1">
-                    <div class="flex items-start space-x-3 bg-stone-50 p-3 rounded-xl border border-stone-200">
-                        <input type="checkbox" id="accept-terms" required class="mt-0.5 w-4 h-4 text-brandDark rounded border-stone-300 focus:ring-brandDark cursor-pointer">
-                        <label for="accept-terms" class="text-xs text-stone-600 select-none leading-relaxed">
-                            Acepto los <button type="button" onclick="openTermsModal(event)" class="text-brandGreen underline font-semibold hover:text-brandDark">Términos, Condiciones y Políticas de Tratamiento de Datos</button> de la campaña solidaria. *
-                        </label>
-                    </div>
+                <div class="flex items-start space-x-3 bg-stone-50 p-3 rounded-xl border border-stone-200">
+                    <input type="checkbox" id="accept-terms" required class="mt-0.5 w-4 h-4 text-brandDark rounded border-stone-300 cursor-pointer">
+                    <label for="accept-terms" class="text-xs text-stone-600 leading-relaxed">Acepto los términos y políticas de tratamiento de datos.</label>
                 </div>
-
                 <div class="flex space-x-3 pt-2">
-                    <button type="button" onclick="closeBookingModal()" class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium py-3 px-4 rounded-xl text-sm transition">Cancelar</button>
-                    <button type="submit" id="submit-btn" class="flex-1 bg-brandDark hover:bg-emerald-900 text-white font-semibold py-3 px-4 rounded-xl text-sm shadow-md transition">Confirmar Boleta</button>
+                    <button type="button" onclick="closeBookingModal()" class="flex-1 bg-stone-100 text-stone-700 font-medium py-3 rounded-xl text-sm">Cancelar</button>
+                    <button type="submit" id="submit-btn" class="flex-1 bg-brandDark text-white font-semibold py-3 rounded-xl text-sm">Confirmar Boleta</button>
                 </div>
             </form>
-        </div>
-    </div>
-
-    <!-- Terms and Conditions Modal -->
-    <div id="terms-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeTermsModal()">
-        <div class="bg-white rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl max-h-[85vh] flex flex-col" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center border-b border-stone-100 pb-3">
-                <h4 class="font-serif font-bold text-xl text-brandDark">Términos y Condiciones</h4>
-                <button onclick="closeTermsModal()" class="text-stone-400 hover:text-stone-700 p-1 rounded-full">✕</button>
-            </div>
-            
-            <div class="overflow-y-auto space-y-3 text-xs text-stone-600 leading-relaxed pr-1">
-                <p><strong>1. Objeto de la Campaña:</strong> La campaña "Más Agua a la Sopa" es una iniciativa solidaria sin ánimo de lucro, para apoyar al sector gastronómico en Manizales, Caldas, afectado por situaciones recientes.</p>
-                <p><strong>2. Mecánica del Sorteo:</strong> Cada boleta tiene un costo de $30.000 COP y otorga un número único en la parrilla (00 al 99). Mediante este sistema <strong>escogeremos entre los 100 números un ganador cada semana</strong>, definiéndose <strong>todos los viernes mediante un sorteo en vivo a través de una aplicación aleatoria</strong> certificada.</p>
-                <p><strong>3. Validación de Pagos:</strong> Todo número apartado requiere obligatoriamente la transferencia a la cuenta oficial Nu <strong>@SAL610</strong>. La organización verifica las transacciones antes del sorteo.</p>
-                <p><strong>4. Tratamiento de Datos Personales (Habeas Data):</strong> Al registrar sus datos (Nombre, Cédula, Correo, Teléfono), el participante autoriza a los organizadores de "Más Agua a la Sopa" a almacenar y utilizar dicha información exclusivamente para la gestión del sorteo, validación de pagos y notificación de ganadores.</p>
-                <p><strong>5. Premio:</strong> El premio consiste en un bono para una cena para dos personas en Salvo Patria (Bogotá), el cual será entregado al titular del número ganador previa presentación de su documento de identidad.</p>
-            </div>
-
-            <div class="pt-2 border-t border-stone-100 flex justify-end">
-                <button onclick="closeTermsModal()" class="bg-brandDark text-white px-5 py-2.5 rounded-xl text-xs font-semibold shadow-sm transition">Entendido</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Admin Password Modal -->
-    <div id="admin-password-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden border border-stone-200">
-            <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
-                <h3 class="font-serif text-xl font-bold">Acceso Administrador</h3>
-                <button onclick="closeAdminPasswordModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">
-                    ✕
-                </button>
-            </div>
-            <form onsubmit="verifyAdminPassword(event)" class="p-6 space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Contraseña de Administrador</label>
-                    <input type="password" id="admin-pass-input" required class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark text-sm bg-stone-50/50" placeholder="Introduce la contraseña">
-                </div>
-                <div class="flex space-x-2 pt-2">
-                    <button type="button" onclick="closeAdminPasswordModal()" class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 font-medium py-2.5 px-4 rounded-xl text-xs transition">Cancelar</button>
-                    <button type="submit" class="flex-1 bg-brandDark hover:bg-emerald-900 text-white font-semibold py-2.5 px-4 rounded-xl text-xs shadow-md transition">Entrar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- Admin Management Modal -->
-    <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
-        <div class="bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-stone-200">
-            <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center shrink-0">
-                <h3 class="font-serif text-xl md:text-2xl font-bold flex items-center space-x-2">
-                    <span>⚙️ Panel de Control & Administración</span>
-                </h3>
-                <button onclick="toggleAdminModal()" class="text-stone-300 hover:text-white p-1 rounded-full hover:bg-white/10 transition">
-                    ✕
-                </button>
-            </div>
-            
-            <div class="p-6 overflow-y-auto space-y-6 flex-1 bg-stone-50/50">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs flex justify-between items-center">
-                        <div>
-                            <h4 class="font-bold text-stone-800 text-xs uppercase tracking-wider">Recaudo Total</h4>
-                            <p class="text-[11px] text-stone-500">Valor de boletas</p>
-                        </div>
-                        <div class="text-right">
-                            <div id="admin-total-money" class="font-serif text-xl font-bold text-brandDark">$0 COP</div>
-                            <div id="admin-total-count" class="text-[10px] font-semibold text-emerald-600">0 registadas</div>
-                        </div>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs flex justify-between items-center">
-                        <div>
-                            <h4 class="font-bold text-stone-800 text-xs uppercase tracking-wider">Boletas Confirmadas</h4>
-                            <p class="text-[11px] text-stone-500">Pagos verificados</p>
-                        </div>
-                        <div id="admin-sold-count" class="font-serif text-2xl font-bold text-rose-700">0</div>
-                    </div>
-                    <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs flex justify-between items-center">
-                        <div>
-                            <h4 class="font-bold text-stone-800 text-xs uppercase tracking-wider">Acciones Rápidas</h4>
-                            <p class="text-[11px] text-stone-500">Pruebas o exportación</p>
-                        </div>
-                        <div class="flex gap-1">
-                            <button onclick="loadMockDataForDemo()" class="bg-stone-100 hover:bg-stone-200 text-stone-700 text-[11px] px-2.5 py-1.5 rounded-lg font-semibold border border-stone-300">
-                                🧪 Demo
-                            </button>
-                            <button onclick="exportToCSV()" class="bg-emerald-800 hover:bg-emerald-900 text-white text-[11px] px-2.5 py-1.5 rounded-lg font-semibold">
-                                📊 CSV
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
-                        <h4 class="font-bold text-stone-800 text-xs uppercase tracking-wider">Listado Completo (00 - 99)</h4>
-                        <div class="flex items-center space-x-2 w-full sm:w-auto">
-                            <input type="text" id="admin-search" oninput="populateAdminTable()" placeholder="Filtrar por nombre o N°..." class="px-3 py-1.5 rounded-xl border border-stone-200 text-xs bg-white w-full sm:w-48">
-                            <button onclick="loadTicketsFromCloud()" class="text-xs text-brandGreen hover:underline font-semibold whitespace-nowrap">🔄 Actualizar</button>
-                        </div>
-                    </div>
-                    <div class="overflow-x-auto border border-stone-200 rounded-2xl bg-white shadow-xs">
-                        <table class="w-full text-left border-collapse text-xs">
-                            <thead>
-                                <tr class="bg-stone-50 text-stone-700 uppercase tracking-wider font-semibold border-b border-stone-200">
-                                    <th class="p-3">N°</th>
-                                    <th class="p-3">Participante</th>
-                                    <th class="p-3">Cédula</th>
-                                    <th class="p-3">Correo</th>
-                                    <th class="p-3">Teléfono</th>
-                                    <th class="p-3">Estado</th>
-                                    <th class="p-3 text-right">Cambiar Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody id="admin-table-body" class="divide-y divide-stone-100">
-                                <!-- Populated dynamically -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white px-6 py-4 border-t border-stone-200 flex justify-end">
-                <button onclick="toggleAdminModal()" class="bg-brandDark hover:bg-emerald-900 text-white font-medium px-5 py-2.5 rounded-xl text-xs transition shadow-sm">Cerrar Panel</button>
-            </div>
         </div>
     </div>
 
@@ -559,7 +324,10 @@
 
     <!-- JavaScript Application Logic -->
     <script>
-        // PEGA AQUÍ LA URL DE GOOGLE APPS SCRIPT (TERMINA EN /exec) SI DESEAS CONECTAR LA HOJA REAL
+        // =========================================================================
+        // AQUÍ ES DONDE DEBES PEGAR LA URL DE TU DESPLIEGUE WEB APP DE GOOGLE APPS SCRIPT
+        // Ejemplo: const API_URL = "https://script.google.com/macros/s/AKfycbx.../exec";
+        // =========================================================================
         const API_URL = "PEGA_AQUÍ_LA_URL_DE_TU_APPS_SCRIPT_QUE_TERMINA_EN_EXEC";
         const ADMIN_PASSWORD = 'masagua2026';
 
@@ -603,36 +371,10 @@
                     }
                 });
                 renderGrid();
-                if (!document.getElementById('admin-modal').classList.contains('hidden')) {
-                    populateAdminTable();
-                }
             } catch (error) {
                 console.error("Error cargando boletas:", error);
                 renderGrid();
             }
-        }
-
-        function loadMockDataForDemo() {
-            tickets = initEmptyTickets();
-            // Fill some sample tickets for demonstration
-            const demoNames = ['Camila Restrepo', 'Mateo Gómez', 'Lucía Fernández', 'Santiago Morales', 'Mariana Ospina'];
-            for (let i = 0; i < 18; i++) {
-                const randomNum = Math.floor(Math.random() * 100);
-                const key = randomNum < 10 ? `0${randomNum}` : `${randomNum}`;
-                const isSold = i % 2 === 0;
-                tickets[key] = {
-                    number: key,
-                    status: isSold ? 'sold' : 'pending',
-                    name: demoNames[i % demoNames.length],
-                    cedula: `1053${Math.floor(100000 + Math.random() * 900000)}`,
-                    email: `demo${i}@ejemplo.com`,
-                    phone: `300${Math.floor(1000000 + Math.random() * 9000000)}`,
-                    receipt: 'Transferencia Nu Demo'
-                };
-            }
-            renderGrid();
-            populateAdminTable();
-            showToast('¡Datos demo cargados para pruebas!', '🧪');
         }
 
         function renderGrid() {
@@ -650,15 +392,8 @@
                 if (ticket.status === 'sold') soldCount++;
                 if (ticket.status === 'pending') pendingCount++;
 
-                // Apply active status filter
-                if (activeFilter !== 'all' && ticket.status !== activeFilter) {
-                    continue;
-                }
-
-                // Apply text search filter
-                if (searchVal !== '' && !key.includes(searchVal)) {
-                    continue;
-                }
+                if (activeFilter !== 'all' && ticket.status !== activeFilter) continue;
+                if (searchVal !== '' && !key.includes(searchVal)) continue;
 
                 const btn = document.createElement('button');
                 btn.type = 'button';
@@ -669,20 +404,14 @@
                     btn.onclick = () => openBookingModal(key);
                 } else if (ticket.status === 'pending') {
                     btn.className += 'bg-amber-50 border-amber-300 text-amber-800 cursor-not-allowed';
-                    btn.title = `Apartado por: ${ticket.name || 'Participante'}`;
-                    btn.onclick = () => showToast(`El N° ${key} está en proceso de verificación de pago.`, '⏳');
+                    btn.onclick = () => showToast(`El N° ${key} está en proceso de verificación.`, '⏳');
                 } else if (ticket.status === 'sold') {
                     btn.className += 'bg-rose-50 border-rose-300 text-rose-800 cursor-not-allowed opacity-90';
-                    btn.title = `Vendido a: ${ticket.name || 'Participante'}`;
                     btn.onclick = () => showToast(`El número ${key} ya fue adquirido.`, '🔒');
                 }
 
                 btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
                 gridEl.appendChild(btn);
-            }
-
-            if (gridEl.children.length === 0) {
-                gridEl.innerHTML = `<div class="col-span-full py-8 text-center text-stone-500 text-xs">No se encontraron números con ese criterio.</div>`;
             }
 
             const totalTaken = soldCount + pendingCount;
@@ -696,38 +425,24 @@
             activeFilter = filter;
             ['all', 'available', 'pending', 'sold'].forEach(f => {
                 const btn = document.getElementById(`filter-btn-${f}`);
-                if (!btn) return;
-                if (f === filter) {
-                    btn.className = 'px-3 py-1.5 rounded-xl font-semibold bg-brandDark text-white transition';
-                } else {
-                    btn.className = 'px-3 py-1.5 rounded-xl font-medium text-stone-600 hover:bg-stone-200 transition';
-                }
+                if (btn) btn.className = (f === filter) 
+                    ? 'px-3 py-1.5 rounded-xl font-semibold bg-brandDark text-white transition'
+                    : 'px-3 py-1.5 rounded-xl font-medium text-stone-600 hover:bg-stone-200 transition';
             });
             renderGrid();
         }
 
-        function filterGrid() {
-            renderGrid();
-        }
+        function filterGrid() { renderGrid(); }
 
         function pickRandomAvailable() {
             const availableKeys = Object.keys(tickets).filter(k => tickets[k].status === 'available');
-            if (availableKeys.length === 0) {
-                showToast('¡Lo sentimos! Ya no hay números disponibles.', '🎟️');
-                return;
-            }
-            const randomKey = availableKeys[Math.floor(Math.random() * availableKeys.length)];
-            openBookingModal(randomKey);
+            if (availableKeys.length === 0) return showToast('¡No hay números disponibles!', '🎟️');
+            openBookingModal(availableKeys[Math.floor(Math.random() * availableKeys.length)]);
         }
 
         function openBookingModal(ticketNum) {
             selectedTicketForBooking = ticketNum;
             document.getElementById('modal-ticket-num').innerText = ticketNum;
-            document.getElementById('buyer-name').value = '';
-            document.getElementById('buyer-cedula').value = '';
-            document.getElementById('buyer-email').value = '';
-            document.getElementById('buyer-phone').value = '';
-            document.getElementById('accept-terms').checked = false;
             document.getElementById('booking-modal').classList.remove('hidden');
         }
 
@@ -742,32 +457,8 @@
             const cedula = document.getElementById('buyer-cedula').value.trim();
             const email = document.getElementById('buyer-email').value.trim();
             const phone = document.getElementById('buyer-phone').value.trim();
-            const acceptTerms = document.getElementById('accept-terms').checked;
-            const submitBtn = document.getElementById('submit-btn');
 
-            if (!acceptTerms) {
-                showToast('Debes aceptar los términos y condiciones.', '⚠️');
-                return;
-            }
-
-            if (!selectedTicketForBooking || !name || !cedula || !email || !phone) {
-                showToast('Por favor completa todos los campos requeridos.', '⚠️');
-                return;
-            }
-
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Guardando...";
-            showToast('Apartando tu número...', '⏳');
-
-            const payload = {
-                number: selectedTicketForBooking,
-                name: name,
-                cedula: cedula,
-                email: email,
-                phone: phone,
-                receipt: 'Transferencia Nu @SAL610',
-                status: 'pending'
-            };
+            const payload = { number: selectedTicketForBooking, name, cedula, email, phone, receipt: 'Transferencia Nu', status: 'pending' };
 
             try {
                 if (!API_URL.includes("PEGA_AQUÍ")) {
@@ -778,175 +469,23 @@
                         body: JSON.stringify(payload)
                     });
                 }
-
                 closeBookingModal();
                 showToast(`¡Número ${selectedTicketForBooking} apartado con éxito!`, '🎉');
-                
-                // Update local state immediately
                 tickets[selectedTicketForBooking] = { ...payload };
                 renderGrid();
-
-                // Offer WhatsApp receipt confirmation
-                setTimeout(() => {
-                    if (confirm(`¿Deseas enviar el comprobante de pago para la boleta N° ${selectedTicketForBooking} por WhatsApp ahora?`)) {
-                        const waMsg = encodeURIComponent(`Hola! Acabo de apartar la boleta N° ${selectedTicketForBooking} para Más Agua a la Sopa.\nNombre: ${name}\nCédula: ${cedula}`);
-                        window.open(`https://wa.me/573137977977?text=${waMsg}`, '_blank');
-                    }
-                }, 400);
-
             } catch (err) {
                 console.error(err);
                 showToast('Error al conectar con el servidor.', '❌');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Confirmar Boleta";
             }
         }
 
         function copyNuKey() {
-            const dummy = document.createElement('input');
-            document.body.appendChild(dummy);
-            dummy.value = '@SAL610';
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
+            navigator.clipboard.writeText('@SAL610');
             showToast('¡Llave Nu (@SAL610) copiada al portapapeles!', '📋');
         }
 
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        function promptAdminPassword() {
-            document.getElementById('admin-pass-input').value = '';
-            document.getElementById('admin-password-modal').classList.remove('hidden');
-        }
-
-        function closeAdminPasswordModal() {
-            document.getElementById('admin-password-modal').classList.add('hidden');
-        }
-
-        function verifyAdminPassword(event) {
-            event.preventDefault();
-            const enteredPass = document.getElementById('admin-pass-input').value;
-            if (enteredPass === ADMIN_PASSWORD) {
-                closeAdminPasswordModal();
-                toggleAdminModal();
-                showToast('¡Acceso concedido al panel!', '🔓');
-            } else {
-                showToast('Contraseña incorrecta. Acceso denegado.', '❌');
-            }
-        }
-
-        function toggleAdminModal() {
-            const modal = document.getElementById('admin-modal');
-            if (modal.classList.contains('hidden')) {
-                populateAdminTable();
-                modal.classList.remove('hidden');
-            } else {
-                modal.classList.add('hidden');
-            }
-        }
-
-        function populateAdminTable() {
-            const tbody = document.getElementById('admin-table-body');
-            tbody.innerHTML = '';
-            
-            let totalMoney = 0;
-            let registeredCount = 0;
-            let soldCount = 0;
-            const searchVal = (document.getElementById('admin-search')?.value || '').toLowerCase().trim();
-
-            for (let i = 0; i < 100; i++) {
-                const key = i < 10 ? `0${i}` : `${i}`;
-                const t = tickets[key] || { status: 'available' };
-
-                if (t.status === 'sold' || t.status === 'pending') {
-                    totalMoney += 30000;
-                    registeredCount++;
-                    if (t.status === 'sold') soldCount++;
-                }
-
-                // Search Filter for Admin Table
-                if (searchVal !== '') {
-                    const matchNum = key.includes(searchVal);
-                    const matchName = (t.name || '').toLowerCase().includes(searchVal);
-                    const matchCedula = (t.cedula || '').toLowerCase().includes(searchVal);
-                    if (!matchNum && !matchName && !matchCedula) continue;
-                }
-
-                const tr = document.createElement('tr');
-                tr.className = 'hover:bg-stone-50 transition';
-                
-                let badgeClass = 'bg-emerald-100 text-emerald-800';
-                let statusText = 'Disponible';
-                if (t.status === 'pending') {
-                    badgeClass = 'bg-amber-100 text-amber-800';
-                    statusText = 'En Validación';
-                } else if (t.status === 'sold') {
-                    badgeClass = 'bg-rose-100 text-rose-800';
-                    statusText = 'Confirmado';
-                }
-
-                tr.innerHTML = `
-                    <td class="p-3 font-bold font-handwriting text-xl text-brandDark">${key}</td>
-                    <td class="p-3 font-medium">${t.name || '<span class="text-stone-300">---</span>'}</td>
-                    <td class="p-3 text-stone-600">${t.cedula || '<span class="text-stone-300">---</span>'}</td>
-                    <td class="p-3 text-stone-600">${t.email || '<span class="text-stone-300">---</span>'}</td>
-                    <td class="p-3 text-stone-600">${t.phone || '<span class="text-stone-300">---</span>'}</td>
-                    <td class="p-3"><span class="px-2.5 py-1 rounded-full font-semibold ${badgeClass}">${statusText}</span></td>
-                    <td class="p-3 text-right">
-                        <select onchange="changeTicketStatus('${key}', this.value)" class="text-[11px] border border-stone-200 rounded-lg px-2 py-1 bg-white font-medium text-stone-700">
-                            <option value="available" ${t.status === 'available' ? 'selected' : ''}>Disponible</option>
-                            <option value="pending" ${t.status === 'pending' ? 'selected' : ''}>En Validación</option>
-                            <option value="sold" ${t.status === 'sold' ? 'selected' : ''}>Confirmado</option>
-                        </select>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            }
-
-            document.getElementById('admin-total-money').innerText = `$${totalMoney.toLocaleString('es-CO')} COP`;
-            document.getElementById('admin-total-count').innerText = `${registeredCount} registradas`;
-            document.getElementById('admin-sold-count').innerText = soldCount;
-        }
-
-        function changeTicketStatus(ticketNum, newStatus) {
-            if (!tickets[ticketNum]) {
-                tickets[ticketNum] = { number: ticketNum, status: newStatus };
-            } else {
-                tickets[ticketNum].status = newStatus;
-            }
-            renderGrid();
-            populateAdminTable();
-            showToast(`Estado de Boleta N° ${ticketNum} cambiado a: ${newStatus}`, '🔄');
-        }
-
-        function exportToCSV() {
-            let csv = 'Numero,Nombre,Cedula,Correo,Telefono,Estado\n';
-            for (let i = 0; i < 100; i++) {
-                const key = i < 10 ? `0${i}` : `${i}`;
-                const t = tickets[key] || {};
-                csv += `"${key}","${t.name || ''}","${t.cedula || ''}","${t.email || ''}","${t.phone || ''}","${t.status || 'available'}"\n`;
-            }
-            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.setAttribute('download', 'boletas_mas_agua_a_la_sopa.csv');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            showToast('¡Archivo CSV generado exitosamente!', '📊');
-        }
-
-        function openTermsModal(event) {
-            if (event) event.preventDefault();
-            document.getElementById('terms-modal').classList.remove('hidden');
-        }
-
-        function closeTermsModal() {
-            document.getElementById('terms-modal').classList.add('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
         function showToast(message, icon = '✨') {
@@ -954,14 +493,10 @@
             document.getElementById('toast-message').innerText = message;
             document.getElementById('toast-icon').innerText = icon;
             toast.classList.remove('translate-y-24', 'opacity-0');
-            setTimeout(() => {
-                toast.classList.add('translate-y-24', 'opacity-0');
-            }, 3500);
+            setTimeout(() => toast.classList.add('translate-y-24', 'opacity-0'), 3500);
         }
 
-        window.onload = function() {
-            loadTicketsFromCloud();
-        };
+        window.onload = function() { loadTicketsFromCloud(); };
     </script>
 </body>
 </html>
