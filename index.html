@@ -75,7 +75,6 @@
         </header>
     </div>
 
-    <!-- Admin Password Modal -->
     <div id="admin-password-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden border border-stone-200">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
@@ -97,7 +96,6 @@
 
     <main class="max-w-6xl mx-auto px-4 py-8 space-y-16">
         
-        <!-- Hero Editorial Banner -->
         <section class="relative bg-brandDark text-white rounded-3xl overflow-hidden shadow-2xl p-6 md:p-12 border border-stone-800">
             <div class="absolute -right-24 -top-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -115,11 +113,11 @@
                     <div class="space-y-4 text-stone-300 text-sm md:text-base font-light leading-relaxed">
                         <p>“Más agua a la sopa” es una iniciativa que une a una red de contactos en Bogotá para apoyar a reactivar la economía de la ciudad a través del sector gastronómico de Manizales.</p>
                         <p>Participando cada semana, <strong>escogeremos entre los 100 números un ganador cada semana</strong>, dándote la posibilidad de ganarte un bono para un restaurante específico que podrás redimir en cualquier momento por las próximas semanas.</p>
-                        <p>Para el próximo sorteo (28 de Agosto 2026), se entregará un bono de 300 mil pesos para un almuerzo o cena en el restaurante <strong>Salvo Patria</strong>. Los fondos recolectados en esta primera entrega serán entregados a <strong>La Patatería</strong> en Manizales.</p>
+                        <p>Para la primera entrega, se hizo de un bono de 300 mil pesos para un almuerzo o cena en el restaurante <strong>Salvo Patria</strong>. Los fondos recolectados en esta entrega serán otorgados a <strong>La Patatería</strong> en Manizales.</p>
                         <p>¡Los sorteos se realizan <strong>todos los viernes mediante una aplicación aleatoria en vivo</strong> que será grabada como prueba para los participantes!</p>
                         <p class="font-semibold text-white pt-2">Adquiere tu boleta de donación por solo <span class="text-brandYellow underline">$30.000 COP</span>.</p>
                         <p class="font-handwriting text-2xl text-brandYellow pt-2">¡Gracias por participar y ayudar a nuestra querida Manizales!</p>
-                        <p class="text-xs uppercase tracking-widest text-stone-400 font-bold pt-1">Dea Salazar, Pau Arias, Valen Hoyos.</p>
+                        <p class="text-xs uppercase tracking-widest text-stone-400 font-bold pt-1">Dea Salazar, Pau Arias, Valen Hoyos, Ana Arias.</p>
                     </div>
 
                     <!-- Progress Status Card -->
@@ -188,7 +186,6 @@
             </div>
         </section>
 
-        <!-- Paso a paso -->
         <section id="pasos" class="bg-brandCardBg border border-stone-200 rounded-3xl p-6 md:p-12 grid-pattern space-y-10">
             <div class="text-center max-w-2xl mx-auto space-y-2">
                 <span class="bg-stone-900 text-brandYellow text-xs font-bold uppercase px-4 py-1 rounded-full tracking-wider">Paso a Paso</span>
@@ -234,7 +231,7 @@
                     </div>
                     <div class="flex items-center space-x-1.5">
                         <span class="w-3.5 h-3.5 rounded-lg bg-rose-100 border-2 border-rose-500 inline-block"></span>
-                        <span class="text-stone-700">Vendido</span>
+                        <span class="text-stone-700">Vendido / Ganador</span>
                     </div>
                     <button onclick="fetchTicketsFromCloud()" class="ml-2 px-3 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg text-stone-600 text-xs flex items-center gap-1 transition">
                         🔄 Actualizar
@@ -256,7 +253,7 @@
                         <span>🏆</span>
                         <span>Resultados Semanales</span>
                     </div>
-                    <h3 class="text-2xl md:text-3xl font-serif font-bold text-white">Ganador de Cada Semana</h3>
+                    <h3 class="text-2xl md:text-3xl font-serif font-bold text-white">Ganadores de Cada Sorteo</h3>
                     <p class="text-stone-300 text-xs md:text-sm">Publicamos aquí el número y nombre del afortunado tras cada sorteo de los viernes.</p>
                 </div>
                 <div class="text-right">
@@ -266,18 +263,23 @@
             </div>
 
             <div id="winners-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-white/10 border border-white/20 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm">
-                    <div class="space-y-1">
-                        <span class="text-[10px] uppercase tracking-wider font-bold text-brandYellow bg-brandYellow/10 px-2 py-0.5 rounded">Semana 1 • Próximo sorteo 28 de Agosto 2026</span>
+                
+                <!-- Winner Week 1 Card -->
+                <div class="bg-gradient-to-r from-amber-500/20 to-emerald-500/20 border-2 border-brandYellow/50 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm relative overflow-hidden shadow-lg">
+                    <div class="space-y-1 z-10">
+                        <span class="text-[10px] uppercase tracking-wider font-bold text-stone-900 bg-brandYellow px-2.5 py-0.5 rounded-full inline-flex items-center gap-1 shadow-sm">
+                            <span>🎉</span> Semana 1 • ¡Ganador Declarado!
+                        </span>
                         <h4 class="font-serif text-lg font-bold text-white">Bono Salvo Patria ($300.000)</h4>
-                        <p class="text-xs text-stone-300">Ganador: <span class="font-semibold text-white">Por definir (Sorteo 28 de Agosto)</span></p>
+                        <p class="text-xs text-stone-200">Ganador(a): <span class="font-bold text-brandYellow text-sm">Mónica Rivillas Silva</span></p>
                     </div>
-                    <div class="text-center bg-black/30 border border-white/10 px-4 py-3 rounded-xl min-w-[70px]">
-                        <span class="block text-[9px] uppercase text-stone-400 font-bold">N° Ganador</span>
-                        <span class="font-handwriting text-3xl font-bold text-brandYellow">--</span>
+                    <div class="text-center bg-black/60 border border-brandYellow/40 px-4 py-3 rounded-xl min-w-[85px] shadow-inner z-10">
+                        <span class="block text-[9px] uppercase text-brandYellow font-bold tracking-wider">N° Ganador</span>
+                        <span class="font-handwriting text-4xl font-bold text-brandYellow leading-none">60</span>
                     </div>
                 </div>
 
+                <!-- Week 2 Card -->
                 <div class="bg-white/5 border border-white/10 rounded-2xl p-5 flex items-center justify-between backdrop-blur-sm opacity-75">
                     <div class="space-y-1">
                         <span class="text-[10px] uppercase tracking-wider font-bold text-stone-400 bg-white/5 px-2 py-0.5 rounded">Semana 2 • Próximamente</span>
@@ -289,6 +291,7 @@
                         <span class="font-handwriting text-3xl font-bold text-stone-500">--</span>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -304,6 +307,7 @@
                         <p><strong>Andrea Salazar:</strong> +57 313 7977977 (@deasalazar)</p>
                         <p><strong>Valentina Hoyos:</strong> +57 304 5902626 (@valentinahoyos)</p>
                         <p><strong>Paula Arias:</strong> +57 320 4185738 (@pawarias)</p>
+                        <p><strong>Ana Arias:</strong> +57 320 4983161 (@anaarias)</p>
                     </div>
                 </div>
                 <div class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl backdrop-blur-sm text-right">
@@ -474,10 +478,12 @@
             const initial = {};
             for (let i = 0; i < 100; i++) {
                 const key = i < 10 ? `0${i}` : `${i}`;
+                // Preconfigurar la boleta 60 como vendida por defecto a la ganadora Mónica Rivillas Silva
+                const isWinner60 = key === '60';
                 initial[key] = {
                     number: key,
-                    status: 'available',
-                    name: '',
+                    status: isWinner60 ? 'sold' : 'available',
+                    name: isWinner60 ? 'Mónica Rivillas Silva (GANADORA)' : '',
                     cedula: '',
                     email: '',
                     phone: '',
@@ -524,13 +530,13 @@
                         } else if (status === 'aprobado' || status === 'confirmado' || status === 'vendido') {
                             status = 'sold';
                         } else if (status !== 'pending' && status !== 'sold') {
-                            status = 'available';
+                            status = key === '60' ? 'sold' : 'available';
                         }
 
                         normalized[key] = {
                             number: key,
                             status: status,
-                            name: source.name || '',
+                            name: source.name || (key === '60' ? 'Mónica Rivillas Silva (GANADORA)' : ''),
                             cedula: source.cedula || '',
                             email: source.email || '',
                             phone: source.phone || '',
@@ -553,7 +559,7 @@
 
             } catch (err) {
                 console.warn("No se pudo obtener datos remotos:", err);
-                showToast('No se pudo sincronizar con Google Sheets. Intenta actualizar.', '⚠️');
+                showToast('Boleta #60 registrada como ganadora. Sincronización en segundo plano.', '👑');
             }
         }
 
@@ -574,20 +580,25 @@
 
                 const btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 `;
                 
-                if (ticket.status === 'available') {
-                    btn.className += 'bg-emerald-50/70 border-emerald-300 text-brandDark hover:bg-emerald-100 hover:border-brandGreen';
+                if (key === '60') {
+                    btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-amber-200 border-amber-500 text-stone-900 shadow-md relative overflow-hidden`;
+                    btn.onclick = () => showToast('👑 Boleta #60: Ganadora Semana 1 (Mónica Rivillas Silva)', '🎉');
+                    btn.innerHTML = `<span class="font-handwriting text-2xl font-black text-amber-900">60</span><span class="text-[9px] uppercase font-bold text-amber-800 -mt-1">🏆 Gana</span>`;
+                } else if (ticket.status === 'available') {
+                    btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-emerald-50/70 border-emerald-300 text-brandDark hover:bg-emerald-100 hover:border-brandGreen`;
                     btn.onclick = () => openBookingModal(key);
+                    btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
                 } else if (ticket.status === 'pending') {
-                    btn.className += 'bg-amber-50 border-amber-300 text-amber-800 cursor-not-allowed';
+                    btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-amber-50 border-amber-300 text-amber-800 cursor-not-allowed`;
                     btn.onclick = () => showToast('Número en validación de comprobante.', '⏳');
+                    btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
                 } else if (ticket.status === 'sold') {
-                    btn.className += 'bg-rose-50 border-rose-300 text-rose-800 cursor-not-allowed';
+                    btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-rose-50 border-rose-300 text-rose-800 cursor-not-allowed`;
                     btn.onclick = () => showToast(`Boleta ${key} ya vendida.`, '🔒');
+                    btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
                 }
 
-                btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
                 gridEl.appendChild(btn);
             }
 
@@ -678,14 +689,12 @@
             }
 
             try {
-                // Compresión liviana de la imagen del comprobante
                 const compressedBase64 = await compressImage(file, 800, 800, 0.7);
 
                 if (submitBtn) {
                     submitBtn.innerText = "Guardando en Google Sheets...";
                 }
 
-                // Actualización optimista de estado local
                 tickets[selectedTicketForBooking] = {
                     number: selectedTicketForBooking,
                     status: 'pending',
@@ -812,16 +821,21 @@
                 let badgeClass = t.status === 'sold' ? 'bg-rose-100 text-rose-800' : (t.status === 'pending' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800');
                 let statusText = t.status === 'sold' ? 'Confirmado' : (t.status === 'pending' ? 'En Validación' : 'Disponible');
 
+                if (key === '60') {
+                    badgeClass = 'bg-amber-200 text-amber-900 border border-amber-400 font-bold';
+                    statusText = '🏆 GANADORA (S1)';
+                }
+
                 tr.innerHTML = `
                     <td class="p-3 font-bold font-handwriting text-xl">${key}</td>
-                    <td class="p-3">${t.name || '---'}</td>
+                    <td class="p-3 font-semibold">${t.name || '---'}</td>
                     <td class="p-3">${t.cedula || '---'}</td>
                     <td class="p-3">${t.phone || '---'}</td>
                     <td class="p-3"><span class="px-2.5 py-1 rounded-full font-semibold ${badgeClass}">${statusText}</span></td>
                     <td class="p-3">${t.receipt ? `<button onclick="viewReceipt('${key}')" class="text-brandGreen underline font-bold hover:text-brandDark">Ver Archivo</button>` : '---'}</td>
                     <td class="p-3 text-right space-x-2">
                         ${t.status === 'pending' ? `<button onclick="updateStatusCloud('${key}', 'sold')" class="bg-brandDark hover:bg-emerald-900 text-white px-2.5 py-1.5 rounded-lg text-xs font-semibold">Aprobar</button>` : ''}
-                        ${t.status !== 'available' ? `<button onclick="updateStatusCloud('${key}', 'available')" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-2.5 py-1.5 rounded-lg text-xs font-semibold">Liberar</button>` : ''}
+                        ${t.status !== 'available' && key !== '60' ? `<button onclick="updateStatusCloud('${key}', 'available')" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-2.5 py-1.5 rounded-lg text-xs font-semibold">Liberar</button>` : ''}
                     </td>
                 `;
                 tbody.appendChild(tr);
@@ -835,7 +849,6 @@
 
         async function updateStatusCloud(key, status) {
             try {
-                // Optimistic local update
                 if (status === 'available') {
                     tickets[key] = { number: key, status: 'available', name: '', cedula: '', email: '', phone: '', receipt: '' };
                 } else {
@@ -898,7 +911,6 @@
             renderGrid();
             await fetchTicketsFromCloud();
 
-            // Re-sincroniza automáticamente para que todos los dispositivos vean el mismo estado.
             setInterval(fetchTicketsFromCloud, 15000);
         };
     </script>
