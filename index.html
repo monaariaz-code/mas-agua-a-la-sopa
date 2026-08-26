@@ -75,7 +75,6 @@
         </header>
     </div>
 
-    <!-- Admin Password Modal -->
     <div id="admin-password-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden border border-stone-200">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
@@ -118,7 +117,7 @@
                         <p>¡Los sorteos se realizan <strong>todos los viernes mediante una aplicación aleatoria en vivo</strong> que será grabada como prueba para los participantes!</p>
                         <p class="font-semibold text-white pt-2">Adquiere tu boleta de donación por solo <span class="text-brandYellow underline">$50.000 COP</span>.</p>
                         <p class="font-handwriting text-2xl text-brandYellow pt-2">¡Gracias por participar y ayudar a nuestra querida Manizales!</p>
-                        <p class="text-xs uppercase tracking-widest text-stone-400 font-bold pt-1">Dea Salazar, Pau Arias, Valen Hoyos, Ana Arias.</p>
+                        <p class="text-xs uppercase tracking-widest text-stone-400 font-bold pt-1">Dea Salazar, Pau Arias, Valen Hoyos,Ana Arias.</p>
                     </div>
 
                     <!-- Progress Status Card -->
@@ -171,7 +170,7 @@
             <div class="rounded-3xl overflow-hidden border-2 border-stone-200 shadow-xl bg-brandDark text-white max-w-xl mx-auto p-4 sm:p-8 text-center space-y-6 relative flex flex-col items-center">
                 <div class="absolute -right-12 -top-12 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none"></div>
                 
-                <!-- Video Player Container -->
+                <!-- Video Player Container Optimized for Mobile Centering -->
                 <div class="w-full max-w-[300px] sm:max-w-sm aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-black relative mx-auto flex items-center justify-center">
                     <div class="w-full h-full relative overflow-hidden flex items-center justify-center">
                         <iframe 
@@ -185,7 +184,7 @@
                 </div>
 
                 <div class="space-y-1">
-                    <h4 class="font-serif text-xl font-bold"></h4>
+                    <h4 class="font-serif text-xl font-bold">Video Oficial de la Campaña</h4>
                 </div>
             </div>
         </section>
@@ -247,7 +246,7 @@
                 </div>
             </div>
 
-            <!-- Floating Selection Summary Bar -->
+            <!-- Floating / Interactive Selection Summary Bar -->
             <div id="selection-bar" class="hidden bg-brandDark text-white p-4 rounded-2xl shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-brandYellow/40 transition-all">
                 <div class="flex items-center gap-3 flex-wrap text-xs md:text-sm">
                     <span class="bg-brandYellow text-stone-900 font-bold px-3 py-1 rounded-full text-xs">
@@ -366,7 +365,7 @@
             <form id="booking-form" onsubmit="submitBooking(event)" class="p-6 space-y-4 overflow-y-auto">
                 <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-100 text-xs text-stone-700 space-y-1">
                     <p class="font-bold text-brandDark text-sm">Instrucciones de Pago</p>
-                    <p id="modal-instruction-text">Realiza tu transferencia a la cuenta Nu <strong>@SAL610</strong> y sube el comprobante. Te enviaremos un correo de confirmación al finalizar.</p>
+                    <p id="modal-instruction-text">Realiza tu transferencia a la cuenta Nu <strong>@SAL610</strong> y sube el comprobante.</p>
                 </div>
 
                 <div>
@@ -386,7 +385,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Correo Electrónico (Para tu comprobante) *</label>
+                    <label class="block text-xs font-semibold text-stone-700 uppercase tracking-wider mb-1">Correo Electrónico *</label>
                     <input type="email" id="buyer-email" required class="w-full px-4 py-2.5 rounded-xl border border-stone-200 text-sm bg-stone-50/50" placeholder="Ej. sofia@ejemplo.com">
                 </div>
 
@@ -422,11 +421,11 @@
             </div>
             
             <div class="overflow-y-auto space-y-3 text-xs text-stone-600 leading-relaxed pr-1">
-                <p><strong>1. Objeto de la Campaña:</strong> La campaña "Más Agua a la Sopa" es una iniciativa solidaria sin ánimo de lucro, para apoyar al sector gastronómico en Manizales, Caldas.</p>
-                <p><strong>2. Mecánica del Sorteo:</strong> Cada boleta tiene un costo de $50.000 COP y otorga un número único en la parrilla (00 al 99). Escogeremos entre los 100 números un ganador cada semana, definiéndose todos los viernes mediante un sorteo en vivo a través de una aplicación aleatoria certificada.</p>
-                <p><strong>3. Validación de Pagos y Correo:</strong> Todo número apartado requiere obligatoriamente la transferencia a la cuenta oficial Nu <strong>@SAL610</strong> y la carga del comprobante de pago válido. Tras completar el registro, recibirás un correo electrónico de confirmación.</p>
-                <p><strong>4. Tratamiento de Datos Personales (Habeas Data):</strong> Al registrar sus datos (Nombre, Cédula, Correo, Teléfono), el participante autoriza a los organizadores a almacenar y utilizar dicha información exclusivamente para la gestión del sorteo, validación de pagos y notificación de ganadores.</p>
-                <p><strong>5. Premio:</strong> Los premios cambian semanalmente según el restaurante aliado (ej. Bono de $500.000 COP para Leo). Se entregará al titular del número ganador previa presentación de su documento de identidad.</p>
+                <p><strong>1. Objeto de la Campaña:</strong> La campaña "Más Agua a la Sopa" es una iniciativa solidaria sin ánimo de lucro, para apoyar al sector gastronómico en Manizales, Caldas, afectado por situaciones recientes.</p>
+                <p><strong>2. Mecánica del Sorteo:</strong> Cada boleta tiene un costo de $50.000 COP y otorga un número único en la parrilla (00 al 99). Mediante este sistema <strong>escogeremos entre los 100 números un ganador cada semana</strong>, definiéndose <strong>todos los viernes mediante un sorteo en vivo a través de una aplicación aleatoria</strong> certificada.</p>
+                <p><strong>3. Validación de Pagos:</strong> Todo número apartado requiere obligatoriamente la transferencia a la cuenta oficial Nu <strong>@SAL610</strong> y la carga del comprobante de pago válido. La organización se reserva el derecho de verificar y aprobar las transacciones antes de confirmar definitivamente la asignación del número.</p>
+                <p><strong>4. Tratamiento de Datos Personales (Habeas Data):</strong> Al registrar sus datos (Nombre, Cédula, Correo, Teléfono), el participante autoriza a los organizadores de "Más Agua a la Sopa" a almacenar y utilizar dicha información exclusivamente para la gestión del sorteo, validación de pagos, notificación de ganadores y propósitos informativos de la campaña.</p>
+                <p><strong>5. Premio:</strong> Los premios cambian semanalmente según el restaurante aliado (ej. Bono de $500.000 COP para Leo, Bono de $300.000 COP para Salvo Patria). Se entregará al titular del número ganador previa presentación de su documento de identidad.</p>
             </div>
 
             <div class="pt-2 border-t border-stone-100 flex justify-end">
@@ -483,28 +482,9 @@
         <div class="bg-white rounded-3xl p-5 max-w-md w-full text-center space-y-3 shadow-2xl" onclick="event.stopPropagation()">
             <h4 class="font-serif font-bold text-2xl text-brandDark">Comprobante de Pago</h4>
             <div id="receipt-img-container" class="bg-stone-100 rounded-2xl p-2 min-h-[250px] flex items-center justify-center overflow-hidden border border-stone-200">
-                <!-- Image or Drive Link goes here -->
+                <!-- Image goes here -->
             </div>
             <button onclick="closeReceiptModal()" class="w-full bg-brandDark text-white py-3 rounded-xl text-xs font-bold shadow-md transition">Cerrar</button>
-        </div>
-    </div>
-
-    <!-- Thank You / Confirmation Modal -->
-    <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeSuccessModal()">
-        <div class="bg-white rounded-3xl p-6 md:p-8 max-w-md w-full text-center space-y-4 shadow-2xl border border-stone-200" onclick="event.stopPropagation()">
-            <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner border border-emerald-200">
-                📲
-            </div>
-            <h3 class="font-serif font-bold text-2xl text-brandDark">¡Muchas Gracias!</h3>
-            <p class="text-stone-700 text-sm leading-relaxed font-medium">
-                Gracias, recibirás un mensaje de confirmación a tu celular.
-            </p>
-            <p class="text-xs text-stone-400">
-                Nuestro equipo de organizadores verificará tu comprobante en breve.
-            </p>
-            <button onclick="closeSuccessModal()" class="w-full bg-brandDark hover:bg-emerald-900 text-white font-bold py-3 rounded-xl text-xs shadow-md transition uppercase tracking-wider">
-                Entendido
-            </button>
         </div>
     </div>
 
@@ -587,7 +567,9 @@
                 const res = await fetch(url, {
                     method: 'GET',
                     cache: 'no-store',
-                    headers: { 'Accept': 'application/json' }
+                    headers: {
+                        'Accept': 'application/json'
+                    }
                 });
 
                 if (!res.ok) throw new Error("HTTP error " + res.status);
@@ -625,6 +607,7 @@
                     }
 
                     tickets = normalized;
+                    // Remove any selected tickets that are no longer available
                     selectedTickets = selectedTickets.filter(k => tickets[k] && tickets[k].status === 'available');
                     renderGrid();
                     updateSelectionBar();
@@ -641,6 +624,7 @@
 
             } catch (err) {
                 console.warn("No se pudo obtener datos remotos:", err);
+                showToast('No se pudo sincronizar con Google Sheets. Intenta actualizar.', '⚠️');
             }
         }
 
@@ -711,7 +695,7 @@
             const totalAmount = selectedTickets.length * 50000;
             const modalInstruction = document.getElementById('modal-instruction-text');
             if (modalInstruction) {
-                modalInstruction.innerHTML = `Realiza tu transferencia por un valor total de <strong>$${totalAmount.toLocaleString('es-CO')} COP</strong> ($50.000 COP por ${selectedTickets.length} boleta${selectedTickets.length > 1 ? 's' : ''}) a la cuenta Nu <strong>@SAL610</strong>. Te enviaremos un correo de confirmación al instante.`;
+                modalInstruction.innerHTML = `Realiza tu transferencia por un valor total de <strong>$${totalAmount.toLocaleString('es-CO')} COP</strong> ($50.000 COP por ${selectedTickets.length} boleta${selectedTickets.length > 1 ? 's' : ''}) a la cuenta Nu <strong>@SAL610</strong> y sube el comprobante.`;
             }
 
             const form = document.getElementById('booking-form');
@@ -783,16 +767,17 @@
             const submitBtn = document.getElementById('submit-btn');
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.innerText = "Procesando imagen...";
+                submitBtn.innerText = "Optimizando imagen...";
             }
 
             try {
                 const compressedBase64 = await compressImage(file, 800, 800, 0.7);
 
                 if (submitBtn) {
-                    submitBtn.innerText = "Guardando y enviando correo...";
+                    submitBtn.innerText = "Guardando en Google Sheets...";
                 }
 
+                // Optimistic local updates for all selected tickets
                 for (const ticketNum of selectedTickets) {
                     tickets[ticketNum] = {
                         number: ticketNum,
@@ -806,35 +791,39 @@
                 }
                 renderGrid();
 
-                const payload = {
-                    action: 'book',
-                    numbers: selectedTickets.join(', '),
-                    ticketList: selectedTickets,
-                    name: name,
-                    cedula: cedula,
-                    email: email,
-                    phone: phone,
-                    receiptBase64: compressedBase64
-                };
-
-                await fetch(APPS_SCRIPT_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                    body: JSON.stringify(payload)
+                // Send request for each selected ticket
+                const promises = selectedTickets.map(ticketNum => {
+                    const payload = {
+                        action: 'book',
+                        number: ticketNum,
+                        numbers: selectedTickets.join(', '),
+                        name: name,
+                        cedula: cedula,
+                        email: email,
+                        phone: phone,
+                        receiptBase64: compressedBase64
+                    };
+                    return fetch(APPS_SCRIPT_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'text/plain;charset=utf-8'
+                        },
+                        body: JSON.stringify(payload)
+                    });
                 });
 
-                showToast('¡Gracias! Recibirás un mensaje de confirmación a tu celular.', '📲');
+                await Promise.all(promises);
+
+                showToast(`¡${selectedTickets.length} boleta(s) (${selectedTickets.join(', ')}) reservadas con éxito!`, '🎉');
                 clearTicketSelection();
                 closeBookingModal();
-                openSuccessModal();
                 fetchTicketsFromCloud();
 
             } catch (err) {
                 console.error("Error al enviar reserva:", err);
-                showToast('¡Gracias! Recibirás un mensaje de confirmación a tu celular.', '📲');
+                showToast('Boletas guardadas localmente. Verificando estado.', '✅');
                 clearTicketSelection();
                 closeBookingModal();
-                openSuccessModal();
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
@@ -918,7 +907,7 @@
                     <td class="p-3">${t.cedula || '---'}</td>
                     <td class="p-3">${t.phone || '---'}</td>
                     <td class="p-3"><span class="px-2.5 py-1 rounded-full font-semibold ${badgeClass}">${statusText}</span></td>
-                    <td class="p-3">${t.receipt ? `<button onclick="viewReceipt('${key}')" class="text-brandGreen underline font-bold hover:text-brandDark">Ver Comprobante</button>` : '---'}</td>
+                    <td class="p-3">${t.receipt ? `<button onclick="viewReceipt('${key}')" class="text-brandGreen underline font-bold hover:text-brandDark">Ver Archivo</button>` : '---'}</td>
                     <td class="p-3 text-right space-x-2">
                         ${t.status === 'pending' ? `<button onclick="updateStatusCloud('${key}', 'sold')" class="bg-brandDark hover:bg-emerald-900 text-white px-2.5 py-1.5 rounded-lg text-xs font-semibold">Aprobar</button>` : ''}
                         ${t.status !== 'available' ? `<button onclick="updateStatusCloud('${key}', 'available')" class="bg-rose-100 hover:bg-rose-200 text-rose-700 px-2.5 py-1.5 rounded-lg text-xs font-semibold">Liberar</button>` : ''}
@@ -943,9 +932,11 @@
                 renderGrid();
                 populateAdminTable();
 
-                await fetch(APPS_SCRIPT_URL, {
+                const res = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8'
+                    },
                     body: JSON.stringify({ action: 'updateStatus', number: key, status: status })
                 });
                 
@@ -963,7 +954,7 @@
             const container = document.getElementById('receipt-img-container');
             if (container) {
                 if (t.receipt.startsWith('http')) {
-                    container.innerHTML = `<a href="${t.receipt}" target="_blank" rel="noopener noreferrer" class="bg-brandGreen text-white px-4 py-2.5 rounded-xl font-bold hover:bg-brandDark transition inline-block text-xs">Abrir archivo en Google Drive ↗</a>`;
+                    container.innerHTML = `<a href="${t.receipt}" target="_blank" rel="noopener noreferrer" class="text-brandGreen underline font-bold break-all p-4 inline-block">${t.receipt}</a>`;
                 } else {
                     container.innerHTML = `<img src="${t.receipt}" alt="Comprobante ${key}" class="max-h-[350px] mx-auto rounded-2xl shadow-md object-contain">`;
                 }
@@ -974,16 +965,6 @@
 
         function closeReceiptModal() {
             const modal = document.getElementById('receipt-modal');
-            if (modal) modal.classList.add('hidden');
-        }
-
-        function openSuccessModal() {
-            const modal = document.getElementById('success-modal');
-            if (modal) modal.classList.remove('hidden');
-        }
-
-        function closeSuccessModal() {
-            const modal = document.getElementById('success-modal');
             if (modal) modal.classList.add('hidden');
         }
 
