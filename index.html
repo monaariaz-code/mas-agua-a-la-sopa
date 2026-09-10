@@ -99,6 +99,7 @@
         </header>
     </div>
 
+    <!-- Admin Password Modal -->
     <div id="admin-password-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-sm w-full overflow-hidden border border-stone-200">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
@@ -140,7 +141,7 @@
                         
                         <p>Cada semana jugamos una nueva parrilla de 100 números para premiar la generosidad de nuestros aportantes con experiencias gastronómicas increíbles. En esta nueva edición, el 100% de lo recaudado será destinado a respaldar a <strong id="hero-beneficiary-name" class="text-white bg-white/10 px-2.5 py-1 rounded-lg text-brandYellow font-semibold">Friends Chicken</strong>.</p>
 
-                        <!-- Highlights Banner for Week 4 -->
+                        <!-- Highlights Banner -->
                         <div class="bg-gradient-to-r from-emerald-900/50 via-stone-900 to-amber-950/40 border-2 border-brandYellow/40 rounded-3xl p-5 text-stone-200 text-sm space-y-3 shadow-xl">
                             <div class="flex items-center justify-between flex-wrap gap-2">
                                 <div class="flex items-center gap-2">
@@ -230,7 +231,6 @@
             </div>
             
             <div class="max-w-2xl mx-auto w-full pt-2">
-                <!-- Single Featured Prize: Bono Takami -->
                 <div class="bg-gradient-to-br from-brandCardBg via-amber-50/50 to-brandCardBg border-2 border-amber-400 rounded-3xl p-6 md:p-8 flex flex-col justify-between space-y-5 relative overflow-hidden shadow-lg">
                     <div class="space-y-4">
                         <div class="flex items-center justify-between flex-wrap gap-2">
@@ -329,6 +329,12 @@
                     </div>
                     <h2 class="text-3xl font-serif font-bold text-stone-900 mt-1">Números del 00 al 99</h2>
                     <p class="text-xs text-stone-500 mt-0.5">Haz clic sobre cualquier casilla libre para apartar tu boleta solidaria ($30.000 COP c/u).</p>
+                    <div class="mt-2 flex items-center gap-2">
+                        <span id="sync-status-indicator" class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span>Sincronizando con Google Sheets...</span>
+                        </span>
+                    </div>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-3 text-xs font-semibold">
@@ -342,20 +348,44 @@
                     </div>
                     <div class="flex items-center space-x-1.5">
                         <span class="w-3.5 h-3.5 rounded-lg bg-rose-100 border-2 border-rose-500 inline-block"></span>
-                        <span class="text-stone-700">Confirmado</span>
+                        <span class="text-stone-700 font-bold">Comprado</span>
                     </div>
                     <div id="legend-winner-indicator" class="hidden flex items-center space-x-1.5">
                         <span class="w-3.5 h-3.5 rounded-lg bg-amber-400 border-2 border-amber-600 inline-block shadow-sm"></span>
                         <span class="text-stone-800 font-bold">Ganador</span>
                     </div>
-                    <button onclick="fetchTicketsFromCloud()" class="ml-2 px-3 py-1 bg-stone-100 hover:bg-stone-200 rounded-lg text-stone-600 text-xs flex items-center gap-1 transition">
-                        🔄 Actualizar
+                    <button onclick="fetchTicketsFromCloud()" class="ml-2 px-3 py-1.5 bg-stone-900 hover:bg-stone-800 text-white rounded-xl text-xs font-semibold flex items-center gap-1.5 shadow-sm transition">
+                        <span>🔄</span>
+                        <span>Actualizar Ahora</span>
                     </button>
                 </div>
             </div>
 
+            <!-- Search & Quick Filters -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3 bg-stone-50 p-3.5 rounded-2xl border border-stone-200">
+                <div class="flex flex-wrap items-center gap-2 w-full sm:w-auto">
+                    <button id="filter-btn-all" onclick="setFilter('all')" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-stone-900 text-white shadow-sm">
+                        Todos (100)
+                    </button>
+                    <button id="filter-btn-available" onclick="setFilter('available')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-stone-600 bg-white border border-stone-200 hover:bg-stone-100 transition">
+                        Disponibles (<span id="filter-count-avail">0</span>)
+                    </button>
+                    <button id="filter-btn-pending" onclick="setFilter('pending')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-stone-600 bg-white border border-stone-200 hover:bg-stone-100 transition">
+                        En Validación (<span id="filter-count-pending">0</span>)
+                    </button>
+                    <button id="filter-btn-sold" onclick="setFilter('sold')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold text-stone-600 bg-white border border-stone-200 hover:bg-stone-100 transition">
+                        Comprados (<span id="filter-count-sold">0</span>)
+                    </button>
+                </div>
+                
+                <div class="w-full sm:w-64 relative">
+                    <input type="text" id="grid-search-input" oninput="handleSearch(this.value)" placeholder="🔍 Buscar número..." class="w-full px-3.5 py-1.5 pl-8 text-xs bg-white rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-brandDark">
+                    <span class="absolute left-2.5 top-2 text-xs text-stone-400">🔍</span>
+                </div>
+            </div>
+
             <!-- 100 Tickets Grid Container -->
-            <div id="tickets-grid" class="grid grid-cols-5 sm:grid-cols-10 gap-2.5 min-h-[300px] items-center justify-center">
+            <div id="tickets-grid" class="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-10 gap-2.5 min-h-[300px] items-center justify-center">
                 <!-- Injected via JavaScript -->
             </div>
         </section>
@@ -380,8 +410,6 @@
 
             <!-- Historical Cards Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                
-                <!-- Week 3 Winners (Hernán Salazar #36 & Santiago Vélez #12) -->
                 <div class="bg-white/5 border border-amber-400/40 rounded-3xl p-5 flex flex-col justify-between backdrop-blur-sm relative overflow-hidden space-y-4 hover:border-amber-400/80 transition">
                     <div class="space-y-2.5">
                         <div class="flex items-center justify-between">
@@ -402,7 +430,6 @@
                     </div>
                 </div>
 
-                <!-- Week 2 Winner (María Piedad Marín #14) -->
                 <div class="bg-white/5 border border-white/10 rounded-3xl p-5 flex flex-col justify-between backdrop-blur-sm relative overflow-hidden space-y-4 hover:border-white/20 transition">
                     <div class="space-y-2.5">
                         <div class="flex items-center justify-between">
@@ -420,7 +447,6 @@
                     </div>
                 </div>
 
-                <!-- Week 1 Winner (Mónica Rivillas Silva #60) -->
                 <div class="bg-white/5 border border-white/10 rounded-3xl p-5 flex flex-col justify-between backdrop-blur-sm relative overflow-hidden space-y-4 hover:border-white/20 transition opacity-90 hover:opacity-100">
                     <div class="space-y-2.5">
                         <div class="flex items-center justify-between">
@@ -437,7 +463,6 @@
                         <strong class="text-stone-200">La Patatería</strong>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -471,6 +496,7 @@
         </div>
     </footer>
 
+    <!-- Booking Modal -->
     <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full overflow-hidden border border-stone-200 max-h-[90vh] flex flex-col">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center shrink-0">
@@ -514,12 +540,11 @@
                     <input type="file" id="buyer-receipt" accept="image/*" required class="w-full text-xs text-stone-500 file:mr-4 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brandSage file:text-brandDark cursor-pointer border border-stone-200 rounded-xl">
                 </div>
 
-                <!-- Terms and Conditions Checkbox -->
                 <div class="pt-1">
                     <div class="flex items-start space-x-3 bg-stone-50 p-3 rounded-xl border border-stone-200">
                         <input type="checkbox" id="accept-terms" required class="mt-0.5 w-4 h-4 text-brandDark rounded border-stone-300 focus:ring-brandDark cursor-pointer">
                         <label for="accept-terms" class="text-xs text-stone-600 select-none leading-relaxed">
-                            Acepto los <button type="button" onclick="openTermsModal(event)" class="text-brandGreen underline font-semibold hover:text-brandDark">Términos, Condiciones y Políticas de Tratamiento de Datos</button> de la campaña solidaria. *
+                            Acepto los <button type="button" onclick="openTermsModal(event)" class="text-brandGreen underline font-semibold hover:text-brandDark">Términos, Condiciones y Políticas</button> de la campaña solidaria. *
                         </label>
                     </div>
                 </div>
@@ -532,6 +557,7 @@
         </div>
     </div>
 
+    <!-- Terms Modal -->
     <div id="terms-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeTermsModal()">
         <div class="bg-white rounded-3xl p-6 max-w-lg w-full space-y-4 shadow-2xl max-h-[85vh] flex flex-col" onclick="event.stopPropagation()">
             <div class="flex justify-between items-center border-b border-stone-100 pb-3">
@@ -540,10 +566,10 @@
             </div>
             
             <div class="overflow-y-auto space-y-3 text-xs text-stone-600 leading-relaxed pr-1">
-                <p><strong>1. Objeto de la Campaña:</strong> "Más Agua a la Sopa" es una campaña solidaria ciudadana sin fines de lucro enfocada en recolectar aportes para la reactivación y sostenimiento de restaurantes y equipos gastronómicos en Manizales.</p>
-                <p><strong>2. Mecánica del Sorteo:</strong> Cada aporte de $30.000 COP equivale a un número único (00 al 99). El sorteo se transmite en vivo mediante una plataforma digital aleatoria certificada con presencia de veedores.</p>
-                <p><strong>3. Validación y Registro:</strong> Para oficializar la boleta es obligatorio adjuntar el comprobante emitido a la llave Nu <strong>@SAL610</strong>. En caso de no verificar la transacción, el número volverá a habilitarse.</p>
-                <p><strong>4. Tratamiento de Datos Personales:</strong> Sus datos se almacenan exclusivamente para registrar su participación y contactarlo en caso de resultar favorecido con el premio.</p>
+                <p><strong>1. Objeto de la Campaña:</strong> "Más Agua a la Sopa" es una campaña solidaria sin fines de lucro enfocada en recolectar aportes para la reactivación gastronómica de Manizales.</p>
+                <p><strong>2. Mecánica del Sorteo:</strong> Cada aporte de $30.000 COP equivale a un número único (00 al 99). Sorteo en vivo con app aleatoria certificada.</p>
+                <p><strong>3. Validación:</strong> Para oficializar la boleta es obligatorio adjuntar el comprobante emitido a la llave Nu <strong>@SAL610</strong>.</p>
+                <p><strong>4. Tratamiento de Datos:</strong> Los datos se usan con el único propósito del registro y contacto de ganadores.</p>
             </div>
 
             <div class="pt-2 border-t border-stone-100 flex justify-end">
@@ -552,6 +578,7 @@
         </div>
     </div>
 
+    <!-- Admin Dashboard Modal -->
     <div id="admin-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/70 backdrop-blur-sm hidden">
         <div class="bg-white rounded-3xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-stone-200">
             <div class="bg-brandDark px-6 py-5 text-white flex justify-between items-center">
@@ -563,13 +590,12 @@
             </div>
             
             <div class="p-6 overflow-y-auto space-y-6 flex-1 bg-stone-50/50">
-                <!-- Edition Settings Card -->
                 <div class="bg-white p-5 rounded-2xl border border-stone-200 space-y-3">
                     <div class="flex items-center justify-between">
                         <h4 class="font-bold text-stone-800 text-sm flex items-center gap-2">
                             <span>⚙️ Configuración de la Edición Actual</span>
                         </h4>
-                        <button onclick="resetBoardConfirmation()" class="text-xs text-rose-600 hover:text-rose-800 font-bold underline">
+                        <button onclick="promptResetModal()" class="text-xs text-rose-600 hover:text-rose-800 font-bold underline">
                             Reiniciar Todos los Números a Disponible
                         </button>
                     </div>
@@ -590,7 +616,6 @@
                     </div>
                 </div>
 
-                <!-- Financial Stats -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="bg-white p-5 rounded-2xl border border-stone-200">
                         <span class="text-xs text-stone-500 font-medium">Recaudo Confirmado</span>
@@ -609,7 +634,6 @@
                     </div>
                 </div>
 
-                <!-- Tickets Management Table -->
                 <div class="overflow-x-auto border border-stone-200 rounded-2xl bg-white">
                     <table class="w-full text-left border-collapse text-xs">
                         <thead>
@@ -633,16 +657,31 @@
         </div>
     </div>
 
+    <!-- Receipt View Modal -->
     <div id="receipt-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden" onclick="closeReceiptModal()">
         <div class="bg-white rounded-3xl p-5 max-w-md w-full text-center space-y-3 shadow-2xl" onclick="event.stopPropagation()">
             <h4 class="font-serif font-bold text-2xl text-brandDark">Comprobante de Pago</h4>
-            <div id="receipt-img-container" class="bg-stone-100 rounded-2xl p-2 min-h-[250px] flex items-center justify-center overflow-hidden border border-stone-200">
-                <!-- Image goes here -->
-            </div>
+            <div id="receipt-img-container" class="bg-stone-100 rounded-2xl p-2 min-h-[250px] flex items-center justify-center overflow-hidden border border-stone-200"></div>
             <button onclick="closeReceiptModal()" class="w-full bg-brandDark text-white py-3 rounded-xl text-xs font-bold shadow-md transition">Cerrar</button>
         </div>
     </div>
 
+    <!-- Custom Reset Confirmation Modal (Replaces window.confirm) -->
+    <div id="reset-confirm-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/80 backdrop-blur-sm hidden">
+        <div class="bg-white rounded-3xl p-6 max-w-sm w-full space-y-4 shadow-2xl border border-stone-200 text-center">
+            <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-2xl flex items-center justify-center mx-auto text-2xl">⚠️</div>
+            <div class="space-y-1">
+                <h4 class="font-serif font-bold text-lg text-stone-900">¿Reiniciar la Parrilla?</h4>
+                <p class="text-xs text-stone-600">Esta acción liberará todos los 100 números dejándolos como disponibles.</p>
+            </div>
+            <div class="flex space-x-2 pt-2">
+                <button onclick="closeResetModal()" class="flex-1 bg-stone-100 hover:bg-stone-200 text-stone-700 py-2.5 rounded-xl text-xs font-medium">Cancelar</button>
+                <button onclick="executeResetBoard()" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white py-2.5 rounded-xl text-xs font-bold shadow-sm">Sí, Reiniciar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Component -->
     <div id="toast" class="fixed bottom-6 right-6 z-50 bg-brandDark text-white px-5 py-3.5 rounded-2xl shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 flex items-center space-x-3 text-sm border border-emerald-800">
         <span id="toast-icon">✨</span>
         <span id="toast-message">Notificación</span>
@@ -652,20 +691,20 @@
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyxGy18luIyICNT9Wz6HVC00P-q31gLUE8EVeWv1mdE0swAh1jH_YE6BfWQci1BZcli/exec';
         const ADMIN_PASSWORD = 'masagua2026';
         
-        // Dynamic Edition Configuration for Semana 4
         let currentEdition = {
             weekNumber: 4,
             beneficiaryName: 'Friends Chicken',
             videoUrl: 'https://www.instagram.com/reel/Db9E7vMBnIs/?stkn=MTRjZHJkcTViazlmag%3D%3D',
             prize1Title: 'Bono de $200.000 COP — Grupo Takami',
             ticketPrice: 30000,
-            winners: {} // Empty initially for the new round. Will be set on Friday draw!
+            winners: {}
         };
 
         let tickets = {};
         let selectedTicketForBooking = null;
+        let currentFilter = 'all';
+        let searchQuery = '';
 
-        // Initialize clean board for the new edition
         function initEmptyTickets() {
             const initial = {};
             for (let i = 0; i < 100; i++) {
@@ -684,7 +723,6 @@
             return initial;
         }
 
-        // Apply configuration to DOM elements
         function applyEditionConfig() {
             const benHero = document.getElementById('hero-beneficiary-name');
             const chipBen = document.getElementById('chip-beneficiary');
@@ -708,23 +746,27 @@
             if (cfgPrizeInput) cfgPrizeInput.value = currentEdition.prize1Title;
         }
 
-        // Fetch tickets from Google Apps Script or cloud endpoint
         async function fetchTicketsFromCloud() {
+            const syncEl = document.getElementById('sync-status-indicator');
+            if (syncEl) {
+                syncEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span><span>Consultando Google Sheets...</span>`;
+                syncEl.className = "inline-flex items-center gap-1.5 text-[11px] font-semibold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200";
+            }
+
             if (!tickets || Object.keys(tickets).length === 0) {
                 tickets = initEmptyTickets();
                 renderGrid();
             }
 
             try {
-                const url = `${APPS_SCRIPT_URL}?action=getTickets&week=4&_=${Date.now()}`;
+                // Notice: DO NOT send custom headers to avoid CORS OPTIONS preflight rejection
+                const url = `${APPS_SCRIPT_URL}?action=getTickets&week=${currentEdition.weekNumber}&_=${Date.now()}`;
                 const res = await fetch(url, {
                     method: 'GET',
-                    cache: 'no-store',
-                    headers: { 'Accept': 'application/json' }
+                    cache: 'no-store'
                 });
 
                 if (!res.ok) throw new Error("HTTP " + res.status);
-
                 const json = await res.json();
 
                 if (json.status === 'success' && json.data) {
@@ -749,11 +791,32 @@
 
                         if (!source) continue;
 
-                        let status = String(source.status || 'available').toLowerCase();
+                        let statusRaw = String(source.status || '').trim().toLowerCase();
+                        let buyerName = String(source.name || '').trim();
+                        let status = 'available';
 
-                        if (status === 'pendiente' || status === 'en validación' || status === 'en validacion') {
+                        // Broad normalization for Spanish & English spreadsheet entries
+                        if (
+                            statusRaw.includes('aprob') ||
+                            statusRaw.includes('confir') ||
+                            statusRaw.includes('vend') ||
+                            statusRaw.includes('sold') ||
+                            statusRaw.includes('comp') ||
+                            statusRaw.includes('pag') ||
+                            statusRaw === 'si' ||
+                            statusRaw === 'sí' ||
+                            statusRaw === 'ok'
+                        ) {
+                            status = 'sold';
+                        } else if (
+                            statusRaw.includes('pend') ||
+                            statusRaw.includes('valid') ||
+                            statusRaw.includes('proc') ||
+                            statusRaw.includes('revis')
+                        ) {
                             status = 'pending';
-                        } else if (status === 'aprobado' || status === 'confirmado' || status === 'vendido' || status === 'sold') {
+                        } else if (buyerName.length > 0) {
+                            // If a name exists in the row, mark as sold even if the status column was blank
                             status = 'sold';
                         } else {
                             status = 'available';
@@ -762,7 +825,7 @@
                         normalized[key] = {
                             number: key,
                             status: status,
-                            name: source.name || '',
+                            name: buyerName,
                             cedula: source.cedula || '',
                             email: source.email || '',
                             phone: source.phone || '',
@@ -773,14 +836,49 @@
                     tickets = normalized;
                     renderGrid();
 
+                    if (syncEl) {
+                        const dateStr = new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                        syncEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Sincronizado con Google Sheets (${dateStr})</span>`;
+                        syncEl.className = "inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200";
+                    }
+
                     const adminModal = document.getElementById('admin-modal');
                     if (adminModal && !adminModal.classList.contains('hidden')) {
                         populateAdminTable();
                     }
                 }
             } catch (err) {
-                console.warn("Trabajando con almacenamiento local o inicial:", err);
+                console.warn("Trabajando en modo local o sincronizando:", err);
+                if (syncEl) {
+                    syncEl.innerHTML = `<span class="w-2 h-2 rounded-full bg-stone-400"></span><span>Datos locales cargados (Reintentando...)</span>`;
+                    syncEl.className = "inline-flex items-center gap-1.5 text-[11px] font-semibold text-stone-600 bg-stone-100 px-2.5 py-0.5 rounded-full border border-stone-200";
+                }
             }
+        }
+
+        function setFilter(filterType) {
+            currentFilter = filterType;
+            const buttons = {
+                all: document.getElementById('filter-btn-all'),
+                available: document.getElementById('filter-btn-available'),
+                pending: document.getElementById('filter-btn-pending'),
+                sold: document.getElementById('filter-btn-sold')
+            };
+
+            for (const key in buttons) {
+                if (!buttons[key]) continue;
+                if (key === filterType) {
+                    buttons[key].className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-stone-900 text-white shadow-sm";
+                } else {
+                    buttons[key].className = "px-3.5 py-1.5 rounded-xl text-xs font-semibold text-stone-600 bg-white border border-stone-200 hover:bg-stone-100 transition";
+                }
+            }
+            renderGrid();
+        }
+
+        function handleSearch(val) {
+            searchQuery = val.trim().toLowerCase();
+            renderGrid();
         }
 
         function renderGrid() {
@@ -790,43 +888,76 @@
             
             let soldCount = 0;
             let pendingCount = 0;
+            let availCount = 0;
 
             for (let i = 0; i < 100; i++) {
                 const key = i < 10 ? `0${i}` : `${i}`;
                 const isWinner = !!currentEdition.winners[key];
                 const ticket = tickets[key] || { number: key, status: isWinner ? 'sold' : 'available' };
                 
-                if (ticket.status === 'sold' || isWinner) soldCount++;
-                else if (ticket.status === 'pending') pendingCount++;
+                if (ticket.status === 'sold' || isWinner) {
+                    soldCount++;
+                } else if (ticket.status === 'pending') {
+                    pendingCount++;
+                } else {
+                    availCount++;
+                }
+
+                // Check filter condition
+                if (currentFilter === 'available' && ticket.status !== 'available') continue;
+                if (currentFilter === 'pending' && ticket.status !== 'pending') continue;
+                if (currentFilter === 'sold' && (ticket.status !== 'sold' && !isWinner)) continue;
+
+                // Check search condition
+                if (searchQuery) {
+                    const matchesNum = key.includes(searchQuery);
+                    if (!matchesNum) continue;
+                }
 
                 const btn = document.createElement('button');
                 btn.type = 'button';
                 
                 if (isWinner) {
-                    const winnerInfo = currentEdition.winners[key];
-                    btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-110 bg-gradient-to-tr from-amber-400 to-amber-200 border-amber-600 text-stone-950 shadow-lg winner-glow ring-2 ring-amber-300/80`;
-                    btn.onclick = () => showToast(`¡Boleta ${key} es GANADORA! 🏆`, '🎉');
+                    btn.className = `aspect-square rounded-2xl font-bold flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-gradient-to-tr from-amber-400 to-amber-200 border-amber-600 text-stone-950 shadow-md winner-glow ring-2 ring-amber-300/80 p-1`;
+                    btn.onclick = () => showToast(`¡Boleta #${key} es GANADORA! 🏆`, '🎉');
                     btn.innerHTML = `
-                        <span class="text-xs -mb-1">👑</span>
-                        <span class="font-handwriting text-2xl font-black">${key}</span>
-                        <span class="text-[7px] uppercase font-extrabold bg-stone-900 text-amber-300 px-1.5 py-0.2 rounded-full -mt-0.5 shadow-sm">Ganador</span>
+                        <span class="text-xs">👑</span>
+                        <span class="font-mono text-xl font-black">${key}</span>
+                        <span class="text-[8px] uppercase font-black bg-stone-900 text-amber-300 px-1.5 py-0.2 rounded-full -mt-0.5">Ganador</span>
                     `;
                 } else if (ticket.status === 'available') {
-                    btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-emerald-50/70 border-emerald-300 text-brandDark hover:bg-emerald-100 hover:border-brandGreen shadow-sm`;
+                    btn.className = `aspect-square rounded-2xl font-bold flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-emerald-50 border-emerald-300 text-brandDark hover:bg-emerald-100 hover:border-brandGreen shadow-sm p-1`;
                     btn.onclick = () => openBookingModal(key);
-                    btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span>`;
+                    btn.innerHTML = `
+                        <span class="font-mono text-xl font-black text-emerald-950">${key}</span>
+                        <span class="text-[8px] font-bold text-emerald-700 uppercase -mt-0.5">Libre</span>
+                    `;
                 } else if (ticket.status === 'pending') {
-                    btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-amber-50 border-amber-300 text-amber-800 cursor-not-allowed shadow-sm`;
-                    btn.onclick = () => showToast('Número en validación de comprobante.', '⏳');
-                    btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span><span class="text-[8px] uppercase font-bold text-amber-700 -mt-1">Proceso</span>`;
+                    btn.className = `aspect-square rounded-2xl font-bold flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-amber-50 border-amber-300 text-amber-900 cursor-not-allowed shadow-sm p-1`;
+                    btn.onclick = () => showToast(`Boleta #${key} en validación de pago.`, '⏳');
+                    btn.innerHTML = `
+                        <span class="font-mono text-xl font-black">${key}</span>
+                        <span class="text-[8px] uppercase font-bold text-amber-800 bg-amber-200/70 px-1 rounded -mt-0.5">Proceso</span>
+                    `;
                 } else if (ticket.status === 'sold') {
-                    btn.className = `aspect-square rounded-2xl font-bold text-base flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-rose-50 border-rose-300 text-rose-800 cursor-not-allowed shadow-sm`;
-                    btn.onclick = () => showToast(`Boleta ${key} ya reservada y confirmada.`, '🔒');
-                    btn.innerHTML = `<span class="font-handwriting text-2xl">${key}</span><span class="text-[8px] uppercase font-bold text-rose-700 -mt-1">Vendido</span>`;
+                    btn.className = `aspect-square rounded-2xl font-bold flex flex-col items-center justify-center transition-all duration-200 border-2 transform hover:scale-105 bg-rose-50 border-rose-300 text-rose-950 cursor-not-allowed shadow-sm p-1`;
+                    btn.onclick = () => showToast(`Boleta #${key} ya reservada y confirmada.`, '🔒');
+                    btn.innerHTML = `
+                        <span class="font-mono text-xl font-black">${key}</span>
+                        <span class="text-[8px] uppercase font-bold text-rose-800 -mt-0.5">Vendido</span>
+                    `;
                 }
 
                 gridEl.appendChild(btn);
             }
+
+            // Update stats & filter buttons counts
+            const filterAvailEl = document.getElementById('filter-count-avail');
+            const filterPendingEl = document.getElementById('filter-count-pending');
+            const filterSoldEl = document.getElementById('filter-count-sold');
+            if (filterAvailEl) filterAvailEl.innerText = availCount;
+            if (filterPendingEl) filterPendingEl.innerText = pendingCount;
+            if (filterSoldEl) filterSoldEl.innerText = soldCount;
 
             const percentage = Math.min(100, Math.round((soldCount / 100) * 100));
             const soldText = document.getElementById('stat-sold-text');
@@ -838,7 +969,7 @@
             if (percentText) percentText.innerText = `${percentage}%`;
             if (progressBar) progressBar.style.width = `${percentage}%`;
             if (goalIndicator) {
-                goalIndicator.innerText = percentage === 100 ? '¡Meta Cumplida!' : `${100 - soldCount} disponibles`;
+                goalIndicator.innerText = percentage === 100 ? '¡Meta Cumplida!' : `${availCount} disponibles`;
             }
         }
 
@@ -860,7 +991,7 @@
             selectedTicketForBooking = null;
         }
 
-        function compressImage(file, maxWidth = 800, maxHeight = 800, quality = 0.7) {
+        function compressImage(file, maxWidth = 800, maxHeight = 800, quality = 0.6) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
                 reader.readAsDataURL(file);
@@ -908,19 +1039,20 @@
             const file = receiptInput && receiptInput.files ? receiptInput.files[0] : null;
 
             if (!selectedTicketForBooking || !name || !cedula || !email || !phone || !file) {
-                showToast('Por favor completa todos los campos.', '⚠️');
+                showToast('Por favor completa todos los campos requeridos.', '⚠️');
                 return;
             }
 
             const submitBtn = document.getElementById('submit-btn');
             if (submitBtn) {
                 submitBtn.disabled = true;
-                submitBtn.innerText = "Procesando comprobante...";
+                submitBtn.innerText = "Subiendo comprobante...";
             }
 
             try {
-                const compressedBase64 = await compressImage(file, 800, 800, 0.7);
+                const compressedBase64 = await compressImage(file, 800, 800, 0.6);
 
+                // Update local visual state immediately
                 tickets[selectedTicketForBooking] = {
                     number: selectedTicketForBooking,
                     status: 'pending',
@@ -940,6 +1072,7 @@
                     cedula: cedula,
                     email: email,
                     phone: phone,
+                    status: 'pending',
                     receiptBase64: compressedBase64
                 };
 
@@ -949,13 +1082,13 @@
                     body: JSON.stringify(payload)
                 });
                 
-                showToast(`¡Boleta ${selectedTicketForBooking} reservada con éxito!`, '🎉');
+                showToast(`¡Boleta #${selectedTicketForBooking} registrada en validación!`, '🎉');
                 closeBookingModal();
-                fetchTicketsFromCloud();
+                setTimeout(fetchTicketsFromCloud, 1000);
 
             } catch (err) {
                 console.error("Error en reserva:", err);
-                showToast(`Boleta ${selectedTicketForBooking} apartada con éxito.`, '✅');
+                showToast(`Boleta #${selectedTicketForBooking} apartada con éxito.`, '✅');
                 closeBookingModal();
             } finally {
                 if (submitBtn) {
@@ -965,7 +1098,6 @@
             }
         }
 
-        // Terms modal triggers
         function openTermsModal(event) {
             if (event) event.preventDefault();
             const modal = document.getElementById('terms-modal');
@@ -977,7 +1109,6 @@
             if (modal) modal.classList.add('hidden');
         }
 
-        // Admin Security & Modal logic
         function promptAdminPassword() {
             const passInput = document.getElementById('admin-pass-input');
             if (passInput) passInput.value = '';
@@ -1050,7 +1181,7 @@
                     : (t.status === 'sold' ? 'Confirmado' : (t.status === 'pending' ? 'En Validación' : 'Disponible'));
 
                 tr.innerHTML = `
-                    <td class="p-3 font-bold font-handwriting text-xl ${isWinner ? 'text-amber-600' : ''}">${key} ${isWinner ? '👑' : ''}</td>
+                    <td class="p-3 font-bold font-mono text-sm ${isWinner ? 'text-amber-600' : ''}">${key} ${isWinner ? '👑' : ''}</td>
                     <td class="p-3 font-semibold">${t.name || '---'}</td>
                     <td class="p-3">${t.cedula || '---'}</td>
                     <td class="p-3">${t.phone || '---'}</td>
@@ -1091,20 +1222,29 @@
                     body: JSON.stringify({ action: 'updateStatus', week: currentEdition.weekNumber, number: key, status: status })
                 });
                 
-                showToast(`Boleta ${key} actualizada a ${status}.`, '✅');
+                showToast(`Boleta #${key} actualizada a ${status}.`, '✅');
             } catch (err) {
                 console.error("Error al actualizar estado:", err);
                 showToast('Estado actualizado localmente.', '✅');
             }
         }
 
-        function resetBoardConfirmation() {
-            if (window.confirm("¿Seguro que deseas reiniciar la parrilla para esta nueva edición? Todos los 100 números quedarán en Disponible.")) {
-                tickets = initEmptyTickets();
-                renderGrid();
-                populateAdminTable();
-                showToast("Parrilla reiniciada a 100 números disponibles.", "✨");
-            }
+        function promptResetModal() {
+            const modal = document.getElementById('reset-confirm-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeResetModal() {
+            const modal = document.getElementById('reset-confirm-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function executeResetBoard() {
+            closeResetModal();
+            tickets = initEmptyTickets();
+            renderGrid();
+            populateAdminTable();
+            showToast("Parrilla reiniciada a 100 números disponibles.", "✨");
         }
 
         function saveEditionConfig() {
@@ -1124,9 +1264,9 @@
             const container = document.getElementById('receipt-img-container');
             if (container) {
                 if (t.receipt.startsWith('http')) {
-                    container.innerHTML = `<a href="${t.receipt}" target="_blank" rel="noopener noreferrer" class="text-brandGreen underline font-bold break-all p-4 inline-block">${t.receipt}</a>`;
+                    container.innerHTML = `<a href="${t.receipt}" target="_blank" rel="noopener noreferrer" class="text-brandGreen underline font-bold break-all p-4 inline-block">Abrir comprobante en Drive ↗</a>`;
                 } else {
-                    container.innerHTML = `<img src="${t.receipt}" alt="Comprobante ${key}" class="max-h-[350px] mx-auto rounded-2xl shadow-md object-contain">`;
+                    container.innerHTML = `<img src="${t.receipt}" alt="Comprobante #${key}" class="max-h-[350px] mx-auto rounded-2xl shadow-md object-contain">`;
                 }
             }
             const modal = document.getElementById('receipt-modal');
@@ -1151,7 +1291,6 @@
             }, 3500);
         }
 
-        // Initialize application on window load
         window.onload = async function() {
             applyEditionConfig();
             tickets = initEmptyTickets();
